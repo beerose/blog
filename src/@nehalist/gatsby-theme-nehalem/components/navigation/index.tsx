@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from "react";
+import React, { FunctionComponent } from "react";
 import {
   Nav,
   NavContainer,
@@ -8,8 +8,8 @@ import {
   NavWrapper,
   SearchContainer,
 } from "@nehalist/gatsby-theme-nehalem/src/components/navigation/style";
-import {MenuItem} from "@nehalist/gatsby-theme-nehalem/src/utils/models";
-import {Search} from "@nehalist/gatsby-theme-nehalem/src/components/search";
+import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
+import { Search } from "@nehalist/gatsby-theme-nehalem/src/components/search";
 
 interface NavigationProps {
   // title: string;

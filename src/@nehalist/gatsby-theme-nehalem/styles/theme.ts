@@ -4,15 +4,15 @@ const colors = {
   primary: "#f5d100", // candlelight
   secondary: "#035437", // sacramento state green
   smokyBlack: "#070707", // smoky black
-  floralWhite: "#FCFCF9", // snow
-  black08: "rgba(10, 10, 0, 0.8)",
+  snow: "#FCFCF9", // snow
+  black09: "rgba(25, 10, 0, 0.9)",
 };
 
 export const theme = {
   fontSizes,
   colors,
   layout: {
-    backgroundColor: colors.floralWhite,
+    backgroundColor: colors.snow,
     primaryColor: colors.primary,
     linkColor: colors.secondary,
   },

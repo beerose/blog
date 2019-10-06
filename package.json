@@ -17,6 +17,17 @@
   },
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "babel-eslint": "10.x",
+    "eslint": "6.x",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-flowtype": "3.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
     "gatsby": "^2.13.55",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

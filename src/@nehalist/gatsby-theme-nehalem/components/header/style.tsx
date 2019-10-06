@@ -34,7 +34,7 @@ export const Title = styled.h1`
   font-size: ${theme.fontSizes[3]}px;
   text-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
 
-  color: ${theme.colors.black08};
+  color: ${theme.colors.black09};
 
   @media (max-width: ${theme.breakpoints.sm}) {
     font-size: 10vmin;
