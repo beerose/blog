@@ -28,13 +28,16 @@ const Navigation: FunctionComponent<NavigationProps> = ({
     <Nav>
       <NavWrapper>
         <NavMenu mobile={true}>
-          {menu.map((item, index) => (
-            <NavMenuItem key={index}>
-              <NavLink to={item.path} key={index}>
-                {item.name}
-              </NavLink>
-            </NavMenuItem>
-          ))}
+          {menu
+            // TO DO: fix me
+            .filter(item => item.name !== "Example")
+            .map((item, index) => (
+              <NavMenuItem key={index}>
+                <NavLink to={item.path} key={index}>
+                  {item.name}
+                </NavLink>
+              </NavMenuItem>
+            ))}
         </NavMenu>
         <SearchContainer>
           {showSearch && (

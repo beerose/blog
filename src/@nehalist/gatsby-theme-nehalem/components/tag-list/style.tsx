@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Theme from "../../styles/theme";
+import Theme, { theme } from "../../styles/theme";
 import { Link } from "gatsby";
 
 export const TagContainer = styled.section`
@@ -32,8 +32,11 @@ export const StyledTag = styled.li`
   margin: 0 35px;
   transition: 0.5s all;
 
+  background: ${theme.colors.snow};
+  padding: 2px 8px;
+
   &:hover {
-    transform: scale(1.04);
+    box-shadow: 1px 1px ${theme.colors.shadow};
   }
 
   @media (max-width: ${Theme.breakpoints.sm}) {

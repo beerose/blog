@@ -6,6 +6,7 @@ const colors = {
   smokyBlack: "#070707", // smoky black
   snow: "#FCFCF9", // snow
   black09: "rgba(25, 10, 0, 0.9)",
+  shadow: "rgba(0, 0, 0, 0.05)",
 };
 
 export const theme = {
