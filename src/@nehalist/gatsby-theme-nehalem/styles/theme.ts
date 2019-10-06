@@ -1,10 +1,20 @@
-import {DefaultTheme} from '@nehalist/gatsby-theme-nehalem';
+const fontSizes = [16, 24, 48, 73];
 
-const Theme: DefaultTheme = {
+const colors = {
+  primary: "#f5d100", // candlelight
+  secondary: "#035437", // sacramento state green
+  smokyBlack: "#070707", // smoky black
+  floralWhite: "#FCFCF9", // snow
+  black08: "rgba(10, 10, 0, 0.8)",
+};
+
+export const theme = {
+  fontSizes,
+  colors,
   layout: {
-    backgroundColor: `#fafafa`,
-    primaryColor: `#a4cbb8`,
-    linkColor: `#a4cbb8`,
+    backgroundColor: colors.floralWhite,
+    primaryColor: colors.primary,
+    linkColor: colors.secondary,
   },
   breakpoints: {
     xs: `425px`,
@@ -14,18 +24,15 @@ const Theme: DefaultTheme = {
     xl: `1300px`,
   },
   fonts: {
-    base: `-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, ` +
+    base:
+      `system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, ` +
       `Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif`,
   },
   components: {
     container: {
       width: `1260px`,
     },
-    header: {
-      height: `440px`,
-      background: `linear-gradient(-45deg, #44596e, #a4cbb8) repeat scroll 0 0 transparent`,
-    },
   },
 };
 
-export default Theme;
+export default theme;
