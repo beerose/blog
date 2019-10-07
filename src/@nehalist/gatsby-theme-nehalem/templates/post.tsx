@@ -241,6 +241,16 @@ const ToggleTocButton = styled.button`
   }
 `;
 
+const StyledLink = styled(Link)`
+  color: ${theme.colors.smokyBlack};
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   data,
   location,
@@ -291,15 +301,19 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
           <article className={`post`} ref={readingProgressRef}>
             <PostHeader>
               <PostMeta>
-                {post.frontmatter.tags.length > 0 && (
-                  <Link
-                    to={`/tag/${slugify(post.frontmatter.tags[0], {
-                      lower: true,
-                    })}`}
-                  >
-                    {post.frontmatter.tags[0]}
-                  </Link>
-                )}
+                <span>
+                  {post.frontmatter.tags.length > 0 &&
+                    post.frontmatter.tags.map((tag, i) => (
+                      <StyledLink
+                        to={`/tag/${slugify(tag, {
+                          lower: true,
+                        })}`}
+                      >
+                        {tag}
+                        {post.frontmatter.tags.length > i + 1 && <>, </>}
+                      </StyledLink>
+                    ))}
+                </span>
                 <time dateTime={post.frontmatter.created}>
                   {post.frontmatter.createdPretty}
                 </time>
