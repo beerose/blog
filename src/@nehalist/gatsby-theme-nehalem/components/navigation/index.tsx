@@ -7,7 +7,7 @@ import {
   NavMenuItem,
   NavWrapper,
   SearchContainer,
-} from "@nehalist/gatsby-theme-nehalem/src/components/navigation/style";
+} from "./style";
 import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import { Search } from "@nehalist/gatsby-theme-nehalem/src/components/search";
 

@@ -1,8 +1,8 @@
 const fontSizes = [16, 24, 48, 73];
 
 const colors = {
-  primary: "#f5d100", // candlelight
-  secondary: "#035437", // sacramento state green
+  primary: "#F4D524", // deep lemon
+  secondary: "#1A936F", // illuminating emerald
   smokyBlack: "#070707", // smoky black
   snow: "#FCFCF9", // snow
   black09: "rgba(25, 10, 0, 0.9)",

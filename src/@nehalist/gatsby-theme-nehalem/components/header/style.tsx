@@ -4,7 +4,7 @@ import Typed from "react-typed";
 
 export const StyledHeader = styled.header`
   display: flex;
-  background: #f5d100;
+  background: ${theme.colors.primary};
   flex-direction: column;
   height: 400px;
 
