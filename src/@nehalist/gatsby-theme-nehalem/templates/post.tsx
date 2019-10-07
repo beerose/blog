@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Toc from "@nehalist/gatsby-theme-nehalem/src/components/toc";
 import Img from "gatsby-image";
 import ReadingProgress from "@nehalist/gatsby-theme-nehalem/src/components/reading-progress";
-import Theme from "../styles/theme";
+import { theme } from "../styles/theme";
 import { graphql, Link } from "gatsby";
 import slugify from "slugify";
 import Bio from "@nehalist/gatsby-theme-nehalem/src/components/bio";
@@ -33,7 +33,7 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
   max-width: 225px;
   transition: opacity 0.5s;
 
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     position: fixed;
     display: ${props => (props.show ? "unset" : "none")};
     z-index: 1000;
@@ -58,8 +58,8 @@ const PostContent = styled.div`
 
   li > a,
   p > a {
-    color: ${Theme.layout.linkColor};
-    border-bottom: 2px ${Theme.layout.linkColor} solid;
+    color: ${theme.layout.linkColor};
+    border-bottom: 2px ${theme.layout.linkColor} solid;
   }
 
   pre {
@@ -67,8 +67,8 @@ const PostContent = styled.div`
   }
 
   blockquote {
-    border-left: 4px ${Theme.layout.primaryColor} solid;
-    background-color: ${Theme.layout.backgroundColor};
+    border-left: 4px ${theme.layout.primaryColor} solid;
+    background-color: ${theme.layout.backgroundColor};
     margin: 30px 0;
     padding: 5px 20px;
     border-radius: 0.3em;
@@ -128,14 +128,14 @@ const TocWrapper = styled.div`
 const PostHeader = styled.header`
   padding: 40px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
   }
 `;
 
 const FeaturedImage = styled(Img)`
   border-radius: 0;
-  @media (max-width: ${Theme.breakpoints.xl}) {
+  @media (max-width: ${theme.breakpoints.xl}) {
     margin-left: -1px;
     margin-right: -1px;
   }
@@ -144,7 +144,7 @@ const FeaturedImage = styled(Img)`
 const StyledPost = styled.section`
   padding: 40px;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
   }
 
@@ -161,7 +161,7 @@ const StyledPost = styled.section`
       transform: scale3D(0.75, 0.7, 1);
     }
 
-    @media (max-width: ${Theme.breakpoints.sm}) {
+    @media (max-width: ${theme.breakpoints.sm}) {
       flex-direction: column;
     }
   }
@@ -215,7 +215,7 @@ const BioWrapper = styled.div`
   width: 50%;
   margin: auto;
 
-  @media (max-width: ${Theme.breakpoints.sm}) {
+  @media (max-width: ${theme.breakpoints.sm}) {
     width: 100%;
   }
 `;
@@ -232,11 +232,11 @@ const ToggleTocButton = styled.button`
   z-index: 5000;
   width: 50px;
   height: 50px;
-  background-color: #20232a;
+  background-color: ${theme.colors.secondary};
   color: #fff;
   outline: none;
 
-  @media (min-width: ${Theme.breakpoints.xl}) {
+  @media (min-width: ${theme.breakpoints.xl}) {
     display: none;
   }
 `;
@@ -279,8 +279,8 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
               </TocWrapper>
             </LeftSidebar>
             <ToggleTocButton
-              role={`button`}
-              aria-label={`Toggle table of contents`}
+              role="button"
+              aria-label="Toggle table of contents"
               onClick={toggleToc}
             >
               {showToc ? <FaTimes /> : <FaAlignJustify />}
