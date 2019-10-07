@@ -45,7 +45,6 @@ export const NavMenu = styled.ul<{ mobile?: boolean }>`
       width: 80%;
       overflow-x: auto;
       overflow-y: hidden;
-      mask-image: linear-gradient(to right, transparent, #000 25px, #000 90%, transparent);
     }
   `}
 `;
@@ -59,9 +58,9 @@ export const NavMenuItem = styled.li`
   text-decoration: none;
 `;
 
-export const NavLink = styled(Link)`
-  color: #fff;
-  opacity: 0.8;
+export const NavLink = styled(Link)<{ darkMode: boolean }>`
+  color: ${props => (props.darkMode ? "#fff" : theme.colors.smokyBlack)};
+  opacity: ${props => (props.darkMode ? "0.8" : "0.6")};
   padding: 16px;
   transition: opacity 0.5s;
 
