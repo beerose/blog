@@ -41,9 +41,6 @@ const TagList: FC = () => {
           );
         })}
       </StyledTagList>
-      <TagArchiveLinkWrapper>
-        <TagArchiveLink to={`/tags`}>See all tags</TagArchiveLink>
-      </TagArchiveLinkWrapper>
     </TagContainer>
   );
 };
