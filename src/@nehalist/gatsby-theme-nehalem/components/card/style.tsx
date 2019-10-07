@@ -65,7 +65,7 @@ export const CardContent = styled.section<{ compact: boolean }>`
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {

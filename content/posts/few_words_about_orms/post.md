@@ -26,7 +26,48 @@ You may be an expert when it comes to a particular ORM. But then you may change 
 
 ORMs may be great, fast, have a small learning curve. However, I don't believe there are ORMs that are easy to learn and to be mastered. Anyways. ORMs are so different. Even when it comes to the same platform. Take a look at the following code snippets. These are Sequelize and TypeORM. Both made for NodeJS.
 
-<img src="./assets/compare.png" style="width: 200px" />
+```ts
+// TypeORM
+
+@Entity("users")
+export class Users {
+  @PrimaryGeneratedColumn({
+    type: "int",
+    name: "id",
+  })
+  id: number;
+
+  @Column("varchar", {
+    nullable: true,
+    length: 50,
+    name: "name",
+  })
+  name: string | null;
+}
+```
+
+```ts
+// Sequelize
+
+export const Users = sequelize.define(
+  "users",
+  {
+    id: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+    },
+  },
+  {
+    tableName: "users",
+  }
+);
+```
 
 The most significant advantage of SQL over ORMs is that once you learn it you can use that knowledge in any SQL dialect. It may differ a little between database systems, but those are not huge differences.
 
@@ -42,11 +83,11 @@ Let’s be honest — that doesn’t happen often. But when it does, ORMs may be
 
 They simply can’t do everything. I remember putting fragments of raw SQL into Ecto query just because I wasn’t able to achieve something. So.. no matter of using ORM you still need to learn SQL. Turns out there’s no escape from it.
 
-### #4 ORMs speeds up development
+### #4 ORMs speed up development
 
 With them, developers don’t have to write repetitive SQL queries, wrappers and so on. A lot of boilerplate can be eliminated.
 
-### #5 ORMs slows down development
+### #5 ORMs slow down development
 
 Yep. That also can be true. All depends on the developers' experience, size of the project and ORM itself. When I’m working with databases and I need to write some more complicated query, I first try to test it in the console. When I have all the edge cases tested I use it in the project. It saves me time since debugging a query through the application is far more complex. And with ORM debugging is not so easy anymore. I need to test it via application then read the logs to find the generated query and check what went wrong.
 
