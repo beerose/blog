@@ -1,7 +1,7 @@
 ---
 title: "Few words about ORMs"
 path: "/few_words_about_orms"
-tags: ["databases", "haskell"]
+tags: ["databases"]
 featuredImage: "./assets/dino.png"
 excerpt: “Raw SQL? Like dinosaurs?” My professor once said. Then I used ORM in the existing project. Results? Dropped database.
 created: 2019-04-02
