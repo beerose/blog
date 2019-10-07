@@ -58,11 +58,11 @@ export const NavMenuItem = styled.li`
   text-decoration: none;
 `;
 
-export const NavLink = styled(Link)<{ darkMode: boolean }>`
-  color: ${props => (props.darkMode ? "#fff" : theme.colors.smokyBlack)};
-  opacity: ${props => (props.darkMode ? "0.8" : "0.6")};
+export const NavLink = styled(Link)<{ darkmode: boolean }>`
+  color: ${props => (props.darkmode ? "#fff" : theme.colors.smokyBlack)};
+  opacity: ${props => (props.darkmode ? "0.8" : "0.6")};
   padding: 16px;
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 
   &:hover {
     opacity: 1;
@@ -74,14 +74,14 @@ export const SearchContainer = styled.div`
   position: relative;
 `;
 
-export const ToggleSearchButton = styled.button`
+export const ToggleSearchButton = styled.button<{ darkmode: boolean }>`
   cursor: pointer;
-  color: #fff;
-  opacity: 0.8;
+  color: ${props => (props.darkmode ? "#fff" : theme.colors.smokyBlack)};
+  opacity: ${props => (props.darkmode ? "0.8" : "0.6")};
   background: none;
   outline: none;
   border: 0;
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 
   &:hover {
     opacity: 1;

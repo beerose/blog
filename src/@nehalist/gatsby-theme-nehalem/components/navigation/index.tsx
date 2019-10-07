@@ -9,7 +9,7 @@ import {
   SearchContainer,
 } from "./style";
 import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
-import { Search } from "@nehalist/gatsby-theme-nehalem/src/components/search";
+import { Search } from "../search";
 
 interface NavigationProps {
   // title: string;
@@ -33,16 +33,16 @@ const Navigation: FunctionComponent<NavigationProps> = ({
             .filter(item => item.name !== "Example")
             .map((item, index) => (
               <NavMenuItem key={index}>
-                <NavLink darkMode={dark} to={item.path} key={index}>
+                <NavLink darkmode={dark} to={item.path} key={index}>
                   {item.name}
                 </NavLink>
               </NavMenuItem>
             ))}
         </NavMenu>
         <SearchContainer>
-          {showSearch && (
+          {showSearch && !dark && (
             <NavMenu>
-              <Search />
+              <Search darkMode={dark} />
             </NavMenu>
           )}
         </SearchContainer>
