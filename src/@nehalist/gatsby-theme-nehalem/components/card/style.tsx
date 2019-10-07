@@ -61,7 +61,7 @@ export const CardContent = styled.section<{ compact: boolean }>`
   padding: ${props => (props.compact ? "10px" : "25px")};
 
   p {
-    margin: 15px 0;
+    margin: 0;
   }
 
   h2 {
@@ -86,6 +86,5 @@ export const CardMeta = styled.section`
 
 export const CardTitle = styled.h2`
   margin: 0;
-  padding: 0;
-  padding-top: 10px;
+  padding: 10px 0;
 `;
