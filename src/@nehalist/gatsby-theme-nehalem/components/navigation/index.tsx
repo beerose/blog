@@ -42,7 +42,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({
         <SearchContainer>
           {showSearch && !dark && (
             <NavMenu>
-              <Search darkMode={dark} />
+              <Search />
             </NavMenu>
           )}
         </SearchContainer>

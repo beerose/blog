@@ -20,10 +20,7 @@ interface SearchResult {
   path: string;
 }
 
-type Props = {
-  darkMode: boolean;
-};
-export const Search: FunctionComponent<Props> = props => {
+export const Search: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -131,7 +128,6 @@ export const Search: FunctionComponent<Props> = props => {
     <>
       <NavMenuItem>
         <ToggleSearchButton
-          darkmode={props.darkMode}
           role={`button`}
           aria-label={`Toggle search`}
           onClick={toggleSearch}
