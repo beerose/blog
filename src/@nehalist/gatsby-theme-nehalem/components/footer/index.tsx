@@ -1,6 +1,5 @@
 import React from "react";
 import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
-import { Container } from "@nehalist/gatsby-theme-nehalem/src/components/common";
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 

@@ -23,7 +23,7 @@ module.exports = {
     search: true,
     author: {
       name: `Ola`,
-      description: `Hi! I'm Ola, a software developer based in Wrocław!`,
+      description: `Hi! I'm Aleksandra, a software developer based in Wrocław.`,
       social: {
         facebook: ``,
         twitter: `https://twitter.com/aleksandrasays`,
@@ -39,6 +39,7 @@ module.exports = {
     {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: {
+        contentPath: "./content",
         manifest: {
           name: `Aleksandra Sikora's personal blog`,
           short_name: `aleksandra.codes`,

@@ -40,25 +40,25 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, "halfImage">>`
     width: 50%;
     float: left;
     margin-right: 30px;
-    height: 320px;
+    height: 250px;
     border-bottom-left-radius: 3px;
 
     @media (max-width: ${theme.breakpoints.sm}) {
       width: 100%;
       float: none;
-      height: 190px;
+      height: 150px;
     }
   `
       : `
-    height: 190px;
-    max-height: 190px;
+    height: 150px;
+    max-height: 150px;
     width: 100%;
     border-top-right-radius: 3px;
   `};
 `;
 
 export const CardContent = styled.section<{ compact: boolean }>`
-  padding: ${props => (props.compact ? "10px" : "40px")};
+  padding: ${props => (props.compact ? "10px" : "25px")};
 
   p {
     margin: 15px 0;
@@ -66,6 +66,12 @@ export const CardContent = styled.section<{ compact: boolean }>`
 
   h2 {
     font-size: 1.2em;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    p {
+      font-size: 0.9em;
+    }
   }
 `;
 
@@ -81,4 +87,5 @@ export const CardMeta = styled.section`
 export const CardTitle = styled.h2`
   margin: 0;
   padding: 0;
+  padding-top: 10px;
 `;
