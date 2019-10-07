@@ -6,8 +6,6 @@ import slugify from "slugify";
 import {
   StyledTag,
   StyledTagList,
-  TagArchiveLink,
-  TagArchiveLinkWrapper,
   TagContainer,
   TagListTitle,
   TagName,
