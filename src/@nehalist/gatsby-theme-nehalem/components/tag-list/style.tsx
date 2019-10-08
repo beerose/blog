@@ -28,15 +28,15 @@ export const StyledTagList = styled.ul`
   }
 `;
 
-export const StyledTag = styled.li`
+export const StyledTag = styled.li<{ color: string }>`
   margin: 0 35px;
   transition: 0.5s all;
 
-  background: ${theme.colors.snow};
+  border: 1px solid ${props => props.color};
   padding: 2px 8px;
 
   &:hover {
-    box-shadow: 1px 1px ${theme.colors.shadow};
+    box-shadow: 1px 1px ${props => props.color};
   }
 
   @media (max-width: ${Theme.breakpoints.sm}) {
@@ -54,6 +54,7 @@ export const TagIcon = styled.img`
 `;
 
 export const TagName = styled.span`
+  color: ${theme.colors.smokyBlack};
   display: block;
 `;
 

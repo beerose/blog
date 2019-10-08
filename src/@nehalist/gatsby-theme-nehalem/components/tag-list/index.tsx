@@ -19,11 +19,14 @@ const TagList: FC = () => {
       allTags {
         nodes {
           name
+          color
         }
       }
     }
   `);
   const tags = tagsQuery.allTags.nodes;
+
+  console.log({ tags });
 
   return (
     <TagContainer>
@@ -31,7 +34,7 @@ const TagList: FC = () => {
       <StyledTagList>
         {tags.map((tag, index) => {
           return (
-            <StyledTag key={index}>
+            <StyledTag color={tag.color} key={index}>
               <Link to={`/tag/${slugify(tag.name, { lower: true })}`}>
                 <TagName>{tag.name}</TagName>
               </Link>
