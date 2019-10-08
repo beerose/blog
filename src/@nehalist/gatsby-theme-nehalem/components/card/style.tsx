@@ -11,11 +11,10 @@ export const StyledCard = styled(Link)`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  box-shadow: 0 1px 1px ${theme.colors.shadow};
-  border-radius: 1px;
+  border-radius: 0px;
 
   &:hover {
-    box-shadow: 0 2px 2px rgb(0, 0, 0, 0.1);
+    box-shadow: 1.5px 1.5px rgb(0, 0, 0, 0.1);
   }
 `;
 
@@ -32,7 +31,6 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, "halfImage">>`
   background-position: center;
   background-size: cover;
   max-width: 100%;
-  border-top-left-radius: 3px;
 
   ${props =>
     props.halfImage
@@ -41,7 +39,6 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, "halfImage">>`
     float: left;
     margin-right: 30px;
     height: 250px;
-    border-bottom-left-radius: 3px;
 
     @media (max-width: ${theme.breakpoints.sm}) {
       width: 100%;
