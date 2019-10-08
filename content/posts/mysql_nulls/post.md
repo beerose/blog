@@ -1,7 +1,7 @@
 ---
 title: "Dealing with MySQL nulls and unique constraint"
 path: "/mysql_nulls"
-tags: ["mysql"]
+tags: ["databases", "mysql"]
 featuredImage: "./mysql.png"
 excerpt: If you have a database system with soft deletes and unique indexes you might have faced some problems...
 created: 2019-03-29

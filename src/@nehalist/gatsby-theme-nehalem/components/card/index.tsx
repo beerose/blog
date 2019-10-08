@@ -27,7 +27,7 @@ export interface CardProps {
   meta?: {
     time: string;
     timePretty: string;
-    tag: string | null;
+    tags: string[] | null;
   };
   halfImage?: boolean;
   compact?: boolean;
@@ -62,7 +62,16 @@ export const Card: FunctionComponent<CardProps> = ({
           <header>
             {meta && (
               <CardMeta>
-                {meta.tag && <>{meta.tag}</>}
+                {meta.tags && (
+                  <>
+                    {meta.tags.map((tag, idx) => (
+                      <>
+                        {tag}
+                        {meta.tags.length > idx + 1 && <>, </>}
+                      </>
+                    ))}
+                  </>
+                )}
                 {meta.time && (
                   <time dateTime={meta.time}>{meta.timePretty}</time>
                 )}

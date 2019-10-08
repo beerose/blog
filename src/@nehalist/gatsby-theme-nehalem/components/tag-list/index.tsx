@@ -26,8 +26,6 @@ const TagList: FC = () => {
   `);
   const tags = tagsQuery.allTags.nodes;
 
-  console.log({ tags });
-
   return (
     <TagContainer>
       <TagListTitle>Tags</TagListTitle>

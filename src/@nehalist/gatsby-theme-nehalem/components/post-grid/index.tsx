@@ -25,10 +25,8 @@ const PostGrid: FunctionComponent<PostGridProps> = ({ posts }) => {
           meta={{
             time: post.frontmatter.created,
             timePretty: post.frontmatter.createdPretty,
-            tag:
-              post.frontmatter.tags.length > 0
-                ? post.frontmatter.tags[0]
-                : null,
+            tags:
+              post.frontmatter.tags.length > 0 ? post.frontmatter.tags : null,
           }}
         />
       ))}

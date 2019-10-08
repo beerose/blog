@@ -105,9 +105,9 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
               meta={{
                 time: post.frontmatter.created,
                 timePretty: post.frontmatter.createdPretty,
-                tag:
+                tags:
                   post.frontmatter.tags.length > 0
-                    ? post.frontmatter.tags[0]
+                    ? post.frontmatter.tags
                     : null,
               }}
               style={{ gridArea: index === 0 ? "latest" : undefined }}

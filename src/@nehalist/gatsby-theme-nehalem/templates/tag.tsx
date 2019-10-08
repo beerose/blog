@@ -33,7 +33,6 @@ const TagTemplate: FunctionComponent<TagTemplateProps> = ({
     };
   }
 
-  console.log({ posts });
   return (
     <Layout bigHeader={false}>
       <SEO title={tag.name} location={location} type={`Series`} />
