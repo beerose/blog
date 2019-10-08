@@ -17,8 +17,8 @@ const TimeToRead = styled.span`
 
 export interface CardProps {
   title?: string;
-  timeToRead: {
-    humanizedDuration: string;
+  timeToRead?: {
+    humanizedDuration?: string;
     duration: number;
   };
   path: string;
@@ -47,7 +47,6 @@ export const Card: FunctionComponent<CardProps> = ({
   children,
   timeToRead,
 }) => {
-  console.log({ timeToRead });
   return (
     <StyledArticle style={style}>
       <StyledCard to={path}>
@@ -70,7 +69,9 @@ export const Card: FunctionComponent<CardProps> = ({
               </CardMeta>
             )}
             {title && <CardTitle>{title}</CardTitle>}
-            <TimeToRead>{Math.ceil(timeToRead.duration)} min read</TimeToRead>
+            {timeToRead && (
+              <TimeToRead>{Math.ceil(timeToRead.duration)} min read</TimeToRead>
+            )}
           </header>
           {content && <p dangerouslySetInnerHTML={{ __html: content }} />}
         </CardContent>

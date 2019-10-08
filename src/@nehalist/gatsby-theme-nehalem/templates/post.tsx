@@ -386,35 +386,3 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
 };
 
 export default PostTemplate;
-
-export const query = graphql`
-  query PrimaryTag2($postId: String!, $primaryTag: String!) {
-    post: markdownRemark(id: { eq: $postId }) {
-      headings {
-        depth
-      }
-      frontmatter {
-        title
-        path
-        tags
-        excerpt
-        created
-        createdPretty: created(formatString: "DD MMMM, YYYY")
-        updated
-        updatedPretty: created(formatString: "DD MMMM, YYYY")
-        featuredImage {
-          childImageSharp {
-            sizes(maxWidth: 800, quality: 75) {
-              ...GatsbyImageSharpSizes
-            }
-          }
-        }
-      }
-      html
-    }
-    primaryTag: tags(name: { eq: $primaryTag }) {
-      name
-      color
-    }
-  }
-`;
