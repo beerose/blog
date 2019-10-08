@@ -11,7 +11,7 @@ import TagList from "../components/tag-list";
 import { Link } from "gatsby";
 import SidebarContent from "@nehalist/gatsby-theme-nehalem/src/components/sidebar-content";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
-import Theme from "../styles/theme";
+import Theme, { theme } from "../styles/theme";
 import readTimeEstimate from "read-time-estimate";
 
 interface PostsPageProps {
@@ -71,12 +71,11 @@ const ArchiveLinkWrapper = styled.div`
 const ArchiveLink = styled(Link)`
   font-size: 0.8em;
   padding: 10px;
-  border-radius: 0.3em;
-  transition: background-color 0.5s;
-  background-color: #f2f2f2;
+  transition: box-shadow 0.5s;
+  border: 1px solid ${theme.colors.smokyBlack};
 
   &:hover {
-    background-color: #e6e6e6;
+    box-shadow: 1px 1px ${theme.colors.smokyBlack};
   }
 `;
 
