@@ -2,7 +2,7 @@
 title: "Dealing with MySQL nulls and unique constraint"
 path: "/mysql_nulls"
 tags: ["databases", "mysql"]
-excerpt: If you have a database system with soft deletes and unique indexes you might have faced some problems...
+excerpt: If you have a database system with soft deletes and unique indexes you might have faced some problems. Imagine that a user deleted some record and wants to add another one with the same unique value. He can’t do that since unique constraint would be violated...
 created: 2019-03-29
 updated: 2019-03-29
 ---
