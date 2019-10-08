@@ -13,6 +13,7 @@ import Bio from "@nehalist/gatsby-theme-nehalem/src/components/bio";
 import Comments from "@nehalist/gatsby-theme-nehalem/src/components/comments";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
 import { FaAlignJustify, FaTimes } from "react-icons/fa";
+import readTimeEstimate from "read-time-estimate";
 
 interface PostTemplateProps {
   data: {
@@ -126,7 +127,8 @@ const TocWrapper = styled.div`
 `;
 
 const PostHeader = styled.header`
-  padding: 40px;
+  padding: 30px 40px;
+  padding-bottom: 25px;
 
   @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
@@ -172,11 +174,13 @@ const PostMeta = styled.section`
   justify-content: space-between;
   opacity: 0.8;
   font-size: 0.9em;
+  margin-bottom: 12px;
 `;
 
 const PostTitle = styled.h1`
   margin: 0;
   padding: 0;
+  margin-bottom: 12px;
 `;
 
 const PostFooter = styled.footer`
@@ -241,9 +245,13 @@ const ToggleTocButton = styled.button`
   }
 `;
 
+const TimeToRead = styled.span`
+  color: ${theme.colors.secondary};
+  font-size: 0.9em;
+`;
+
 const StyledLink = styled(Link)`
-  color: ${theme.colors.smokyBlack};
-  opacity: 0.7;
+  /* color: ${theme.colors.smokyBlack}; */
   transition: opacity 0.2s;
 
   &:hover {
@@ -302,24 +310,29 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
             <PostHeader>
               <PostMeta>
                 <span>
-                  {post.frontmatter.tags.length > 0 &&
-                    post.frontmatter.tags.map((tag, i) => (
-                      <StyledLink
-                        key={i}
-                        to={`/tag/${slugify(tag, {
-                          lower: true,
-                        })}`}
-                      >
-                        {tag}
-                        {post.frontmatter.tags.length > i + 1 && <>, </>}
-                      </StyledLink>
-                    ))}
+                  <span>
+                    {post.frontmatter.tags.length > 0 &&
+                      post.frontmatter.tags.map((tag, i) => (
+                        <StyledLink
+                          key={i}
+                          to={`/tag/${slugify(tag, {
+                            lower: true,
+                          })}`}
+                        >
+                          {tag}
+                          {post.frontmatter.tags.length > i + 1 && <>, </>}
+                        </StyledLink>
+                      ))}
+                  </span>
                 </span>
                 <time dateTime={post.frontmatter.created}>
                   {post.frontmatter.createdPretty}
                 </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
+              <TimeToRead>
+                {Math.ceil(readTimeEstimate(post.html).duration)} min read
+              </TimeToRead>
             </PostHeader>
             {post.frontmatter.featuredImage && (
               <FeaturedImage
