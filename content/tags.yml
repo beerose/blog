@@ -1,16 +1,21 @@
 - name: haskell
   color: "black" # TO DO
   featured: true
+  icon: "assets/images/logo.png"
 
 - name: databases
   color: "pink"
   featured: true
+  icon: "assets/images/logo.png"
 
 - name: vscode
   color: "#F4D524"
+  icon: "assets/images/logo.png"
 
 - name: mysql
   color: "#172A3A"
+  icon: "assets/images/logo.png"
 
 - name: nodejs
   color: "#F7A9A8"
+  icon: "assets/images/logo.png"
