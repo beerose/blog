@@ -5,13 +5,14 @@ import {
   Grid,
 } from "@nehalist/gatsby-theme-nehalem/src/components/common";
 import { Post } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
-import { Card } from "@nehalist/gatsby-theme-nehalem/src/components/card";
+import { Card } from "../components/card";
 import styled from "styled-components";
 import TagList from "../components/tag-list";
 import { Link } from "gatsby";
 import SidebarContent from "@nehalist/gatsby-theme-nehalem/src/components/sidebar-content";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
 import Theme from "../styles/theme";
+import readTimeEstimate from "read-time-estimate";
 
 interface PostsPageProps {
   pathContext: {
@@ -92,6 +93,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
         <PostsContainer>
           {posts.map((post, index) => (
             <Card
+              timeToRead={readTimeEstimate(post.html)}
               title={post.frontmatter.title}
               path={post.frontmatter.path}
               featuredImage={
