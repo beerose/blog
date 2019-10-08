@@ -22,7 +22,7 @@ module.exports = {
     ],
     search: true,
     author: {
-      name: `Ola`,
+      name: `Aleksandra`,
       description: `Hi! I'm Aleksandra, a software developer based in Wrocław.`,
       social: {
         facebook: ``,
