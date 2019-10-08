@@ -305,6 +305,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                   {post.frontmatter.tags.length > 0 &&
                     post.frontmatter.tags.map((tag, i) => (
                       <StyledLink
+                        key={i}
                         to={`/tag/${slugify(tag, {
                           lower: true,
                         })}`}
