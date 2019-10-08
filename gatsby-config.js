@@ -37,6 +37,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-149605117-1",
+      },
+    },
+    {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: {
         contentPath: "./content",
