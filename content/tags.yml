@@ -19,3 +19,7 @@
 - name: nodejs
   color: "#F7A9A8"
   icon: "assets/images/logo.png"
+
+- name: elixir
+  color: "tomato"
+  icon: null
