@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "https://admiring-lamarr-784781.netlify.com/*"
+  from = "https://www.aleksandra.codes/*"
   to = "https://aleksandra.codes/:splat"
   force = true
