@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "https://www.aleksandra.codes/*"
-  to = "https://aleksandra.codes/:splat"
-  force = true
