@@ -17,6 +17,7 @@ import readTimeEstimate from "read-time-estimate";
 import { SiteMetadata } from "../utils/models";
 import { Facebook, Twitter } from "react-sharingbuttons";
 import "react-sharingbuttons/dist/main.css";
+import { TimeToRead } from "../../../components/TimeToRead";
 
 interface PostTemplateProps {
   data: {
@@ -248,17 +249,23 @@ const ToggleTocButton = styled.button`
   }
 `;
 
-const TimeToRead = styled.span`
-  color: ${theme.colors.secondary};
-  font-size: 0.9em;
-`;
-
 const StyledLink = styled(Link)`
   /* color: ${theme.colors.smokyBlack}; */
   transition: opacity 0.2s;
 
   &:hover {
     opacity: 1;
+  }
+`;
+
+const ShareButtons = styled.div`
+  display: flex;
+  padding: 10px 40px;
+  a {
+    margin: 0;
+  }
+  a:first-child {
+    margin-right: 10px;
   }
 `;
 
@@ -346,9 +353,10 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
-              <TimeToRead>
-                {Math.ceil(readTimeEstimate(post.html).duration)} min read
-              </TimeToRead>
+              <TimeToRead
+                fontsize="0.9em"
+                duration={readTimeEstimate(post.html).duration}
+              />
             </PostHeader>
             {post.frontmatter.featuredImage && (
               <FeaturedImage
@@ -359,6 +367,21 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
               dangerouslySetInnerHTML={{ __html: post.html }}
               className={`post`}
             />
+            <ShareButtons>
+              <Twitter
+                text="Tweet"
+                shareText={`${post.frontmatter.title} by ${twitterHandle} ${
+                  metadata.site.siteMetadata.siteUrl
+                }${post.frontmatter.path} ${post.frontmatter.tags
+                  .map(tag => `#${tag}`)
+                  .join(" ")}
+                `}
+              />
+              <Facebook
+                text="Share"
+                url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
+              />
+            </ShareButtons>
             <PostFooter>
               <p>
                 Published under&nbsp;
@@ -386,19 +409,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </p>
               )}
             </PostFooter>
-            <Twitter
-              text="Tweet"
-              shareText={`${post.frontmatter.title} by ${twitterHandle} ${
-                metadata.site.siteMetadata.siteUrl
-              }${post.frontmatter.path} ${post.frontmatter.tags
-                .map(tag => `#${tag}`)
-                .join(" ")}
-              `}
-            />
-            <Facebook
-              text="Share"
-              url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
-            />
           </article>
         </PostContent>
       </PostContainer>

@@ -33,7 +33,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({
             .filter(item => item.name !== "Example")
             .map((item, index) => (
               <NavMenuItem key={index}>
-                <NavLink darkmode={dark} to={item.path} key={index}>
+                <NavLink darkmode={dark ? 1 : 0} to={item.path} key={index}>
                   {item.name}
                 </NavLink>
               </NavMenuItem>
