@@ -12,7 +12,7 @@ updated: 2019-03-29
 If you have a database system with soft deletes and unique indexes you might have faced some problems. Imagine that a user deleted some record and wants to add another one with the same unique value. He can’t do that since unique constraint would be violated. As a developer, you may understand what just happened, but let’s picture a frustrated user that wants to add another contact to his address book, but an app keeps telling him that it already exists. It would be kind of:
 
 <div style="text-align: center; max-width: 100%;">
-    <img src="https://media.giphy.com/media/b3ETeleegHXG0/giphy.gif" style="max-width: 100%"/>
+    <img alt="Weird" src="https://media.giphy.com/media/b3ETeleegHXG0/giphy.gif" style="max-width: 100%"/>
 </div>
 
 Unique constraints are important. I hope it’s obvious. You don’t want to check if some record exists every time a user adds something through your app. Firstly making two queries instead of one sounds like a bad idea, secondly, let’s allow the database to do its job. Not to mention that you can face some problems with asynchronous processes that would want to insert the same record at the same time.

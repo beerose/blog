@@ -14,7 +14,7 @@ const StyledSubheader = styled.div<
   Pick<SubheaderProps, "backgroundColor" | "textColor">
 >`
   background-color: ${props =>
-    props.backgroundColor ? props.backgroundColor : theme.colors.smokyBlack};
+    props.backgroundColor ? props.backgroundColor : "#090707e3"};
   color: ${props => (props.textColor ? props.textColor : "#fff")};
   display: flex;
   align-items: center;
@@ -28,12 +28,14 @@ const SubheaderTitle = styled.h1`
   color: #fff;
   margin: 0;
   line-height: 1em;
+  padding-left: 16px;
 `;
 
 const SubheaderSubtitle = styled.small`
   font-weight: normal;
   display: block;
   opacity: 0.9;
+  padding-top: 5px;
 `;
 
 const Subheader: FunctionComponent<SubheaderProps> = ({

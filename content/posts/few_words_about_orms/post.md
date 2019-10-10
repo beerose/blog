@@ -21,7 +21,7 @@ Having said that I ought to say that I'm not actually a fan of ORMs. Here go som
 You may be an expert when it comes to a particular ORM. But then you may change a project to some that use another one or doesn't use ORM at all. You're starting from scratch.
 
 <div style="text-align: center; max-width: 100%;">
-    <img src="https://media.giphy.com/media/NCTbhL8AG2s8g/giphy.gif" style="max-width: 100%"/>
+    <img alt="You know nothing gif" src="https://media.giphy.com/media/NCTbhL8AG2s8g/giphy.gif" style="max-width: 100%"/>
 </div>
 
 ORMs may be great, fast, have a small learning curve. However, I don't believe there are ORMs that are easy to learn and to be mastered. Anyways. ORMs are so different. Even when it comes to the same platform. Take a look at the following code snippets. These are Sequelize and TypeORM. Both made for NodeJS.
@@ -76,7 +76,7 @@ The most significant advantage of SQL over ORMs is that once you learn it you ca
 Let’s be honest — that doesn’t happen often. But when it does, ORMs may be handy. Even if it won’t be like on the picture below it still may be quite easier than doing so without using ORM. Surely there will be less refactoring.
 
 <div style="text-align: center">
-<img src="https://cdn-images-1.medium.com/max/2000/1*wdLeXbFP75W_zQ_jpr_trg.png" style="width: 400px; max-width: 100%" />
+<img alt="Switch databases" src="https://cdn-images-1.medium.com/max/2000/1*wdLeXbFP75W_zQ_jpr_trg.png" style="width: 400px; max-width: 100%" />
 </div>
 
 ### #3 ORMs are not reliable

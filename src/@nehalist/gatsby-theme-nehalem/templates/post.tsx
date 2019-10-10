@@ -147,11 +147,13 @@ const FeaturedImage = styled(Img)`
   }
 `;
 
-const StyledPost = styled.section`
+const StyledPost = styled.section<{ hasImage: boolean }>`
   padding: 40px;
+  padding-top: ${props => (props.hasImage ? "20px" : 0)};
 
   @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
+    padding-top: ${props => (props.hasImage ? "10px" : 0)};
   }
 
   #flex-row__orms {
@@ -364,8 +366,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
               />
             )}
             <StyledPost
+              hasImage={post.frontmatter.featuredImage}
               dangerouslySetInnerHTML={{ __html: post.html }}
-              className={`post`}
+              className="post"
             />
             <ShareButtons>
               <Twitter
