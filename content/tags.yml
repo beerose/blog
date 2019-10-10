@@ -23,3 +23,7 @@
 - name: elixir
   color: "#D56F3E"
   icon: null
+
+- name: others
+  color: "#B26E63"
+  icon: null
