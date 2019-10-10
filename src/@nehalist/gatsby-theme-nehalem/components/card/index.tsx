@@ -9,11 +9,7 @@ import {
 } from "./style";
 import styled from "styled-components";
 import theme from "../../styles/theme";
-
-const TimeToRead = styled.span`
-  font-size: 0.8em;
-  color: ${theme.colors.secondary};
-`;
+import { TimeToRead } from "../../../../components";
 
 export interface CardProps {
   title?: string;
@@ -78,9 +74,7 @@ export const Card: FunctionComponent<CardProps> = ({
               </CardMeta>
             )}
             {title && <CardTitle>{title}</CardTitle>}
-            {timeToRead && (
-              <TimeToRead>{Math.ceil(timeToRead.duration)} min read</TimeToRead>
-            )}
+            {timeToRead && <TimeToRead duration={timeToRead.duration} />}
           </header>
           {content && <p dangerouslySetInnerHTML={{ __html: content }} />}
         </CardContent>

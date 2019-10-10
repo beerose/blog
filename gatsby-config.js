@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `aleksandra.codes`,
-    siteUrl: `https://aleksandra.codes`,
+    title: "aleksandra.codes",
+    siteUrl: "https://aleksandra.codes",
     twitterHandle: "@aleksandrasays",
     url: "https://aleksandra.codes",
-    description: ``,
+    description:
+      "Aleksandra Sikora's personal blog on computer science and programming.",
     topics: [],
     menu: [
       {

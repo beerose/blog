@@ -3,6 +3,7 @@ const fontSizes = [16, 24, 48, 73];
 const colors = {
   primary: "#F4D524", // deep lemon
   secondary: "#1A936F", // illuminating emerald
+  secondaryDarker: "#197559",
   smokyBlack: "#090707", // smoky black
   snow: "#F7F7F7", // snow
   black09: "rgba(25, 10, 0, 0.9)",

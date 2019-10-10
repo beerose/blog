@@ -17,6 +17,7 @@ import readTimeEstimate from "read-time-estimate";
 import { SiteMetadata } from "../utils/models";
 import { Facebook, Twitter } from "react-sharingbuttons";
 import "react-sharingbuttons/dist/main.css";
+import { TimeToRead } from "../../../components/TimeToRead";
 
 interface PostTemplateProps {
   data: {
@@ -248,11 +249,6 @@ const ToggleTocButton = styled.button`
   }
 `;
 
-const TimeToRead = styled.span`
-  color: ${theme.colors.secondary};
-  font-size: 0.9em;
-`;
-
 const StyledLink = styled(Link)`
   /* color: ${theme.colors.smokyBlack}; */
   transition: opacity 0.2s;
@@ -352,9 +348,10 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
-              <TimeToRead>
-                {Math.ceil(readTimeEstimate(post.html).duration)} min read
-              </TimeToRead>
+              <TimeToRead
+                fontsize="0.9em"
+                duration={readTimeEstimate(post.html).duration}
+              />
             </PostHeader>
             {post.frontmatter.featuredImage && (
               <FeaturedImage
