@@ -59,14 +59,14 @@ export const Card: FunctionComponent<CardProps> = ({
             {meta && (
               <CardMeta>
                 {meta.tags && (
-                  <>
+                  <span>
                     {meta.tags.map((tag, idx) => (
-                      <>
+                      <span key={idx}>
                         {tag}
                         {meta.tags.length > idx + 1 && <>, </>}
-                      </>
+                      </span>
                     ))}
-                  </>
+                  </span>
                 )}
                 {meta.time && (
                   <time dateTime={meta.time}>{meta.timePretty}</time>

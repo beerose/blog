@@ -101,7 +101,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
                   : null
               }
               content={post.frontmatter.excerpt}
-              key={index}
+              key={index + post.frontmatter.title}
               meta={{
                 time: post.frontmatter.created,
                 timePretty: post.frontmatter.createdPretty,
