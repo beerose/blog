@@ -1,6 +1,6 @@
 ---
 title: "Developing VS Code extensions"
-path: "/vscode_extensions"
+path: "/vscode-extensions"
 tags: ["vscode"]
 featuredImage: "./meetup.jpeg"
 excerpt: This article is based on the talk I gave at the 1st Wrocław TypeScript Meetup.

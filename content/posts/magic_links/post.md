@@ -1,6 +1,6 @@
 ---
 title: "Sending Magic Links with Nodejs"
-path: "/magic_links"
+path: "/magic-links"
 tags: ["nodejs"]
 excerpt: The most popular method of logging in to an application is by providing a username and a password, but that may come with some cons for users...
 created: 2018-12-20

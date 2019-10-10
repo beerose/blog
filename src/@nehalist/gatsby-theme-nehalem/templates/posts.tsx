@@ -83,7 +83,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
   pathContext,
   location,
 }) => {
-  const posts = pathContext.posts.slice(0, pathContext.postsPerPage);
+  const posts = pathContext.posts.slice(0, 7);
 
   return (
     <Layout>

@@ -1,6 +1,6 @@
 ---
 title: "How I speed up a query 1000 times"
-path: "/speed_up_query"
+path: "/speed-up-query"
 tags: ["databases", "mysql"]
 excerpt: Catchy title, isn’t it? 🙃
 created: 2019-01-17
