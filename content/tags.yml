@@ -27,3 +27,7 @@
 - name: others
   color: "#FCD0A1"
   icon: null
+
+- name: ocaml
+  color: "#8F3985"
+  icon: null
