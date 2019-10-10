@@ -1,7 +1,7 @@
 ---
 title: "Brief normal forms explanation with Haskell"
 path: "/normal-forms"
-tags: ["others"]
+tags: ["haskell"]
 created: 2018-02-03
 updated: 2018-02-03
 ---
