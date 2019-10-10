@@ -258,6 +258,17 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const ShareButtons = styled.div`
+  display: flex;
+  padding: 10px 40px;
+  a {
+    margin: 0;
+  }
+  a:first-child {
+    margin-right: 10px;
+  }
+`;
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   data,
   location,
@@ -274,12 +285,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
         siteMetadata {
           siteUrl
           twitterHandle
-          author {
-            name
-            social {
-              twitter
-            }
-          }
         }
       }
     }
@@ -362,6 +367,21 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
               dangerouslySetInnerHTML={{ __html: post.html }}
               className={`post`}
             />
+            <ShareButtons>
+              <Twitter
+                text="Tweet"
+                shareText={`${post.frontmatter.title} by ${twitterHandle} ${
+                  metadata.site.siteMetadata.siteUrl
+                }${post.frontmatter.path} ${post.frontmatter.tags
+                  .map(tag => `#${tag}`)
+                  .join(" ")}
+                `}
+              />
+              <Facebook
+                text="Share"
+                url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
+              />
+            </ShareButtons>
             <PostFooter>
               <p>
                 Published under&nbsp;
@@ -389,19 +409,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </p>
               )}
             </PostFooter>
-            <Twitter
-              text="Tweet"
-              shareText={`${post.frontmatter.title} by ${twitterHandle} ${
-                metadata.site.siteMetadata.siteUrl
-              }${post.frontmatter.path} ${post.frontmatter.tags
-                .map(tag => `#${tag}`)
-                .join(" ")}
-              `}
-            />
-            <Facebook
-              text="Share"
-              url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
-            />
           </article>
         </PostContent>
       </PostContainer>
