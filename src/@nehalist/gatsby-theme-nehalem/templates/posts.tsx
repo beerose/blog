@@ -69,13 +69,13 @@ const ArchiveLinkWrapper = styled.div`
 `;
 
 const ArchiveLink = styled(Link)`
-  font-size: 0.8em;
+  font-size: 16px;
   padding: 10px;
   transition: box-shadow 0.5s;
-  border: 1px solid ${theme.colors.smokyBlack};
+  border: 1.5px solid ${theme.colors.smokyBlack};
 
   &:hover {
-    box-shadow: 1px 1px ${theme.colors.smokyBlack};
+    box-shadow: 1.5px 1.5px ${theme.colors.smokyBlack};
   }
 `;
 
