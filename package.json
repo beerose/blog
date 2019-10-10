@@ -33,6 +33,7 @@
     "gatsby-theme": "^0.0.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-sharingbuttons": "^1.0.0",
     "read-time-estimate": "^0.0.2"
   }
 }

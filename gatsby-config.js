@@ -2,6 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `aleksandra.codes`,
     siteUrl: `https://aleksandra.codes`,
+    twitterHandle: "@aleksandrasays",
+    url: "https://aleksandra.codes",
     description: ``,
     topics: [],
     menu: [

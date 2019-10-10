@@ -13,6 +13,7 @@ export interface SiteMetadata {
         description: string;
         social: SocialChannels;
       };
+      twitterHandle: string;
     };
   };
 }

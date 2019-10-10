@@ -7,13 +7,16 @@ import Toc from "@nehalist/gatsby-theme-nehalem/src/components/toc";
 import Img from "gatsby-image";
 import ReadingProgress from "@nehalist/gatsby-theme-nehalem/src/components/reading-progress";
 import { theme } from "../styles/theme";
-import { graphql, Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import slugify from "slugify";
 import Bio from "@nehalist/gatsby-theme-nehalem/src/components/bio";
 import Comments from "@nehalist/gatsby-theme-nehalem/src/components/comments";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
 import { FaAlignJustify, FaTimes } from "react-icons/fa";
 import readTimeEstimate from "read-time-estimate";
+import { SiteMetadata } from "../utils/models";
+import { Facebook, Twitter } from "react-sharingbuttons";
+import "react-sharingbuttons/dist/main.css";
 
 interface PostTemplateProps {
   data: {
@@ -269,6 +272,19 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
   const primaryTag = data.primaryTag;
   const toggleToc = () => setShowToc(!showToc);
 
+  const metadata = useStaticQuery<SiteMetadata>(graphql`
+    query MetadataQuery2 {
+      site {
+        siteMetadata {
+          siteUrl
+          twitterHandle
+        }
+      }
+    }
+  `);
+
+  const twitterHandle = metadata.site.siteMetadata.twitterHandle;
+
   return (
     <Layout bigHeader={false}>
       <SEO
@@ -370,6 +386,19 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 </p>
               )}
             </PostFooter>
+            <Twitter
+              text="Tweet"
+              shareText={`${post.frontmatter.title} by ${twitterHandle} ${
+                metadata.site.siteMetadata.siteUrl
+              }${post.frontmatter.path} ${post.frontmatter.tags
+                .map(tag => `#${tag}`)
+                .join(" ")}
+              `}
+            />
+            <Facebook
+              text="Share"
+              url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
+            />
           </article>
         </PostContent>
       </PostContainer>
