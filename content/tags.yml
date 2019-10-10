@@ -22,12 +22,12 @@
 
 - name: elixir
   color: "#D56F3E"
-  icon: null
+  icon: "assets/images/logo.png"
 
 - name: others
   color: "#FCD0A1"
-  icon: null
+  icon: "assets/images/logo.png"
 
 - name: ocaml
   color: "#8F3985"
-  icon: null
+  icon: "assets/images/logo.png"
