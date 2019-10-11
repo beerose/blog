@@ -11,7 +11,7 @@ Some time ago I found [this Elixir implementation of gRPC](https://github.com/to
 
 ## Getting started
 
-Firstly we have to create new Elixir project. Like always. Nothing extraordinary. I choose the nam **chatty**,\*\* \*\*because it’s going to be a chat. And.. it’s going to be a chat, because chat is always a good idea for some kind of tutorial article.
+Firstly we have to create new Elixir project. Like always. Nothing extraordinary. I choose the name **chatty**, because it’s going to be a chat. And.. it’s going to be a chat, because chat is always a good idea for some kind of tutorial article.
 
 ```sh
 $ mix new chatty
