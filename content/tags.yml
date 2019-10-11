@@ -1,8 +1,3 @@
-- name: haskell
-  color: "black" # TO DO
-  featured: true
-  icon: "assets/images/logo.png"
-
 - name: databases
   color: "pink"
   featured: true
@@ -24,10 +19,15 @@
   color: "#D56F3E"
   icon: "assets/images/logo.png"
 
-- name: others
-  color: "#FCD0A1"
-  icon: "assets/images/logo.png"
-
 - name: ocaml
   color: "#8F3985"
+  icon: "assets/images/logo.png"
+
+- name: haskell
+  color: "black" # TO DO
+  featured: true
+  icon: "assets/images/logo.png"
+
+- name: others
+  color: "#FCD0A1"
   icon: "assets/images/logo.png"
