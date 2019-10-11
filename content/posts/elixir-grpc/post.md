@@ -2,7 +2,7 @@
 title: "Elixir with a drop of gRPC"
 path: "/elixir-with-grpc"
 tags: ["elixir"]
-excerpt: Some time ago I found [this Elixir implementation of gRPC](https://github.com/tony612/grpc-elixir) and wanted to give it a try. This article will briefly cover the basic setup for implementing gRPC services in Elixir.
+excerpt: Some time ago I found Elixir implementation of gRPC and wanted to give it a try. This article will briefly cover the basic setup for implementing gRPC services in Elixir.
 created: 2018-08-29
 updated: 2018-08-29
 ---
