@@ -9,6 +9,10 @@ export const TagContainer = styled.section`
   padding: 40px;
   margin-top: 75px;
   text-align: center;
+
+  @media (max-width: ${Theme.breakpoints.sm}) {
+    padding: 20px;
+  }
 `;
 
 export const TagListTitle = styled.h2`
@@ -21,6 +25,7 @@ export const StyledTagList = styled.ul`
   margin: 0;
   padding: 0;
   justify-content: center;
+  flex-wrap: wrap;
 
   @media (max-width: ${Theme.breakpoints.sm}) {
     flex-wrap: wrap;
@@ -29,7 +34,7 @@ export const StyledTagList = styled.ul`
 `;
 
 export const StyledTag = styled.li<{ color: string }>`
-  margin: 0 10px;
+  margin: 0 10px 10px 0;
   transition: 0.3s all;
 
   border: 1.5px solid ${props => props.color};
@@ -37,15 +42,6 @@ export const StyledTag = styled.li<{ color: string }>`
 
   &:hover {
     box-shadow: 1.5px 1.5px ${props => props.color};
-  }
-
-  @media (max-width: ${Theme.breakpoints.sm}) {
-    width: 50%;
-    margin: 0 0 20px 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 `;
 
