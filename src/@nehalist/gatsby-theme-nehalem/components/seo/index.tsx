@@ -29,20 +29,24 @@ const SEO: FunctionComponent<SEOProps> = ({
   type = `Article`,
   image,
 }) => {
+  // const {
+  //   file: { publicURL },
+  // } = useStaticQuery<{ file: { publicURL: string } }>(graphql`
+  //   query GetLogoPath {
+  //     file(name: { eq: "logo" }) {
+  //       publicURL
+  //     }
+  //   }
+  // `);
+
   const {
+    site,
     file: { publicURL },
-  } = useStaticQuery(graphql`
-    query GetLogoPath {
+  } = useStaticQuery<SiteMetadata & { file: { publicURL: string } }>(graphql`
+    query {
       file(name: { eq: "logo" }) {
         publicURL
       }
-    }
-  `);
-
-  image = image || publicURL.slice(1);
-
-  const { site } = useStaticQuery<SiteMetadata>(graphql`
-    query {
       site {
         siteMetadata {
           title
@@ -61,6 +65,8 @@ const SEO: FunctionComponent<SEOProps> = ({
       }
     }
   `);
+
+  image = image || publicURL.slice(1);
 
   const metadata = site.siteMetadata;
   const siteTitle = title ? `${title} - ${metadata.title}` : metadata.title;
