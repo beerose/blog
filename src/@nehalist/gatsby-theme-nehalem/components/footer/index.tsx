@@ -2,6 +2,7 @@ import React from "react";
 import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
+import { theme } from "../../styles/theme";
 
 export const StyledFooter = styled.footer`
   max-width: 100%;
@@ -10,6 +11,13 @@ export const StyledFooter = styled.footer`
   position: relative;
   font-size: 0.9em;
   margin-top: 50px;
+  margin: 0;
+  padding: 3em;
+  padding-left: 90px;
+
+  @media (max-width: ${theme.breakpoints.xl}) {
+    padding-left: 20px;
+  }
 `;
 
 export const StyledNav = styled.nav`
@@ -53,7 +61,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ menu }) => (
-  <StyledFooter style={{ margin: 0, padding: "3em" }}>
+  <StyledFooter>
     <StyledNav>
       <ul>
         {menu.map((item, index) => (
