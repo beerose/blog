@@ -31,3 +31,7 @@
 - name: others
   color: "#FCD0A1"
   icon: "assets/images/logo.png"
+
+- name: typescript
+  color: turquise
+  icon: "assets/images/logo.png"
