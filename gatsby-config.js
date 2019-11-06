@@ -40,6 +40,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [{ resolve: "gatsby-remark-embed-gist" }],
+      },
+    },
+    {
+      resolve: "gatsby-remark-embed-gist",
+      options: {
+        username: "blackdahila",
+        includeDefaultCss: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-149605117-1",

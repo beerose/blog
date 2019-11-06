@@ -38,7 +38,7 @@ export const FeaturedImage = styled(Img)<Pick<CardProps, "halfImage">>`
     width: 50%;
     float: left;
     margin-right: 30px;
-    height: 250px;
+    height: 280px;
 
     @media (max-width: ${theme.breakpoints.sm}) {
       width: 100%;
