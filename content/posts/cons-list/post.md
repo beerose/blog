@@ -70,7 +70,7 @@ a linked list of (1, 2, 3)
 
 There were a few words about persistent data structures, so you may wonder if cons list is persistent. Yes, it is! Let's see how.
 
-Let's say we have a cons list — **xs**, and we want to cons an element to it. It results in a brand new list **ys**, and what you can notice is that items from xs are now shared between **xs** and **ys**. Thus the list **xs** hasn't been modified, and it's a part of the new list **ys**.
+Let's say we have a cons list — **xs**, and we want to cons an element to it. It results in a brand new list **ys**, and what you can notice is that items from **xs** are now shared between **xs** and **ys**. Thus the list **xs** hasn't been modified, and it's a part of the new list **ys**.
 
 <div class="gatsby-highlight" data-language="sh">
   <pre style="
@@ -161,7 +161,7 @@ function tail<T>(xs: ConsList<T>): ConsList<T> {
 
 - Map over it.
 
-> Note: _cons list_ with _map_ is no longer persistent. It's just immutable. To make it persistent, we would need to memorize previous versions. I'll skip it for know.
+> Note: _cons list_ with _map_ is no longer persistent. It's just immutable. To make it persistent, we would need to memorize previous versions. I'll skip it for now.
 
 ```ts
 function map<A, B>(xs: ConsList<A>, f: (a: A) => B): ConsList<B> {
