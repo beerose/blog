@@ -69,6 +69,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
         edges {
           node {
             name
+            color
           }
         }
       }
@@ -81,21 +82,24 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
 
   const tags = [];
   const posts = result.data.posts.edges.map(node => node.node);
+
   const pages = result.data.pages.edges.map(node => node.node);
   const availableTags = result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
 
+  const postTags = result.data.tags.edges.map(node => node.node).filter(t => typeof t !== "string");
   // Create a route for every single post (located in `content/posts`)
   posts.forEach(post => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
     }
-    const primaryTag = post.frontmatter.tags.length > 0 ? post.frontmatter.tags[0] : null;
+    const primaryTag = post.frontmatter.tags.length > 0 ? postTags.find(t => t.name === post.frontmatter.tags[0]) : null;
     actions.createPage({
       path: post.frontmatter.path,
       component: require.resolve(`./src/@nehalist/gatsby-theme-nehalem/templates/post.tsx`),
       context: {
         postId: post.id,
-        primaryTag: primaryTag,
+        primaryTag,
+        post,
       },
     });
   });

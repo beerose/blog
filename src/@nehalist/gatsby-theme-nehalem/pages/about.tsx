@@ -79,7 +79,6 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
 
   const author = metadata.site.siteMetadata.author;
 
-  console.log({ metadata });
   return (
     <Layout bigHeader={false}>
       <SEO location={location} title="About me" type="WebSite" />
@@ -97,9 +96,11 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
           </ul>
           <h2>Skills</h2>
           {skills.map(skillArea => (
-            <Skills>
+            <Skills key={skillArea.color}>
               {skillArea.items.map(skill => (
-                <StyledTag color={skillArea.color}>{skill}</StyledTag>
+                <StyledTag key={skill} color={skillArea.color}>
+                  {skill}
+                </StyledTag>
               ))}
             </Skills>
           ))}
