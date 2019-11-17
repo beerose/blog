@@ -1,9 +1,6 @@
 import React, { FunctionComponent } from "react";
-import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
-import {
-  Container,
-  Grid,
-} from "@nehalist/gatsby-theme-nehalem/src/components/common";
+import Layout from "../components/layout";
+import { Container, Grid } from "@nehalist/gatsby-theme-nehalem/src/components/common";
 import { Post } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import { Card } from "../components/card";
 import styled from "styled-components";
@@ -69,24 +66,21 @@ const ArchiveLinkWrapper = styled.div`
 `;
 
 const ArchiveLink = styled(Link)`
-  font-size: 16px;
-  padding: 10px;
-  transition: box-shadow 0.5s;
+  transition: 0.3s all;
+
   border: 1.5px solid ${theme.colors.smokyBlack};
+  padding: 10px;
 
   &:hover {
     box-shadow: 1.5px 1.5px ${theme.colors.smokyBlack};
   }
 `;
 
-const PostsPage: FunctionComponent<PostsPageProps> = ({
-  pathContext,
-  location,
-}) => {
+const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location }) => {
   const posts = pathContext.posts.slice(0, 7);
 
   return (
-    <Layout>
+    <Layout pathname={location.pathname}>
       <SEO location={location} type={`WebSite`} />
       <HomeContainer>
         <PostsContainer>
@@ -95,20 +89,13 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({
               timeToRead={readTimeEstimate(post.html)}
               title={post.frontmatter.title}
               path={post.frontmatter.path}
-              featuredImage={
-                post.frontmatter.featuredImage
-                  ? post.frontmatter.featuredImage.childImageSharp
-                  : null
-              }
+              featuredImage={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp : null}
               content={post.frontmatter.excerpt}
               key={index + post.frontmatter.title}
               meta={{
                 time: post.frontmatter.created,
                 timePretty: post.frontmatter.createdPretty,
-                tags:
-                  post.frontmatter.tags.length > 0
-                    ? post.frontmatter.tags
-                    : null,
+                tags: post.frontmatter.tags.length > 0 ? post.frontmatter.tags : null,
               }}
               style={{ gridArea: index === 0 ? "latest" : undefined }}
               halfImage={index === 0}

@@ -4,13 +4,16 @@ module.exports = {
     siteUrl: "https://aleksandra.codes",
     twitterHandle: "@aleksandrasays",
     url: "https://aleksandra.codes",
-    description:
-      "Aleksandra Sikora's personal blog on computer science and programming.",
+    description: "Aleksandra Sikora's personal blog on computer science and programming.",
     topics: [],
     menu: [
       {
         name: "Home",
         path: "/",
+      },
+      {
+        name: "About me",
+        path: "/about",
       },
     ],
     footerMenu: [

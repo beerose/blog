@@ -9,16 +9,13 @@ interface HeaderProps {
   topics: string[];
   menu: MenuItem[];
   search: boolean;
+  activePage?: string;
 }
 
-const Header: FunctionComponent<HeaderProps> = ({
-  title,
-  menu,
-  search = true,
-}) => {
+const Header: FunctionComponent<HeaderProps> = ({ title, menu, search = true, activePage }) => {
   return (
     <StyledHeader>
-      <Navigation menu={menu} showSearch={search} />
+      <Navigation menu={menu} showSearch={search} activePage={activePage} />
       <TitleWrapper>
         <Title>{title}</Title>
       </TitleWrapper>

@@ -20,11 +20,11 @@ import "react-sharingbuttons/dist/main.css";
 import { TimeToRead } from "../../../components/TimeToRead";
 
 interface PostTemplateProps {
-  data: {
-    primaryTag: Tag | null;
-    post: Post;
-  };
   location: Location;
+  pageContext: {
+    post: Post;
+    primaryTag: Tag;
+  };
 }
 
 const PostContainer = styled(Container)`
@@ -271,14 +271,11 @@ const ShareButtons = styled.div`
   }
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({
-  data,
-  location,
-}) => {
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({ location, pageContext }) => {
   const [showToc, setShowToc] = useState<boolean>(false);
-  const post = data.post;
+  const post = pageContext.post;
   const readingProgressRef = createRef<HTMLElement>();
-  const primaryTag = data.primaryTag;
+  const primaryTag = pageContext.primaryTag;
   const toggleToc = () => setShowToc(!showToc);
 
   const metadata = useStaticQuery<SiteMetadata>(graphql`
@@ -303,16 +300,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
         updatedAt={post.frontmatter.updated}
         tags={post.frontmatter.tags}
         description={post.frontmatter.excerpt}
-        image={
-          post.frontmatter.featuredImage
-            ? post.frontmatter.featuredImage.childImageSharp.sizes.src
-            : null
-        }
+        image={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null}
       />
-      <ReadingProgress
-        target={readingProgressRef}
-        color={primaryTag ? primaryTag.color : undefined}
-      />
+      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : undefined} />
       <PostContainer>
         {post.headings.find(h => h.depth > 1) && (
           <>
@@ -321,11 +311,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 <Toc onClick={toggleToc} />
               </TocWrapper>
             </LeftSidebar>
-            <ToggleTocButton
-              role="button"
-              aria-label="Toggle table of contents"
-              onClick={toggleToc}
-            >
+            <ToggleTocButton role="button" aria-label="Toggle table of contents" onClick={toggleToc}>
               {showToc ? <FaTimes /> : <FaAlignJustify />}
             </ToggleTocButton>
           </>
@@ -342,73 +328,44 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                           key={i}
                           to={`/tag/${slugify(tag, {
                             lower: true,
-                          })}`}
-                        >
+                          })}`}>
                           {tag}
                           {post.frontmatter.tags.length > i + 1 && <>, </>}
                         </StyledLink>
                       ))}
                   </span>
                 </span>
-                <time dateTime={post.frontmatter.created}>
-                  {post.frontmatter.createdPretty}
-                </time>
+                <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
-              <TimeToRead
-                fontsize="0.9em"
-                duration={readTimeEstimate(post.html).duration}
-              />
+              <TimeToRead fontsize="0.9em" duration={readTimeEstimate(post.html).duration} />
             </PostHeader>
-            {post.frontmatter.featuredImage && (
-              <FeaturedImage
-                sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
-              />
-            )}
-            <StyledPost
-              hasImage={post.frontmatter.featuredImage}
-              dangerouslySetInnerHTML={{ __html: post.html }}
-              className="post"
-            />
+            {post.frontmatter.featuredImage && <FeaturedImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />}
+            <StyledPost hasImage={post.frontmatter.featuredImage} dangerouslySetInnerHTML={{ __html: post.html }} className="post" />
             <ShareButtons>
               <Twitter
                 text="Tweet"
-                shareText={`${post.frontmatter.title} by ${twitterHandle} ${
-                  metadata.site.siteMetadata.siteUrl
-                }${post.frontmatter.path} ${post.frontmatter.tags
-                  .map(tag => `#${tag}`)
-                  .join(" ")}
+                shareText={`${post.frontmatter.title} by ${twitterHandle} ${metadata.site.siteMetadata.siteUrl}${
+                  post.frontmatter.path
+                } ${post.frontmatter.tags.map(tag => `#${tag}`).join(" ")}
                 `}
               />
-              <Facebook
-                text="Share"
-                url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
-              />
+              <Facebook text="Share" url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path} />
             </ShareButtons>
             <PostFooter>
               <p>
                 Published under&nbsp;
                 {post.frontmatter.tags.map((tag, index) => (
                   <span key={index}>
-                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>
-                      {tag}
-                    </FooterTagLink>
+                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>{tag}</FooterTagLink>
                     {post.frontmatter.tags.length > index + 1 && <>, </>}
                   </span>
                 ))}
-                &nbsp;on{" "}
-                <time dateTime={post.frontmatter.created}>
-                  {post.frontmatter.createdPretty}
-                </time>
-                .
+                &nbsp;on <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>.
               </p>
               {post.frontmatter.updated !== post.frontmatter.created && (
                 <p>
-                  Last updated on{" "}
-                  <time dateTime={post.frontmatter.updated}>
-                    {post.frontmatter.updatedPretty}
-                  </time>
-                  .
+                  Last updated on <time dateTime={post.frontmatter.updated}>{post.frontmatter.updatedPretty}</time>.
                 </p>
               )}
             </PostFooter>

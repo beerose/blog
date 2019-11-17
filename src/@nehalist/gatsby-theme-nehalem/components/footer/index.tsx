@@ -12,7 +12,6 @@ export const StyledFooter = styled.footer`
   font-size: 0.9em;
   margin-top: 50px;
   margin: 0;
-  padding: 3em;
   padding-left: 90px;
 
   @media (max-width: ${theme.breakpoints.xl}) {
