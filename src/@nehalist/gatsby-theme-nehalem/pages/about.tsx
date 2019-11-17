@@ -93,7 +93,7 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
             <li>👩🏻‍💻 I've been working as a full-stack developer since 2017. </li>
             <li>🍦 I consider ice cream a proper dinner. </li>
             <li>🎾 I've been playing tennis for a couple of years. </li>
-            <li>🎨 I like art.</li>
+            <li>🎨 I like art. Especially Edward Hopper's.</li>
           </ul>
           <h2>Skills</h2>
           {skills.map(skillArea => (

@@ -1,13 +1,5 @@
 import React, { FunctionComponent } from "react";
-import {
-  Nav,
-  NavContainer,
-  NavLink,
-  NavMenu,
-  NavMenuItem,
-  NavWrapper,
-  SearchContainer,
-} from "./style";
+import { Nav, NavContainer, NavLink, NavMenu, NavMenuItem, NavWrapper, SearchContainer } from "./style";
 import { MenuItem } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import { Search } from "../search";
 
@@ -39,13 +31,11 @@ const Navigation: FunctionComponent<NavigationProps> = ({
               </NavMenuItem>
             ))}
         </NavMenu>
-        <SearchContainer>
-          {/* {showSearch && !dark && (
+        <SearchContainer>{/* {showSearch && !dark && (
             <NavMenu>
               <Search />
             </NavMenu>
-          )} */}
-        </SearchContainer>
+          )} */}</SearchContainer>
       </NavWrapper>
     </Nav>
   </NavContainer>
