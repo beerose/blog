@@ -23,6 +23,7 @@ const AboutMe = styled.div`
   /* justify-content: center; */
   padding: 20px;
   padding-left: 90px;
+  padding-bottom: 60px;
 
   @media (max-width: ${theme.breakpoints.xl}) {
     padding-left: 21px;
