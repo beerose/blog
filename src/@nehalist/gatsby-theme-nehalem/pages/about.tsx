@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
+import Layout from "../components/layout";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
 import { useStaticQuery, graphql } from "gatsby";
 import { SiteMetadata } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
@@ -77,10 +77,10 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
     }
   `);
 
-  const author = metadata.site.siteMetadata.author;
+  // const author = metadata.site.siteMetadata.author;
 
   return (
-    <Layout bigHeader={false}>
+    <Layout bigHeader={false} pathname={location.pathname}>
       <SEO location={location} title="About me" type="WebSite" />
       <AboutMe>
         {/* <StyledImg fixed={metadata.file.childImageSharp.fixed} alt="Avatar" /> */}

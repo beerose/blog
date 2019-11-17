@@ -58,9 +58,9 @@ export const NavMenuItem = styled.li`
   text-decoration: none;
 `;
 
-export const NavLink = styled(Link)<{ darkmode?: number }>`
+export const NavLink = styled(Link)<{ darkmode?: number; active?: number }>`
   color: ${props => (props.darkmode ? "#fff" : theme.colors.smokyBlack)};
-  opacity: ${props => (props.darkmode ? "0.8" : "0.6")};
+  opacity: ${props => (props.active ? "1" : props.darkmode ? "0.8" : "0.6")};
   padding: 16px;
   transition: opacity 0.3s;
 

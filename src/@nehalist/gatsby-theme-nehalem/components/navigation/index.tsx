@@ -8,6 +8,7 @@ interface NavigationProps {
   menu: MenuItem[];
   showSearch: boolean;
   dark?: boolean;
+  activePage?: string;
 }
 
 const Navigation: FunctionComponent<NavigationProps> = ({
@@ -15,6 +16,7 @@ const Navigation: FunctionComponent<NavigationProps> = ({
   menu,
   dark = false,
   showSearch = true,
+  activePage,
 }) => (
   <NavContainer dark={dark}>
     <Nav>
@@ -25,17 +27,17 @@ const Navigation: FunctionComponent<NavigationProps> = ({
             .filter(item => item.name !== "Example")
             .map((item, index) => (
               <NavMenuItem key={index}>
-                <NavLink darkmode={dark ? 1 : 0} to={item.path} key={index}>
+                <NavLink darkmode={dark ? 1 : 0} active={activePage === item.name ? 1 : 0} to={item.path} key={index}>
                   {item.name}
                 </NavLink>
               </NavMenuItem>
             ))}
         </NavMenu>
-        <SearchContainer>{/* {showSearch && !dark && (
+        {/*<SearchContainer> {showSearch && !dark && (
             <NavMenu>
               <Search />
             </NavMenu>
-          )} */}</SearchContainer>
+          )} </SearchContainer>*/}
       </NavWrapper>
     </Nav>
   </NavContainer>

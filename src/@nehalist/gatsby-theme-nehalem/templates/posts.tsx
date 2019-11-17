@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import Layout from "@nehalist/gatsby-theme-nehalem/src/components/layout";
+import Layout from "../components/layout";
 import { Container, Grid } from "@nehalist/gatsby-theme-nehalem/src/components/common";
 import { Post } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import { Card } from "../components/card";
@@ -80,7 +80,7 @@ const PostsPage: FunctionComponent<PostsPageProps> = ({ pathContext, location })
   const posts = pathContext.posts.slice(0, 7);
 
   return (
-    <Layout>
+    <Layout pathname={location.pathname}>
       <SEO location={location} type={`WebSite`} />
       <HomeContainer>
         <PostsContainer>
