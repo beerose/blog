@@ -3,13 +3,8 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import { Tag } from "@nehalist/gatsby-theme-nehalem/src/utils/models";
 import slugify from "slugify";
 
-import {
-  StyledTag,
-  StyledTagList,
-  TagContainer,
-  TagListTitle,
-  TagName,
-} from "./style";
+import { StyledTagList, TagContainer, TagListTitle, TagName } from "./style";
+import { StyledTag } from "../../../../components/StyledTag";
 
 const TagList: FC = () => {
   const tagsQuery = useStaticQuery<{
