@@ -36,7 +36,7 @@ module.exports = {
         linkedin: `https://www.linkedin.com/in/aleksandra-sikora-b54699132/`,
         instagram: ``,
         youtube: ``,
-        github: `https://github.com/blackdahila`,
+        github: `https://github.com/beerose`,
         twitch: ``,
       },
     },
@@ -51,7 +51,7 @@ module.exports = {
     {
       resolve: "gatsby-remark-embed-gist",
       options: {
-        username: "blackdahila",
+        username: "beerose",
         includeDefaultCss: true,
       },
     },
