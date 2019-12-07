@@ -342,7 +342,7 @@ const dequeue = <T>(queue: Queue<T>): [T | null, Queue<T>] => {
 
 ## Benchmarks ⌛️
 
-You may wonder if using _cons lists_ pays off somehow. In fact, it does! I did some benchmarks comparing operations on Array and on _cons list_ and the results are thrilling! [Here's the gist with benchmarks.](https://gist.github.com/blackdahila/5602b648c80dcdd14def856290652471)
+You may wonder if using _cons lists_ pays off somehow. In fact, it does! I did some benchmarks comparing operations on Array and on _cons list_ and the results are thrilling! [Here's the gist with benchmarks.](https://gist.github.com/beerose/5602b648c80dcdd14def856290652471)
 
 ### Mutable operations vs cons
 

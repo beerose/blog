@@ -7,7 +7,7 @@ created: 2018-01-13
 updated: 2018-01-13
 ---
 
-In this article, I’m going to share a little bit of knowledge introducing a brief example of parsing data in OCaml using ocamllex and menhir in a step-by-step tutorial. For those opting to use the repository, you can get it [here](https://github.com/blackdahila/ocaml-parser-example).
+In this article, I’m going to share a little bit of knowledge introducing a brief example of parsing data in OCaml using ocamllex and menhir in a step-by-step tutorial. For those opting to use the repository, you can get it [here](https://github.com/beerose/ocaml-parser-example).
 
 First of all, let me explain it in two words what actually is that parsing thing.
 
@@ -274,7 +274,7 @@ rule read =
 
 The read rule resembles match statement with regular expression on the left side and value of the rule on the right side. Lexbuf parameter correspond to the input — position in input file and matched text.
 
-The first white { read lexbuf } calls the lexer recursively skipping the input whitespaces. The second action newline does almost the same but it adds the number of the line using the function that was defined earlier in the first section of that lexing part. The third action specifies what to do in case of matching input with int. By using (int\_of\_string (Lexing.lexeme lexbuf)) the rule will return complete string matched by the regular expression converted to the int type. The next actions are created in ananalogous way.
+The first white { read lexbuf } calls the lexer recursively skipping the input whitespaces. The second action newline does almost the same but it adds the number of the line using the function that was defined earlier in the first section of that lexing part. The third action specifies what to do in case of matching input with int. By using (int_of_string (Lexing.lexeme lexbuf)) the rule will return complete string matched by the regular expression converted to the int type. The next actions are created in ananalogous way.
 
 **Recursive rules**
 
@@ -333,7 +333,7 @@ let rec parse_and_print lexbuf =
   | None -> ()
 ```
 
-In print\_position function, we extract filename and detailed error position to print it to out\_channel. parse_with_error use defined earlier prog and read to parse our input, picking up the errors. It returns None in case of SyntaxError, exits the program when encounters Parser.Error . If error doesn’t occur the function returns parsed value with tag Some as we defined it in parser specification. That’s why we match its result in parse\_and\_print function with Some value and None. When the first variant is fulfilled we call the function recursively to parse the rest of the input. Otherwise, we return a unit omitting the other half.
+In print_position function, we extract filename and detailed error position to print it to out_channel. parse_with_error use defined earlier prog and read to parse our input, picking up the errors. It returns None in case of SyntaxError, exits the program when encounters Parser.Error . If error doesn’t occur the function returns parsed value with tag Some as we defined it in parser specification. That’s why we match its result in parse_and_print function with Some value and None. When the first variant is fulfilled we call the function recursively to parse the rest of the input. Otherwise, we return a unit omitting the other half.
 
 Now, we are ready to build our program with following command:
 
@@ -348,5 +348,3 @@ For wrong-defined JSON object, ex. { "superhero" : "Thor"; } the result is:
     test.json:2:17: Unexpected char: ;
 
 ![](https://cdn-images-1.medium.com/max/3060/1*8Xixfr1D6o7uLz7lFlGPSw.png)
-
-

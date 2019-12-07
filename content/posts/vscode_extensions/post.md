@@ -12,7 +12,7 @@ This article is based on the talk I gave at [#1 Wrocław TypeScript Meetup](http
 
 ## TL;DR
 
-If you want to skip the guide and go straight to the code, [check out the repo](http://github.com/blackdahila/no-profanity). Otherwise, read on!
+If you want to skip the guide and go straight to the code, [check out the repo](http://github.com/beerose/no-profanity). Otherwise, read on!
 
 ## What is VS Code?
 
@@ -154,7 +154,7 @@ Let’s see how it works!
 
 Yay, seems to work! 🎉
 
-You can check out the whole implementation in the [repo](http://github.com/blackdahila/no-profanity).
+You can check out the whole implementation in the [repo](http://github.com/beerose/no-profanity).
 
 ## Publishing the extension
 
@@ -206,7 +206,7 @@ If you don’t want to provide a token every time you can make vsce remember it.
 
 **There’s plenty of reasons to build one** ⭐️ Who doesn’t want to create something cool that will make things easier for other developers?
 
-If you want to take a look at the whole project the code is available [here](https://github.com/blackdahila/no-profanity) and you can also find it in the [marketplace](https://marketplace.visualstudio.com/items?itemName=aleksandra.no-profanity).
+If you want to take a look at the whole project the code is available [here](https://github.com/beerose/no-profanity) and you can also find it in the [marketplace](https://marketplace.visualstudio.com/items?itemName=aleksandra.no-profanity).
 
 ## References
 
