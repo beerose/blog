@@ -130,8 +130,181 @@ Now, let's see this algorithm in action 🚀
 
 ### #1
 
+We're going to start with a straightforward example, similar to what we had before. Below there's a parse tree of the expression:
+The root indicates that we have a function declaration here. The children are the expression bounded to the parent. In that case, we have add and x. The plus operator is treated as the prefix operator, not as the infix one. The nodes **@** means function applications.
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 400px">
+    <img src="./1.1.png"/>
+  </div>
+</div>
+
+> **(+) 2 x** is equivalent to **x + 2**. In Haskell, putting brackets around the operator converts it to the prefix function.
+
+1. In the first step, we're assigning type variables to each expression. Each occurrence of a bound variable must have the same type; in our case, variable **x** has the same type (**t1**) as a binding node.
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 400px">
+    <img src="./1.2.png"/>
+  </div>
+</div>
+
+2. Now we're generating a set of constraints on types.
+
+Let's gather all the constraints we can have at this point.
+
+- **t3 = Int** because **2** is of type **Int**.
+- **t2 = Int -> Int -> Int**, because the algorithm knows types of elementary functions like **(+)**.
+- Variable nodes don't introduce any constraints, because we and the algorithm do not know anything but the values they represent, so for example **x** stays as **t1**.
+- **@** nodes. If we have an expression like **fun x**, then we say that **fun** is applied to **x** and **fun** is of a function type. What's more, the type of the whole expression **fun x** must be the same as the return type of **fun**. In our parse tree **@** stands for **fun a**. For example from the subexpression **@ (+) 2** (apply (+) to 2) we have constraint **t 2 = t 3 -> t 4**.
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 400px">
+    <img src="./1.3.png"/>
+  </div>
+</div>
+
+5. Final step — solving the constraints by unification.
+
+   <div class="gatsby-highlight" data-language="sh">
+     <pre style="
+       margin: 0;
+       padding-left: 10px;
+       font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+       font-size: 1em;
+       text-align: left;
+       white-space: pre;
+       word-spacing: normal;
+       word-break: normal;
+       word-wrap: normal;
+       line-height: 1.2em;
+       -moz-tab-size: 4;
+       -o-tab-size: 4;
+       tab-size: 4;
+       -webkit-hyphens: none;
+       -ms-hyphens: none;
+       hyphens: none;
+       color: black !important; background: white !important;"
+     >
+       <code>
+   (1) t 0 = t 1 -> t 6
+   (2) t 4 = t 1 -> t 6
+   (3) t 2 = t 3 -> t 4
+   (4) t 2 = Int -> (Int -> Int)
+   (5) t 3 = Int
+       </code>
+     </pre>
+   </div>
+
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+ (6) t 3 = Int
+ (7) t 4 = Int -> Int
+    </code>
+  </pre>
+</div>
+
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+ (8) t 1 = Int
+ (9) t 6 = Int
+    </code>
+  </pre>
+</div>
+
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+ t 0 = Int -> Int
+ t 1 = Int
+ t 2 = Int -> Int -> Int
+ t 3 = Int
+ t 4 = Int -> Int
+ t 6 = Int
+    </code>
+  </pre>
+</div>
+
 ### #2
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 400px">
+    <img src="./2.1.png"/>
+  </div>
+</div>
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 500px">
+    <img src="./2.2.png"/>
+  </div>
+</div>
+
+<div style="display: flex; justify-content: center; width: 100%">
+  <div style="text-align: center; width: 500px">
+    <img src="./2.3.png"/>
+  </div>
+</div>
 
 ## Limitations
 
 ## Summary
+
+Complexity
+
+Linear, but exponential in the depth of polymorphic declarations
