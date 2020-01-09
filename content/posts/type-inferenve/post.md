@@ -141,7 +141,7 @@ The root indicates that we have a function declaration here. The children are th
 
 > **(+) 2 x** is equivalent to **x + 2**. In Haskell, putting brackets around the operator converts it to the prefix function.
 
-1. In the first step, we're assigning type variables to each expression. Each occurrence of a bound variable must have the same type; in our case, variable **x** has the same type (**t1**) as a binding node.
+**1. In the first step, we're assigning type variables to each expression. Each occurrence of a bound variable must have the same type; in our case, variable _x_ has the same type (_t1_) as a binding node.**
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
@@ -149,7 +149,7 @@ The root indicates that we have a function declaration here. The children are th
   </div>
 </div>
 
-2. Now we're generating a set of constraints on types.
+**2. Now we're generating a set of constraints on types.**
 
 Let's gather all the constraints we can have at this point.
 
@@ -164,37 +164,9 @@ Let's gather all the constraints we can have at this point.
   </div>
 </div>
 
-5. Final step — solving the constraints by unification.
+**3. Final step — solving the constraints by unification.**
 
-   <div class="gatsby-highlight" data-language="sh">
-     <pre style="
-       margin: 0;
-       padding-left: 10px;
-       font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-       font-size: 1em;
-       text-align: left;
-       white-space: pre;
-       word-spacing: normal;
-       word-break: normal;
-       word-wrap: normal;
-       line-height: 1.2em;
-       -moz-tab-size: 4;
-       -o-tab-size: 4;
-       tab-size: 4;
-       -webkit-hyphens: none;
-       -ms-hyphens: none;
-       hyphens: none;
-       color: black !important; background: white !important;"
-     >
-       <code>
-   (1) t 0 = t 1 -> t 6
-   (2) t 4 = t 1 -> t 6
-   (3) t 2 = t 3 -> t 4
-   (4) t 2 = Int -> (Int -> Int)
-   (5) t 3 = Int
-       </code>
-     </pre>
-   </div>
+The following list of constraints is just what we got from the second step.
 
 <div class="gatsby-highlight" data-language="sh">
   <pre style="
@@ -217,38 +189,16 @@ Let's gather all the constraints we can have at this point.
     color: black !important; background: white !important;"
   >
     <code>
- (6) t 3 = Int
- (7) t 4 = Int -> Int
+1° t0 = t1 -> t6
+2° t4 = t1 -> t6
+3° t2 = t3 -> t4
+4° t2 = Int -> (Int -> Int)
+5° t3 = Int
     </code>
   </pre>
 </div>
 
-<div class="gatsby-highlight" data-language="sh">
-  <pre style="
-    margin: 0;
-    padding-left: 10px;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 1em;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.2em;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    -webkit-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-    color: black !important; background: white !important;"
-  >
-    <code>
- (8) t 1 = Int
- (9) t 6 = Int
-    </code>
-  </pre>
-</div>
+Now, from the **4°** and **5°** we can imply the following equation:
 
 <div class="gatsby-highlight" data-language="sh">
   <pre style="
@@ -271,17 +221,74 @@ Let's gather all the constraints we can have at this point.
     color: black !important; background: white !important;"
   >
     <code>
- t 0 = Int -> Int
- t 1 = Int
- t 2 = Int -> Int -> Int
- t 3 = Int
- t 4 = Int -> Int
- t 6 = Int
+6° t4 = Int -> Int    (from 3° and 4°)
+    </code>
+  </pre>
+</div>
+
+We still have **t1** and **t6** unsolved but thanks to the new equation 6° and 2° we can imply:
+
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+8° t1 = Int    (from 2° and 7°)
+9° t6 = Int    (from 2° and 7°)
+    </code>
+  </pre>
+</div>
+Hurrah! We have it all solved 🎉
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+t0 = Int -> Int
+t1 = Int
+t2 = Int -> Int -> Int
+t3 = Int
+t4 = Int -> Int
+t6 = Int
     </code>
   </pre>
 </div>
 
 ### #2
+
+Polymorphic functions this time. I won't go into much details this time. Hopefully you got the idea after the first example.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
@@ -289,11 +296,15 @@ Let's gather all the constraints we can have at this point.
   </div>
 </div>
 
+**1. Assigning type variables to each expression.**
+
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 500px">
     <img src="./2.2.png"/>
   </div>
 </div>
+
+**2. Generating a set of constraints on types.**
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 500px">
@@ -301,7 +312,39 @@ Let's gather all the constraints we can have at this point.
   </div>
 </div>
 
-## Limitations
+**3. Solving the constraints by unification.**
+
+This is what we have on start:
+
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+1° t1 = t2 -> t6
+2° t0 = t3 -> t6
+3° t3 = (t1, t2)
+    </code>
+  </pre>
+</div>
+
+What to do now? I'll leave it as an exercise! 🤗
 
 ## Summary
 
