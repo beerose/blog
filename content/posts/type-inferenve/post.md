@@ -343,11 +343,61 @@ This is what we have on start:
     </code>
   </pre>
 </div>
-
-What to do now? I'll leave it as an exercise! 🤗
+Thanks to the equation 3°, we can substitute **t3** in equation 1°:
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+4° t0 = (t1, t2) -> t6
+    </code>
+  </pre>
+</div>
+And then use 1° to substitute **t1** in 4°:
+<div class="gatsby-highlight" data-language="sh">
+  <pre style="
+    margin: 0;
+    padding-left: 10px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1em;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.2em;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    color: black !important; background: white !important;"
+  >
+    <code>
+5° t0 = (t2 -> t6, t2) -> t6
+    </code>
+  </pre>
+</div>
+And the above stands for the type of our polymorphic function! 🎉
 
 ## Summary
 
 Complexity
-
 Linear, but exponential in the depth of polymorphic declarations
