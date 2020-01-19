@@ -3,7 +3,7 @@ title: "Type inference under the hood"
 path: "/type-inference"
 tags: ["haskell"]
 # featuredImage: "./2.1.png"
-excerpt: I'll show the concept of a type inference algorithm for Hindley-Milner based type systems. Briefly, with super simple examples, to give the rough idea of how it works. Based on the presentation I gave some time ago at work.
+excerpt: I'm showing the concept of the type inference algorithm for Hindley-Milner based type systems. Briefly, with super simple examples, to give the rough idea of how it works. Based on the presentation I gave some time ago at work.
 created: 2019-12-09
 updated: 2019-12-09
 ---
