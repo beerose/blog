@@ -2,7 +2,8 @@
 title: "Type inference under the hood"
 path: "/type-inference"
 tags: ["haskell"]
-excerpt:
+# featuredImage: "./2.1.png"
+excerpt: In this article, I'll show the concept of a type inference algorithm for Hindley-Milner based type systems. Briefly, with super simple examples, to give the rough idea of how it works. Based on the presentation, I gave some time ago at work.
 created: 2019-12-09
 updated: 2019-12-09
 ---
@@ -12,16 +13,17 @@ If you're into functional programming, you might have heard about Hindley-Milner
 
 Nevertheless, it would be a pity if I blew my chance telling you my take on its most compelling aspects.
 
-One of them is its completeness. Meaning it won't go easy on you if you'd try to bypass it. You can't tell it: _shut up, I really want to do this typecast_. It would yell, break your program at the compile-time, and make you want to stay away from it. But what it doesn't kill it makes it stronger. You can gain confidence — if your program finally compiles, it probably works. (It's what I was saying to myself back when I was coding in Haskell). It not only allows you to catch errors earlier but often prevents them.
+One of them is its completeness. Meaning it won't go easy on you if you'd try to bypass it. You can't tell it: _shut up, I really want to do this typecast_. It would yell, break your program at the compile-time, and make you want to stay away from it. But what doesn’t kill you makes you stronger. You can gain confidence — if your program finally compiles, it probably works. (It's what I was saying to myself back when I was coding in Haskell). It not only allows you to catch errors earlier but often prevents them.
 
-Another great feature is being able to infer the type of expression without explicit declarations. That's pretty much what's this article is going to be about. I'll do some overview of how type inference works for Hindley Milner type systems. Some of the examples are going to be in Haskell, but they are straightforward enough that no prior knowledge of Haskell is required. I aim to explain how type inference algorithm for Hindley-Milner based type systems work under the hood without diving into in-depth details and formal definitions.
+Another great feature is the ability to infer the type of expression without explicit declarations. That's pretty much what's this article is going to be about. I'll do some overview of how type inference works for Hindley Milner type systems. Some of the examples are going to be in Haskell, but they are straightforward enough that no prior knowledge of Haskell is required. I aim to explain how the type inference algorithm for Hindley-Milner based type systems works under the hood without diving into in-depth details and formal definitions.
 
 ## A word on functions
 
-Some examples in the article are in Haskell, so here comes a wrapping up about Haskell's functions.
+As I said, some examples in the article are in Haskell, so here comes a wrapping up about Haskell's functions.
 
-In Haskell functions are first-class citizens, meaning that they don't thumb their noses at the other data types. There's nothing special about them. We treat them just as we treat variables.
-All functions in Haskell take one argument. So if you have a function that takes more than one argument, it's a curried function then — it takes one argument at the time. Look at the possibly most common example one could get:
+In Haskell, functions are first-class citizens, meaning that they don't thumb their noses at the other data types. There's nothing special about them. We treat them just as we treat other data types.
+
+All functions in Haskell take one argument. More specifically — they take one argument _at the time_. Let's take a look at the possibly most common example one could get:
 
 ```hs
 add :: Integer -> Integer -> Integer
@@ -40,19 +42,16 @@ Let's put the brackets for more readability.
 add :: Integer -> (Integer -> Integer)
 ```
 
-Currying converts function that takes n arguments into n functions that take one argument each. It allows us to pass less argument to the function that it expects. It's called partial application.
+Like all the functions in Haskell, **Add** is curried.
 
-```hs
-increment :: Integer -> Integer
-increment x = add 1
-```
+Currying converts a function that takes **n** arguments into **n** functions that take one argument each.
 
-Since all functions take exactly one argument you can think about
+Since all functions in Haskell take exactly one argument, you can think about
 `fun a b c = ...` as the syntactic sugar for binding a lambda functions to **fun**: `fun = \a -> \b -> \c -> ...`.
 
 ## Type inference
 
-Type inference means that types in a program can be deduced without explicit type annotations. The idea is that some information may be not specified, but the type inference algorithm can fill the gaps by determining the types from their usage.
+Type inference means that types in a program can be deduced without explicit type annotations. The idea is that some information may not be specified, but the type inference algorithm can fill the gaps by determining the types from their usage.
 
 <div style="text-align: center; max-width: 100%">
 <img style="max-width: 100%" alt="dancing" src="https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif" />
@@ -72,7 +71,7 @@ Let's say we have some simple function:
 inc x = x + 1
 ```
 
-We know that the type of **(+)** is **Int -> Int -> Int**. And we also know that **1** has type **Int**. Having that knowledge we can deduce that type of **x** _must_ be **Int**. That implies that the type of **inc** is **Int -> Int**.
+We know that the type of **(+)** is **Int -> Int -> Int**. Moreover, we also know that **1** has type **Int**. Having that knowledge, we can deduce that type of **x** _must_ be **Int**. That implies that the type of **inc** is **Int -> Int**.
 
 Now let's take a look at another example and following reasoning:
 
@@ -101,7 +100,7 @@ int f(int x) { return x * x }
 int g(int x) { return x * f(x) }
 ```
 
-What type of checker does is examining the body of each function and then using declared types by the programmer is they match. Take a look at the above example. It would go through every usage of **f** and **g** functions and check two things:
+What type checker does is examining the body of each function and then using declared types by the programmer is they match. Take a look at the above example. It would go through every usage of **f** and **g** functions and check two things:
 
 - If the parameter is always of an integer type,
 - If the functions return integers.
@@ -121,8 +120,8 @@ The algorithm consists of three steps:
 
 1. Assign a type or type variable to the expression and each subexpression. For known expressions, like **+**, **-** and so on, use the types known for these expressions. Otherwise, use type variables — placeholders for not known types.
 2. Generate a set of constraints on types, using the parse tree of the expression. These constraints are something like this:
-   > _if a function is applied to an integer, then the type of its first argument is integer_.
-3. Solve these constraints by unification. It's an algorithm for solving equations based on substitutions.
+   > _if a function is applied to an integer, then the type of its argument is integer_.
+3. Solve these constraints by unification — an algorithm for solving equations based on substitutions.
 
 Now, let's see this algorithm in action 🚀
 
@@ -130,14 +129,15 @@ Now, let's see this algorithm in action 🚀
 
 ### #1
 
-We're going to start with a straightforward example, similar to what we had before. Below there's a parse tree of the expression:
-The root indicates that we have a function declaration here. The children are the expression bounded to the parent. In that case, we have add and x. The plus operator is treated as the prefix operator, not as the infix one. The nodes **@** means function applications.
+We're going to start with a straightforward example, similar to what we had before. Below there's a parse tree of the expression.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
     <img src="./1.1.png"/>
   </div>
 </div>
+
+The root indicates that we have a function declaration here. The children are the expression bounded to the parent. In that case, we have **add** and **x**. The plus operator is treated as the prefix operator, not as the infix one. The nodes **@** stand for function applications.
 
 > **(+) 2 x** is equivalent to **x + 2**. In Haskell, putting brackets around the operator converts it to the prefix function.
 
@@ -155,8 +155,8 @@ Let's gather all the constraints we can have at this point.
 
 - **t3 = Int** because **2** is of type **Int**.
 - **t2 = Int -> Int -> Int**, because the algorithm knows types of elementary functions like **(+)**.
-- Variable nodes don't introduce any constraints, because we and the algorithm do not know anything but the values they represent, so for example **x** stays as **t1**.
-- **@** nodes. If we have an expression like **fun x**, then we say that **fun** is applied to **x** and **fun** is of a function type. What's more, the type of the whole expression **fun x** must be the same as the return type of **fun**. In our parse tree **@** stands for **fun a**. For example from the subexpression **@ (+) 2** (apply (+) to 2) we have constraint **t 2 = t 3 -> t 4**.
+- Variable nodes don't introduce any constraints, because the algorithm does not know anything but the values they represent, so for example: **x** stays as **t1**.
+- **@** nodes. If we have an expression like **fun x**, then we say that **fun** is applied to **x** and **fun** is of a function type. What's more, the type of the whole expression **fun x** must be the same as the return type of **fun**. In our parse tree **@** stands for **fun a**.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
@@ -288,7 +288,7 @@ t6 = Int
 
 ### #2
 
-Polymorphic functions this time. I won't go into much details this time. Hopefully you got the idea after the first example.
+Polymorphic functions this time. I won't go into much details, hopefully you got the idea after the first example.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
@@ -343,7 +343,9 @@ This is what we have on start:
     </code>
   </pre>
 </div>
+
 Thanks to the equation 3°, we can substitute **t3** in equation 1°:
+
 <div class="gatsby-highlight" data-language="sh">
   <pre style="
     margin: 0;
@@ -369,7 +371,9 @@ Thanks to the equation 3°, we can substitute **t3** in equation 1°:
     </code>
   </pre>
 </div>
+
 And then use 1° to substitute **t1** in 4°:
+
 <div class="gatsby-highlight" data-language="sh">
   <pre style="
     margin: 0;
@@ -397,7 +401,15 @@ And then use 1° to substitute **t1** in 4°:
 </div>
 And the above stands for the type of our polymorphic function! 🎉
 
+## Complexity
+
+The time complexity for this algorithm was [proven] to be exponential. However, it's mostly linear in practice, but exponential in the depth of polymorphic declarations.
+
+[proven]: https://dl.acm.org/doi/10.1145/96709.96748
+
 ## Summary
 
-Complexity
-Linear, but exponential in the depth of polymorphic declarations
+As I wrote at the beginning, it was supposed to be a super brief inference algorithm explanation. I hope somebody can benefit from this.
+
+Thank you for your attention!
+Feel free to correct me if I got something wrong 😅
