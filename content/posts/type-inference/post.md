@@ -91,9 +91,9 @@ f :: (a -> b, Int -> a) -> b
 
 ## Type inference vs type-checking
 
-### Standard type checking
-
 These terms are sometimes confused, so I'd like to clarify what's the difference before we go further.
+
+### Standard type checking
 
 ```js
 int f(int x) { return x * x }
