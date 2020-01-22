@@ -4,7 +4,8 @@ module.exports = {
     siteUrl: "https://aleksandra.codes",
     twitterHandle: "@aleksandrasays",
     url: "https://aleksandra.codes",
-    description: "Aleksandra Sikora's personal blog on computer science and programming.",
+    description:
+      "Aleksandra Sikora's personal blog on computer science and programming.",
     topics: [],
     menu: [
       {
@@ -14,6 +15,10 @@ module.exports = {
       {
         name: "About me",
         path: "/about",
+      },
+      {
+        name: "Speaking",
+        path: "/speaking",
       },
     ],
     footerMenu: [

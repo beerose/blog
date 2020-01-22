@@ -9,7 +9,10 @@ import theme from "../styles/theme";
 
 const skills = [
   { color: "#2E4057", items: ["MySQL", "PostgreSQL", "Ecto", "Redis"] },
-  { color: "#729B58", items: ["Golang", "Elixir", "NodeJS", "Docker", "Kubernetes", "OCaml"] },
+  {
+    color: "#729B58",
+    items: ["Golang", "Elixir", "NodeJS", "Docker", "Kubernetes", "OCaml"],
+  },
   { color: "#197559", items: ["React", "TypeScript", "CSS", "Redux", "RxJS"] },
 ];
 
@@ -112,17 +115,3 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
 };
 
 export default AboutPage;
-
-// const Bio: FunctionComponent<BioProps> = ({textAlign = 'center', avatarStyle, showName = false}) => {
-
-//   return (
-//     <StyledBio textAlign={textAlign}>
-//       <Avatar alt={author.name} style={avatarStyle} />
-//       {showName && <AuthorName>{author.name}</AuthorName>}
-//       <AuthorDescription dangerouslySetInnerHTML={{__html: author.description}}/>
-//       <SocialChannelList channels={author.social}/>
-//     </StyledBio>
-//   );
-// };
-
-// export default Bio;
