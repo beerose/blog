@@ -211,7 +211,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       `./src/@nehalist/gatsby-theme-nehalem/templates/speaking.tsx`
     ),
     context: {
-      speakingPosts,
+      posts: speakingPosts,
     },
   });
 };

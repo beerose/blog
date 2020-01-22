@@ -57,6 +57,20 @@ export interface Post {
   headings: Array<{ depth: number }>;
 }
 
+export interface SpeakingPost {
+  frontmatter: {
+    title: string;
+    path: string;
+    tags: string[];
+    excerpt: string;
+    given: string;
+    givenPretty: string;
+    place: string;
+    duration: string;
+  };
+  html: string;
+}
+
 export interface Page {
   frontmatter: {
     title: string;

@@ -1,16 +1,19 @@
 import React, { FunctionComponent } from "react";
 import Layout from "../components/layout";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
-import Img from "gatsby-image";
-import styled from "styled-components";
-import theme from "../styles/theme";
+import { SpeakingPost } from "../utils/models";
 
 interface SpeakingPageProps {
   location: Location;
+  pathContext: {
+    posts: SpeakingPost[];
+  };
 }
 
-const SpeakingPage: FunctionComponent<SpeakingPageProps> = props => {
-  console.log({ props });
+const SpeakingPage: FunctionComponent<SpeakingPageProps> = ({
+  location,
+  pathContext: { posts },
+}) => {
   return (
     <Layout bigHeader={false} pathname={location.pathname}>
       <SEO location={location} title="Speaking" type="WebSite" />
