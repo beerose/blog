@@ -340,6 +340,11 @@ const dequeue = <T>(queue: Queue<T>): [T | null, Queue<T>] => {
 };
 ```
 
+### When not to use cons list
+
+- It’s not a replacement to Array.
+- It’s not a random access list (thus I didn’t even implement it), so if you want fast random access then better use Array.
+
 ## Benchmarks ⌛️
 
 You may wonder if using _cons lists_ pays off somehow. In fact, it does! I did some benchmarks comparing operations on Array and on _cons list_ and the results are thrilling! [Here's the gist with benchmarks.](https://gist.github.com/beerose/5602b648c80dcdd14def856290652471)
