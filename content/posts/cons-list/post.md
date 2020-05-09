@@ -8,7 +8,7 @@ created: 2019-11-01
 updated: 2019-11-01
 ---
 
-It's well known that mutability is evil and often troublesome. But, it's also a fact that mutable data structures are, in some cases, more straightforward to implement and have better performance. Sometimes, you can go with it and be completely fine, but other times immutability is required. Let's focus on arrays for now. What would you do if you want to append or prepend an item to the list in an immutable way? A shallow copy? A deep copy (god forbid)? These operations are expensive. A little spoiler — they are about 2875862 times slower than what you can have with the simple data structure I'm about to show you. No kidding.
+It’s well known that mutability is evil and often troublesome. But, it’s also a fact that mutable data structures are, in some cases, more straightforward to implement and have better performance. Sometimes, you can go with it and be completely fine, but other times immutability is required. Let’s focus on arrays for now. What would you do if you want to append or prepend an item to the list in an immutable way? A shallow copy? A deep copy (god forbid)? These operations are expensive. They have greater asymptotic time complexity — O(n), and what we want is O(1). In this article, I’m going to show a simple data structure that achieves that.
 
 Do I get your attention now? So, let's start!
 
@@ -348,23 +348,23 @@ You may wonder if using _cons lists_ pays off somehow. In fact, it does! I did s
 
 | Opeation &nbsp&nbsp&nbsp          |       ops/s |
 | :-------------------------------- | ----------: |
-| array.unshift(50) &nbsp&nbsp&nbsp |   69263.438 |
-| array.push(50) &nbsp&nbsp&nbsp    | 9609332.222 |
-| cons(50, list) &nbsp&nbsp&nbsp    | 8627588.293 |
+| array.unshift(50) &nbsp&nbsp&nbsp |   99953.939 |
+| array.push(50) &nbsp&nbsp&nbsp    |   70675.276 |
+| cons(50, list) &nbsp&nbsp&nbsp    | 5822999.798 |
 
 ### Immutable operation vs cons
 
 | Operation &nbsp&nbsp&nbsp     |       ops/s |
 | :---------------------------- | ----------: |
-| [50, ...array]&nbsp&nbsp&nbsp |       3.085 |
-| cons(50, list)&nbsp&nbsp&nbsp | 8627588.293 |
+| [50, ...array]&nbsp&nbsp&nbsp |   12680.588 |
+| cons(50, list)&nbsp&nbsp&nbsp | 5485947.933 |
 
 ### _Array.prototype_.map vs map
 
-| Operation                             |  ops/s |
-| :------------------------------------ | -----: |
-| array.map(x => x \* 2)&nbsp&nbsp&nbsp |  0.691 |
-| map(list, x => x \* 2)&nbsp&nbsp&nbsp | 39.666 |
+| Operation                             |    ops/s |
+| :------------------------------------ | -------: |
+| array.map(x => x \* 2)&nbsp&nbsp&nbsp | 4389.837 |
+| map(list, x => x \* 2)&nbsp&nbsp&nbsp |  662.805 |
 
 ---
 
