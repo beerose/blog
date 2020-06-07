@@ -31,6 +31,11 @@ const PostContainer = styled(Container)`
   display: flex;
   justify-content: center;
   padding: 0 !important;
+
+  /* width: 100%;
+  @media (max-width: ${theme.breakpoints.xl}) {
+    width: 70%;
+  } */
 `;
 
 const LeftSidebar = styled.div<{ show?: boolean }>`
@@ -40,7 +45,7 @@ const LeftSidebar = styled.div<{ show?: boolean }>`
 
   @media (max-width: ${theme.breakpoints.xl}) {
     position: fixed;
-    display: ${props => (props.show ? "unset" : "none")};
+    display: ${(props) => (props.show ? "unset" : "none")};
     z-index: 1000;
     background-color: #fff;
     width: 100% !important;
@@ -58,7 +63,7 @@ const PostContent = styled.div`
   background-color: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  width: 1035px;
+  width: 900px;
   max-width: 100%;
 
   li > a,
@@ -149,11 +154,11 @@ const FeaturedImage = styled(Img)`
 
 const StyledPost = styled.section<{ hasImage: boolean }>`
   padding: 40px;
-  padding-top: ${props => (props.hasImage ? "20px" : 0)};
+  padding-top: ${(props) => (props.hasImage ? "20px" : 0)};
 
   @media (max-width: ${theme.breakpoints.sm}) {
     padding: 20px;
-    padding-top: ${props => (props.hasImage ? "10px" : 0)};
+    padding-top: ${(props) => (props.hasImage ? "10px" : 0)};
   }
 
   #flex-row__orms {
@@ -271,7 +276,10 @@ const ShareButtons = styled.div`
   }
 `;
 
-const PostTemplate: FunctionComponent<PostTemplateProps> = ({ location, pageContext }) => {
+const PostTemplate: FunctionComponent<PostTemplateProps> = ({
+  location,
+  pageContext,
+}) => {
   const [showToc, setShowToc] = useState<boolean>(false);
   const post = pageContext.post;
   const readingProgressRef = createRef<HTMLElement>();
@@ -300,18 +308,29 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({ location, pageCont
         updatedAt={post.frontmatter.updated}
         tags={post.frontmatter.tags}
         description={post.frontmatter.excerpt}
-        image={post.frontmatter.featuredImage ? post.frontmatter.featuredImage.childImageSharp.sizes.src : null}
+        image={
+          post.frontmatter.featuredImage
+            ? post.frontmatter.featuredImage.childImageSharp.sizes.src
+            : null
+        }
       />
-      <ReadingProgress target={readingProgressRef} color={primaryTag ? primaryTag.color : undefined} />
+      <ReadingProgress
+        target={readingProgressRef}
+        color={primaryTag ? primaryTag.color : undefined}
+      />
       <PostContainer>
-        {post.headings.find(h => h.depth > 1) && (
+        {post.headings.find((h) => h.depth > 1) && (
           <>
             <LeftSidebar show={showToc}>
               <TocWrapper>
                 <Toc onClick={toggleToc} />
               </TocWrapper>
             </LeftSidebar>
-            <ToggleTocButton role="button" aria-label="Toggle table of contents" onClick={toggleToc}>
+            <ToggleTocButton
+              role="button"
+              aria-label="Toggle table of contents"
+              onClick={toggleToc}
+            >
               {showToc ? <FaTimes /> : <FaAlignJustify />}
             </ToggleTocButton>
           </>
@@ -328,44 +347,73 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({ location, pageCont
                           key={i}
                           to={`/tag/${slugify(tag, {
                             lower: true,
-                          })}`}>
+                          })}`}
+                        >
                           {tag}
                           {post.frontmatter.tags.length > i + 1 && <>, </>}
                         </StyledLink>
                       ))}
                   </span>
                 </span>
-                <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>
+                <time dateTime={post.frontmatter.created}>
+                  {post.frontmatter.createdPretty}
+                </time>
               </PostMeta>
               <PostTitle>{post.frontmatter.title}</PostTitle>
-              <TimeToRead fontsize="0.9em" duration={readTimeEstimate(post.html).duration} />
+              <TimeToRead
+                fontsize="0.9em"
+                duration={readTimeEstimate(post.html).duration}
+              />
             </PostHeader>
-            {post.frontmatter.featuredImage && <FeaturedImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />}
-            <StyledPost hasImage={post.frontmatter.featuredImage} dangerouslySetInnerHTML={{ __html: post.html }} className="post" />
+            {post.frontmatter.featuredImage && (
+              <FeaturedImage
+                sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+              />
+            )}
+            <StyledPost
+              hasImage={post.frontmatter.featuredImage}
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              className="post"
+            />
             <ShareButtons>
               <Twitter
                 text="Tweet"
-                shareText={`${post.frontmatter.title} by ${twitterHandle} ${metadata.site.siteMetadata.siteUrl}${
-                  post.frontmatter.path
-                } ${post.frontmatter.tags.map(tag => `#${tag}`).join(" ")}
+                shareText={`${post.frontmatter.title} by ${twitterHandle} ${
+                  metadata.site.siteMetadata.siteUrl
+                }${post.frontmatter.path} ${post.frontmatter.tags
+                  .map((tag) => `#${tag}`)
+                  .join(" ")}
                 `}
               />
-              <Facebook text="Share" url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path} />
+              <Facebook
+                text="Share"
+                url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
+              />
             </ShareButtons>
             <PostFooter>
               <p>
                 Published under&nbsp;
                 {post.frontmatter.tags.map((tag, index) => (
                   <span key={index}>
-                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>{tag}</FooterTagLink>
+                    <FooterTagLink to={`/tag/${slugify(tag, { lower: true })}`}>
+                      {tag}
+                    </FooterTagLink>
                     {post.frontmatter.tags.length > index + 1 && <>, </>}
                   </span>
                 ))}
-                &nbsp;on <time dateTime={post.frontmatter.created}>{post.frontmatter.createdPretty}</time>.
+                &nbsp;on{" "}
+                <time dateTime={post.frontmatter.created}>
+                  {post.frontmatter.createdPretty}
+                </time>
+                .
               </p>
               {post.frontmatter.updated !== post.frontmatter.created && (
                 <p>
-                  Last updated on <time dateTime={post.frontmatter.updated}>{post.frontmatter.updatedPretty}</time>.
+                  Last updated on{" "}
+                  <time dateTime={post.frontmatter.updated}>
+                    {post.frontmatter.updatedPretty}
+                  </time>
+                  .
                 </p>
               )}
             </PostFooter>

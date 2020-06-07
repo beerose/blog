@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "shadow": "gatsby-theme eject"
   },
   "dependencies": {
     "@nehalist/gatsby-theme-nehalem": "^1.0.3",
@@ -29,14 +30,21 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "1.x",
     "gatsby": "^2.13.55",
-    "gatsby-plugin-google-analytics": "^2.1.20",
-    "gatsby-remark-embed-gist": "^1.1.9",
-    "gatsby-remark-prismjs": "^3.3.20",
-    "gatsby-theme": "^0.0.6",
-    "gatsby-transformer-remark": "^2.6.32",
+    "gatsby-plugin-ffmpeg": "0.3.1",
+    "gatsby-plugin-google-analytics": "2.1.20",
+    "gatsby-remark-copy-linked-files": "^2.2.0",
+    "gatsby-remark-embed-gist": "1.1.9",
+    "gatsby-remark-prismjs": "3.3.20",
+    "gatsby-remark-videos": "0.3.5",
+    "gatsby-theme": "^0.0.12",
+    "gatsby-transformer-remark": "2.6.32",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-sharingbuttons": "^1.0.0",
     "read-time-estimate": "^0.0.2"
+  },
+  "devDependencies": {
+    "gatsby-remark-static-images": "1.0.1",
+    "sharp": "0.25.2"
   }
 }
