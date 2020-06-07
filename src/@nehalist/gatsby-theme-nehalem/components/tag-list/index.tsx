@@ -27,11 +27,11 @@ const TagList: FC = () => {
       <StyledTagList>
         {tags.map((tag, index) => {
           return (
-            <StyledTag color={tag.color} key={index}>
-              <Link to={`/tag/${slugify(tag.name, { lower: true })}`}>
+            <Link to={`/tag/${slugify(tag.name, { lower: true })}`}>
+              <StyledTag color={tag.color} key={index}>
                 <TagName>{tag.name}</TagName>
-              </Link>
-            </StyledTag>
+              </StyledTag>
+            </Link>
           );
         })}
       </StyledTagList>
