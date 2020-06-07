@@ -4,7 +4,8 @@ module.exports = {
     siteUrl: "https://aleksandra.codes",
     twitterHandle: "@aleksandrasays",
     url: "https://aleksandra.codes",
-    description: "Aleksandra Sikora's personal blog on computer science and programming.",
+    description:
+      "Aleksandra Sikora's personal blog on computer science and programming.",
     topics: [],
     menu: [
       {
@@ -43,25 +44,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [{ resolve: "gatsby-remark-embed-gist" }],
-      },
-    },
-    {
-      resolve: "gatsby-remark-embed-gist",
-      options: {
-        username: "beerose",
-        includeDefaultCss: true,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-149605117-1",
-      },
-    },
-    {
       resolve: `@nehalist/gatsby-theme-nehalem`,
       options: {
         contentPath: "./content",
@@ -74,6 +56,42 @@ module.exports = {
           display: `minimal-ui`,
           icon: `${__dirname}/content/assets/images/logo.png`,
         },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              noInlineHighlight: false,
+            },
+          },
+          {
+            resolve: "gatsby-remark-copy-linked-files", // gif, svg
+            options: {
+              ignoreFileExtensions: ["png", "jpg", "jpeg"],
+              destinationDir: f => `${f.name}-${f.hash}`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`, // png, jpg
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-149605117-1",
       },
     },
   ],

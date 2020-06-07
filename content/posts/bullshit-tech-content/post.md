@@ -2,7 +2,7 @@
 title: "Most tech content is bullshit"
 path: "/tech-content-consumer"
 tags: ["other"]
-excerpt: I saw developers taking other people's solutions for granted. Not thinking twice about the approach, not bothering about analyzing it. And when this is Dan Abramov telling you how to use React or documentation saying that this is the only way to use its API, then yes, you probably should agree with it. Yet, when you're using some tech content without at least a bit of skepticism, then well, you still might go far in your career, but it also may hold you back.
+excerpt: “One of the great commandments of science is, "Mistrust arguments from authority." Too many such arguments have proved too painfully wrong. Authorities must prove their contentions like everybody else.” ~ Carl Sagan
 created: 2020-06-07
 updated: 2020-06-07
 ---
