@@ -239,6 +239,7 @@ const ToggleTocButton = styled.button`
   display: flex;
   position: fixed;
   justify-content: center;
+  align-items: center;
   right: 20px;
   bottom: 20px;
   border-radius: 100%;
