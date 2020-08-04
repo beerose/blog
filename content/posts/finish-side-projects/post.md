@@ -58,8 +58,8 @@ A real-life story now. This blog. I wanted to add reactions and comments. It wen
 - Released two libraries.
 - Learned tons about CSS animations.
 - Started writing a blogpost about CSS animations. (It's ready, but not published.)
-- Created a nice (IMO) landing page.
-- Learned more about Theme UI.
+- Created a nice (IMO) landing page and learned about designing landing pages.
+- Learned more about Theme UI and using it with Gatsby.
 - Contributed to Theme UI as a result of the previous point.
 - Learned more about Gatsby.
 
@@ -89,4 +89,4 @@ I firmly believe that developers' job is not about writing code. It's about solv
 
 It may sound a bit sad but our days are limited and we should spend our free time in the best way we can. Finishing all of your side projects may not always be it.
 
-Advice for the end? Praise what you already learned. Don't look at your abandoned side project as a failure, but notice all the things you learned along the way. Did you have fun? Or did you grow as a developer through practice? There are more benefits to side projects than the only finished project. Appreciate all those little things.
+Advice for the end? Praise what you already learned. Don't look at your abandoned side project as a failure, but notice all the things you accomplished along the way. Did you have fun? Or did you grow as a developer? If you got something out of it, then it's a victory.
