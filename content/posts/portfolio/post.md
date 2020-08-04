@@ -8,42 +8,35 @@ created: 2018-08-17
 updated: 2018-08-17
 ---
 
-## Step 1: Pretend you have a completed concept
+## Step 1: Pretend you have a completed concept.
 
 Come up with an idea. Feel totally excited about it. Let the design concept grow in your head, so you cannot wait to start implementing it. Think about the colors, illustrations, page layout, main menu layout, articles layout, projects section layout, side menu background color, fancy on hover and on click button animations, which font to use, whether it’s a good idea or not to use two different fonts?
-
-Don’t forget about social network icons. What color, what shape? Facebook, Instagram, LinkedIn, Github, Gitlab, Behance, Dribbble, Twitter. Isn’t it too much? How to space them out? Maybe it’s a good thing to get rid of some. Who cares about your Instagram or your facebook account? Github and Gitlab? It would be better to choose one of them. Ok, so there will be some time needed to migrate all the projects in one place.
-
-You have to bring some attention. Brave colors but not too lumpish. Minimalism is on top now, take it into account. Ok, so how to stay minimalistic and show off your CSS skills? Think. Maybe some fancy background animation. Maybe some small cursor game. Or maybe not. Let people focus on your story. What’s your story? Do you want to place your photo somewhere or not? People do it in their portfolios, so maybe it’s a good thing to do. But, wait. Which photo? OMG, you don’t have any classy-looking but not too serious photos of you? Reserve some time to take them.
-
+Don’t forget about social network icons. What color, what shape? Facebook, Instagram, LinkedIn, Github, Gitlab, Behance, Dribbble, Twitter. Isn’t it too much? How to space them out? Maybe it’s a good thing to get rid of some. Who cares about your Instagram or your Facebook account? Github and Gitlab? It would be better to choose one of them. Okay, so there will be some time needed to migrate all the projects in one place.
+You have to bring some attention—bold colors but not too lumpish. Minimalism is on top now, take it into account. Okay, so how to stay minimalistic and show off your CSS skills? Think. Maybe some fancy background animation. Perhaps some small cursor game. Or maybe not. Let people focus on your story. What’s your story? Do you want to place your photo somewhere or not? People do it in their portfolios, so maybe it’s a good thing to do. But wait. Which photo? OMG, you don’t have any classy-looking but not too severe pictures of you? Reserve some time to take them.
 Don’t panic if you start feeling overwhelmed.
 
 ## Step 2: Convince yourself you are ready to start coding
 
-Let’s make it quick. Use some boilerplate. No matter which one. There won’t be much code. It’s gonna be deployed today. Don’t let the project setup to take too much time. Oh, you did kinda similar website half a year ago? Use it. Remove all obsolete components, spend some time fixing dependencies. Don’t get too annoyed.
-
-Make your background. Does the background have to be the same on the whole website or does it have to change somehow? Let’s make it the same for now. Focus on the main view. Did you plan to put your portfolio-selfie in the middle? Sorry, it looks awful. But don’t worry, it’s not a big deal. Only after 2847752 tries, you have the perfect position for your photo. One more problem. Photo wrapped in the circle doesn’t look good in the new position. Make it squarish. Type some title. Your chosen font is curved and your photo is squarish. Too bad. Choose another one. Thank God for Google Fonts.
+Let’s make it quick. Use some boilerplate—no matter which one. There won’t be much code. It’s gonna be deployed today. Don’t let the project setup to take too much time. Oh, you did kinda similar website half a year ago? Use it. Remove all obsolete components, spend some time fixing dependencies. Don’t get too annoyed.
+Make your background. Does the background have to be the same on the whole website, or does it have to change somehow? Let’s make it the same for now. Focus on the main view. Did you plan to put your portfolio-selfie in the middle? Sorry, it looks awful. But don’t worry, it’s not a big deal. Only after 2847752 tries, you have the perfect position for your photo—one more problem. The picture wrapped in the circle doesn’t look good in the new location. Make it squarish. Type a title. Your chosen font is curved, and your photo is squarish. Too bad. Choose another one. Thank God for Google Fonts.
 
 ## Step 3: Change your background one more time
 
-Realize that the overall look of the website appears to be sooo boring. Maybe you should give up on classy and minimalism. What’s the Pantone color of the year? Ultra Violet. Sounds ultra cool, can go with it. Its complementary color is also kinda nice. Geometric shapes are on top now, so what about the ultraviolet background with some last year’s [Greenery](https://www.pantone.com/color-intelligence/color-of-the-year/color-of-the-year-2017) triangle? Or square. Or both. You only have to get rid of everything you’ve done earlier because it doesn’t go well with the new background anymore. To sum up: you just jumped from classy looking, low-key layout to this so brave and conspicuous one. This is something that can bring attention, for sure. But are such intense colors a good idea for the portfolio? Google it. Opinions vary. Let’s leave it as it is.
-
-After some time implementing analogous components to those that you previously removed, realize that your first idea with classy looking layout was better. Thank God again, for git this time.
+Realize that the overall look of the website appears to be sooo boring. Maybe you should give up on classy and minimalism. What’s the Pantone color of the year? Ultra Violet. Sounds ultra-cool, can go with it. Its complementary color is also kinda nice. Geometric shapes are on top now, so what about the ultraviolet background with some last year’s Greenery triangle? Or square. Or both. You only have to get rid of everything you’ve done earlier because it doesn’t go well with the new background anymore. To sum up: you just jumped from classy looking, low-key layout to this so brave and conspicuous one. This is something that can bring attention, for sure. But are such intense colors a good idea for the portfolio? Google it. Opinions vary. Let’s leave it as it is.
+After some time implementing analogous components to those you previously removed, realize that your first idea with the classy looking layout was better. Thank God again for git this time.
 
 ## Step 4: Figure out that there’s no project you want to share
 
-At some point, you’re gonna need to add some projects to your portfolio. That’s the case for portfolio, isn’t it? Not too much, not too little. So you’re glancing through your recent projects facing the problem _what if none of them is good enough_? It’s your portfolio, everything has to be perfect.
-
+At some point, you’re gonna need to add some projects to your portfolio. That’s the case for portfolio, isn’t it? Not too much, not too little. So you’re glancing through your recent projects facing the problem what if none of them is good enough? It’s your portfolio, everything has to be perfect.
 Okay, but maybe your projects are not so bad? They only need some fixes, some brushing up, better readme or any readme at all. You can do it. Pick a few and start refreshing them one by one.
+Let’s start with the first one. It has no readme, but it’s your favorite. You were really proud of it, remember? You did it a couple months ago, but it’s sooo not up to date. It needs redesigning. And rethinking the code structure. You would do everything differently today. Hours passed, but you’re almost here. Now it looks like something you want to share with people. Oh my god, there’s readme left! You are kinda tired, no way you’re gonna write it straight away. Let’s take a break. Maybe one week break. Refreshing one project a week is still a good idea. That’s your plan.
 
-Let’s start with the first one. It has no readme, but it’s your favorite. You were really proud of it, remember? You did it a couple months ago but it’s sooo not up to date. It needs redesigning. And rethinking the code structure. You would do everything in a different way today. Hours passed but you’re almost here. Now it looks like something you want to share with people. Oh my god, there’s readme left! You are kinda tired, no way you’re gonna write it straight away. Let’s take a break. Maybe one week break. Refreshing one project a week is still a good idea. That’s your plan.
+## Step 5: Forget about it.
 
-## Step 5: Forget about it
-
-Okay, so you had some plans for the next weekend, forgot about this readme. Two weeks passed and you still have no project you would like to attach to your portfolio. Shit happens. Maybe next week.
-
-More time passed and one day a sudden thought came to you — _it would be so great to have a portfolio_. But wait, you remind yourself you already started creating one couple months ago. So you run this project after some time and got stuck with a though how _could I come up with such a bad design_? You know there’s nothing to refactor, you have to start from scratch.
-
+Okay, so you had some plans for the next weekend, forgot about this readme. Two weeks passed, and you still have no project you would like to attach to your portfolio. Shit happens. Maybe next week.
+More time passed, and one day a sudden thought came to you — it would be great to have a portfolio. But wait, you remember you already started creating one couple of months ago. You ran this project and got stuck with a though how could I come up with such a bad design? You know there’s nothing to refactor, you have to start from scratch.
 Go to step 1.
 
-Hi, I’m Ola and I still don’t have my portfolio done. But at least I know why.
+---
+
+Hi, I’m Ola, and I still don’t have my portfolio done. But at least I know why.

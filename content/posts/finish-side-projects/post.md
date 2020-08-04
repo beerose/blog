@@ -1,0 +1,92 @@
+---
+title: "You don't need to finish your side projects"
+path: "/finishing-side-projects"
+tags: ["other"]
+excerpt: <i>If you're no longer interested in a project, maybe you already got what you came for?</i>
+created: 2020-07-29
+updated: 2020-07-29
+---
+
+_At least not all of them. Don't get me wrong. It is a bad habit to abandon each one of your side projects, but if your project holds you back, or you're not excited anymore, maybe it's time to move on?_
+
+---
+
+Why am I writing this? So, a couple of times, I saw people motivating others with _"you need to finish your side projects to be a good developer"_. Just wanted to say one thing: _Hell, you don't_.
+
+Yes, side projects are super important for your career as a developer. For many reasons that I mention in this blogpost. However, finishing them isn't.
+
+Let me explain why.
+
+## It's okay not to be interested in your project anymore
+
+> If you're no longer interested in a project, maybe you already got what you came for.
+>
+> _https://news.ycombinator.com/item?id=22793146_
+
+This changed how I feel about my side projects. There may be many reasons apart from learning why we decide to start a new side project:
+
+- Get yourself busy for a weekend — another rainy day as an apportunity for some programming practice?
+- Desire to do something chill — maybe you want to do something easy and silly for a change from your daily work?
+- Or the other way around — if your daily work is not demaning enough, you may want some quick challenge?
+- Want to test out a new idea and see if it's something interesting.
+
+There are people for whom this whole commitment comes easy. Who are builders, finishing all of their projects. It may be a disputable thing to say but for _most_ of us it's not that easy.
+Some people need a constant challenge, and when the challenging part is over, so is their motivation. Some are easily bored. And some people have hundreds ideas per day, and are moving from one to another figuring out what will give them the most.
+
+So it's okay to move on if you _already got what you wanted_ (or if you never wanted anything and your side project turned out to be just a _bad_ idea).
+
+---
+
+Once I wanted to learn more about Dark, so I decided to build an online mafia game. I started with the Dark part. It was exciting, learned a ton. But then I was like _am I really going to write all this javascript and CSS to finish the game_? I don't even like games. And I'm writing and reading javascript daily. So I moved on. I _already got what I came for._ (Btw. Does someone want to pick this up? Backend is almost done.)
+
+## Side projects are (mostly) about learning
+
+<!-- _\* Except for the ones that are supposed to be released as products or opensource libraries._ -->
+
+We often pick up a side project to learn something new. Let's say you want to learn about authz in React applications. You need some sample app, right? So you may either go with a classic todo app or keep thinking about a perfect sample app to implement along with learning authz. Whatever you choose, the app part is not essential. You came here to learn about authz, and you know React pretty well already. So you can do the authz part and move on. You may already have tons of todo apps implemented. Forget about the app and all the tedious work. Did you learn what you wanted? Yes? Move on then! Use this knowledge to build an app that matters to you.
+
+## Acknowledge the journey
+
+A real-life story now. This blog. I wanted to add reactions and comments. It went awesome! Look at this summary:
+
+**What I wanted?**
+
+- Add reactions and comments to my blog.
+
+**What I got?**
+
+- Released two libraries.
+- Learned tons about CSS animations.
+- Started writing a blogpost about CSS animations. (It's ready, but not published.)
+- Created a nice (IMO) landing page.
+- Learned more about Theme UI.
+- Contributed to Theme UI as a result of the previous point.
+- Learned more about Gatsby.
+
+Well. I'm sorry you can't see reactions nor comments on this blog. Still, tell me if all those benefits aren't great?
+
+---
+
+Your side project journey may be a straight line from start to finish. But it may not. You may never get to the end! As much as I wish you all to cross the finish line for most of your side projects, getting lost along the way is not that bad either! I personally highly recommend it. 😬
+
+<img src="./journey.png" />
+
+## Save energy for something meaningful
+
+Maybe you have another idea for a side project or even a product? But something tells you that you need to finish all those started projects first. No, you don't. Are you bored with the previous projects and the new idea sounds exciting? Go for it. It may be another abandoned project, but it may be a hit. It may end up having a significant impact on many people, or maybe one day, you can build a startup on it? Who knows. Work on what makes you excited and what you believe in.
+
+(I found this thread on _Stackexchange_ and the title is a great fit here: [Can't work on real projects because I keep thinking about my side projects](https://softwareengineering.stackexchange.com/questions/51986/cant-work-on-real-projects-because-i-keep-thinking-about-my-side-projects).)
+
+## Nobody wants another Trello clone
+
+A bit of a follow up on the previous point.
+
+One meaningful project is worth more than ten todo apps or Trello clones. Side projects help you with programming practice, gaining problem-solving skills. If you solve tons of problems, read thousands of lines of code, you're becoming a more and more experienced developer. You can then distinguish between lousy code and good code. You can solve problems faster because you did it so many already (let's be honest, tho, you're just becoming better at googling). You are comfortable with new languages and frameworks. You can use tools and read the docs (underestimated skill). All of this is what matters. Not that you have ten Trello clones written with ten different CSS-in-Js libraries.
+
+I firmly believe that developers' job is not about writing code. It's about solving problems. And it's the sum of your skills that make you good at your job, not dozens of sample applications with the more or less same logic.
+
+---
+
+It may sound a bit sad but our days are limited and we should spend our free time in the best way we can. Finishing all of your side projects may not always be it.
+
+Advice for the end? Praise what you already learned. Don't look at your abandoned side project as a failure, but notice all the things you learned along the way. Did you have fun? Or did you grow as a developer through practice? There are more benefits to side projects than the only finished project. Appreciate all those little things.
