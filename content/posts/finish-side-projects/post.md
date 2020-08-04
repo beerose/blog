@@ -11,7 +11,7 @@ _At least not all of them. Don't get me wrong. It is a bad habit to abandon each
 
 ---
 
-Why am I writing this? So, a couple of times, I saw people motivating others with _"you need to finish your side projects to be a good developer"_. Just wanted to say one thing: _Hell, you don't_.
+Why am I writing this? So, a couple of times, I saw people motivating others with _"you need to finish your side projects to be a good developer"_. Just wanted to say one thing: _The hell, you don't_.
 
 Yes, side projects are super important for your career as a developer. For many reasons that I mention in this blogpost. However, finishing them isn't.
 
