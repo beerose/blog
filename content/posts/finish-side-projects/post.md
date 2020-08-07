@@ -43,7 +43,7 @@ Once I wanted to learn more about Dark, so I decided to build an online mafia ga
 
 <!-- _\* Except for the ones that are supposed to be released as products or opensource libraries._ -->
 
-We often pick up a side project to learn something new. Let's say you want to learn about authz in React applications. You need some sample app, right? So you may either go with a classic todo app or keep thinking about a perfect sample app to implement along with learning authz. Whatever you choose, the app part is not essential. You came here to learn about authz, and you know React pretty well already. So you can do the authz part and move on. You may already have tons of todo apps implemented. Forget about the app and all the tedious work. Did you learn what you wanted? Yes? You're free to move on! Use this knowledge to build an app that matters to you.
+We often pick up a side project to learn something new. Let's say you want to learn about auth in React applications. You need some sample app, right? So you may either go with a classic todo app or keep thinking about a perfect sample app to implement along with learning auth. Whatever you choose, the app part is not essential. You came here to learn about auth, and you know React pretty well already. You may already have tons of todo apps implemented. Forget about the app and all the tedious work. Did you learn what you wanted? Yes? You're free to move on! Use this knowledge to build an app that matters to you.
 
 ## Acknowledge the journey
 
