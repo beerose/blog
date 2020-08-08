@@ -23,7 +23,8 @@ Let me explain why.
 >
 > _https://news.ycombinator.com/item?id=22793146_
 
-This changed how I feel about my side projects. There may be many reasons apart from learning why we decide to start a new side project:
+After I read this, it changed how I feel about my side projects. 
+There may be many reasons apart from learning why we decide to start a new side project:
 
 - Get yourself busy for a weekend — another rainy day as an opportunity for some programming practice?
 - Desire to do something fun — maybe you want to do something easy and silly for a change from your daily work?
