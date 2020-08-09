@@ -1,5 +1,5 @@
 ---
-title: "It's okay to leave your side projects unfinished"
+title: "It's okay to leave side projects unfinished"
 path: "/finishing-side-projects"
 tags: ["other"]
 excerpt: <i>If you're no longer interested in a project, maybe you already got what you came for?</i>
@@ -69,7 +69,7 @@ Well. I'm sorry you can't see reactions nor comments on this blog. Still, all th
 
 Your side project journey may be a straight line from start to finish. But it may not. You may never get to the end! As much as I wish you all to cross the finish line for most of your side projects, getting lost along the way is not that bad either! I personally highly recommend it. 😬
 
-<img src="./journey.png" />
+<img width="100%" src="./journey.png" />
 
 ## Save energy for something meaningful
 
