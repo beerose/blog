@@ -41,7 +41,8 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-sharingbuttons": "^1.0.0",
-    "read-time-estimate": "^0.0.2"
+    "read-time-estimate": "^0.0.2",
+    "use-comments": "^1.0.0"
   },
   "devDependencies": {
     "gatsby-remark-static-images": "1.0.1",

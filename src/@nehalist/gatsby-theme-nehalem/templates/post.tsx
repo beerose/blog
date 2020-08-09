@@ -10,7 +10,6 @@ import { theme } from "../styles/theme";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import slugify from "slugify";
 import Bio from "@nehalist/gatsby-theme-nehalem/src/components/bio";
-import Comments from "@nehalist/gatsby-theme-nehalem/src/components/comments";
 import SEO from "@nehalist/gatsby-theme-nehalem/src/components/seo";
 import { FaAlignJustify, FaTimes } from "react-icons/fa";
 import readTimeEstimate from "read-time-estimate";
@@ -18,6 +17,7 @@ import { SiteMetadata } from "../utils/models";
 import { Facebook, Twitter } from "react-sharingbuttons";
 import "react-sharingbuttons/dist/main.css";
 import { TimeToRead } from "../../../components/TimeToRead";
+import { Comments } from "../../../components/Comments";
 
 interface PostTemplateProps {
   location: Location;
@@ -269,6 +269,9 @@ const StyledLink = styled(Link)`
 const ShareButtons = styled.div`
   display: flex;
   padding: 10px 40px;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 10px 20px;
+  }
   a {
     margin: 0;
   }
@@ -391,6 +394,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
                 url={metadata.site.siteMetadata.siteUrl + post.frontmatter.path}
               />
             </ShareButtons>
+            {/* <Comments postId={post.frontmatter.title} /> */}
             <PostFooter>
               <p>
                 Published under&nbsp;
@@ -428,7 +432,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
           </BioWrapper>
         </PostAdditionContent>
       </PostAddition>
-      <Comments />
     </Layout>
   );
 };
