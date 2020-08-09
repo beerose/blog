@@ -63,7 +63,7 @@ A real-life story now. This blog. I wanted to add reactions and comments. It wen
 - Contributed to Theme UI a couple of times.
 - Learned more about Gatsby.
 
-Well. I'm sorry you can't see reactions nor comments on this blog. Still, all those gains are great, aren't they?
+Well. I'm sorry you can't see reactions nor comments on this blog. Still, all these gains are great, aren't they?
 
 ---
 
