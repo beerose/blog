@@ -1,5 +1,5 @@
 ---
-title: "It's okay to leave side projects unfinished"
+title: "It's okay to leave your side projects unfinished"
 path: "/finishing-side-projects"
 tags: ["other"]
 excerpt: <i>If you're no longer interested in a project, maybe you already got what you came for?</i>
