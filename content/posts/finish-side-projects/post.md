@@ -83,7 +83,11 @@ A bit of a follow up on the previous point.
 
 One meaningful project is worth more than ten todo apps or Trello clones. Side projects help you with programming practice, growing problem-solving skills and getting to know more concepts. If you solve tons of problems, read thousands of lines of code, you're becoming a more and more experienced developer. You can then distinguish between lousy code and good code. You can solve problems faster because you did it so many times already (let's be honest, tho, you're just becoming better at googling). You are comfortable with new languages and frameworks. You can use tools and read the docs (underestimated skill). All of this is what matters. Not that you have ten Trello clones written with ten different CSS-in-JS libraries.
 
-I firmly believe that developers' job is not about writing code. It's about solving problems. And it's the sum of your skills that make you good at your job, not dozens of sample applications with the more or less same logic.
+I firmly believe that developers' job is not about writing code. It's about solving problems. And it's the sum of your skills that make you good at your job, not dozens of sample applications with the more or less same logic. Practice is not enough. Deliberate practice is.
+
+> The key [to expertise] is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability, trying it, analyzing your performance while and after doing it, and correcting any mistakes.
+>
+> ~ Peter Norvig, https://norvig.com/21-days.html
 
 ---
 
