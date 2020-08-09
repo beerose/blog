@@ -1,5 +1,5 @@
 ---
-title: "You don't need to finish your side projects"
+title: "It's okay to leave your side projects unfinished"
 path: "/finishing-side-projects"
 tags: ["other"]
 excerpt: <i>If you're no longer interested in a project, maybe you already got what you came for?</i>
@@ -7,29 +7,26 @@ created: 2020-07-29
 updated: 2020-07-29
 ---
 
-_At least not all of them. Don't get me wrong. It is a bad habit to abandon each one of your side projects, but if your project holds you back, or you're not excited anymore, maybe it's time to move on?_
+_\* At least some of them. Don't get me wrong. It is a bad habit to abandon each one of your side projects, but if your project holds you back, or you're not excited anymore, maybe it's time to move on?_
 
 ---
 
-Why am I writing this? So, a couple of times, I saw people motivating others with _"you need to finish your side projects to be a good developer"_. Just wanted to say one thing: _The hell, you don't_.
+Why am I writing this? So, a couple of weeks back I saw a tweet saying something like _"you need to finish all of your side projects to be a good developer"_, and most people were supporting this statement in replies. I just wanted to say one thing: _The hell, you don't_.
 
-Yes, side projects are super important for your career as a developer. However, finishing them isn't.
+Yes, side projects are super important for your career as a developer. However, finishing them isn't. Most importantly, you don't need to stress too much after abandoning a side project. Let me explain why.
 
-Let me explain why.
-
-## It's okay not to be interested in your project anymore
+## You already got what you wanted
 
 > If you're no longer interested in a project, maybe you already got what you came for.
 >
 > _https://news.ycombinator.com/item?id=22793146_
 
-After I read this, it changed how I feel about my side projects. 
 There may be many reasons apart from learning why we decide to start a new side project:
 
 - Get yourself busy for a weekend — another rainy day as an opportunity for some programming practice?
 - Desire to do something fun — maybe you want to do something easy and silly for a change from your daily work?
 - Or the other way around — if your daily work is not demanding enough, you may want some quick challenge?
-- Want to test out a new idea and see if it's something interesting.
+- You want to test out a new idea and see if it's something interesting?
 
 There are people for whom commitment comes easy — builders who finish all of their projects. It may be a disputable thing to say but for _most_ of us it's not that easy.
 Some people need a constant challenge, and when the challenging part is over, so is their motivation. Some are easily bored. And some people have hundreds of ideas per day, and are moving from one to another figuring out what works for them.
@@ -44,7 +41,9 @@ Once I wanted to learn more about Dark, so I decided to build an online mafia ga
 
 <!-- _\* Except for the ones that are supposed to be released as products or opensource libraries._ -->
 
-We often pick up a side project to learn something new. Let's say you want to learn about auth in React applications. You need some sample app, right? So you may either go with a classic todo app or keep thinking about a perfect sample app to implement along with learning auth. Whatever you choose, the app part is not essential. You came here to learn about auth, and you know React pretty well already. You may already have tons of todo apps implemented. Forget about the app and all the tedious work. Did you learn what you wanted? Yes? You're free to move on! Use this knowledge to build an app that matters to you.
+We often pick up a side project to learn something new. Let's say you want to learn about auth in React applications. You need some sample app, right? So you may either go with a classic todo app or keep thinking about a perfect sample app to implement along with learning auth. Whatever you choose, the app part is not essential. You came here to learn about auth, and you know React pretty well already. You may have tons of todo apps implemented in React.
+
+Anyway. So you start with the auth part and some super simple skeleton of an app, and you cover what you wanted to learn. Now, time to finish your application. Does it sound like tedious work? Maybe you don't need to do this. Did you learn what you wanted? Yes? You're free to move on! Use this knowledge to build an app that matters to you.
 
 ## Acknowledge the journey
 
@@ -59,12 +58,12 @@ A real-life story now. This blog. I wanted to add reactions and comments. It wen
 - Released two libraries.
 - Learned tons about CSS animations.
 - Started writing a blogpost about CSS animations. (It's ready, but not published.)
-- Created a nice (IMO) landing page and learned about designing landing pages.
+- Created a nice (IMO) landing page.
 - Learned more about Theme UI and using it with Gatsby.
-- Contributed to Theme UI as a result of the previous point.
+- Contributed to Theme UI a couple of times.
 - Learned more about Gatsby.
 
-Well. I'm sorry you can't see reactions nor comments on this blog. Still, tell me if all those benefits aren't great?
+Well. I'm sorry you can't see reactions nor comments on this blog. Still, all those gains are great, aren't they?
 
 ---
 
@@ -82,7 +81,7 @@ Maybe you have another idea for a side project or even a product? But something 
 
 A bit of a follow up on the previous point.
 
-One meaningful project is worth more than ten todo apps or Trello clones. Side projects help you with programming practice, gaining problem-solving skills. If you solve tons of problems, read thousands of lines of code, you're becoming a more and more experienced developer. You can then distinguish between lousy code and good code. You can solve problems faster because you did it so many times already (let's be honest, tho, you're just becoming better at googling). You are comfortable with new languages and frameworks. You can use tools and read the docs (underestimated skill). All of this is what matters. Not that you have ten Trello clones written with ten different CSS-in-Js libraries.
+One meaningful project is worth more than ten todo apps or Trello clones. Side projects help you with programming practice, growing problem-solving skills and getting to know more concepts. If you solve tons of problems, read thousands of lines of code, you're becoming a more and more experienced developer. You can then distinguish between lousy code and good code. You can solve problems faster because you did it so many times already (let's be honest, tho, you're just becoming better at googling). You are comfortable with new languages and frameworks. You can use tools and read the docs (underestimated skill). All of this is what matters. Not that you have ten Trello clones written with ten different CSS-in-JS libraries.
 
 I firmly believe that developers' job is not about writing code. It's about solving problems. And it's the sum of your skills that make you good at your job, not dozens of sample applications with the more or less same logic.
 
@@ -94,6 +93,4 @@ Takeaways:
 
 - Praise what you already learned.
 - Don't look at your abandoned side project as a failure, but notice all the things you accomplished along the way.
-- Did you have fun? Or did you grow as a developer?
-
-If you got something out of it, then it's a victory.
+- Did you have fun? Or did you grow as a developer? If you got something out of it, then it's a victory!
