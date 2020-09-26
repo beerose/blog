@@ -16,8 +16,6 @@ And all that was needed to be done was to understand the problem — "users are 
 
 This is a small, silly example; one hour of time is not that bad. But it applies for bigger and bigger things as well.
 
----
-
 ## How to be a problem solver
 
 Let's be honest. Writing code is not the most challenging part of being a developer. Maybe, in the beginning, it is. But at some point you're used to it, you know the language, you know the tools. You can write code all day long, without actually using your brain that much. Sometimes it's okay. After all, there are tons of boilerplate we need to write. However, you don't always precisely know what code you need to write. And this is where the challenge begins — coming up with a spec, new architecture, comparing different solutions.
