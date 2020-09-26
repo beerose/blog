@@ -9,7 +9,10 @@ import theme from "../styles/theme";
 
 const skills = [
   { color: "#2E4057", items: ["MySQL", "PostgreSQL", "Ecto", "Redis"] },
-  { color: "#729B58", items: ["Golang", "Elixir", "NodeJS", "Docker", "Kubernetes", "OCaml"] },
+  {
+    color: "#729B58",
+    items: ["Golang", "Elixir", "NodeJS", "Docker", "Kubernetes", "OCaml"],
+  },
   { color: "#197559", items: ["React", "TypeScript", "CSS", "Redux", "RxJS"] },
 ];
 
@@ -34,7 +37,7 @@ const StyledTag = styled.span<{ color?: string }>`
   margin: 0 10px 10px 0;
   transition: 0.3s all;
 
-  border: 1.5px solid ${props => props.color || theme.colors.secondaryDarker};
+  border: 1.5px solid ${(props) => props.color || theme.colors.secondaryDarker};
   padding: 4px 8px;
 `;
 
@@ -90,15 +93,18 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
           <ul style={{ listStyleType: "none", padding: 0, marginBottom: 0 }}>
             <li>🏡 I live in Wrocław, Poland. </li>
             <li>🎓 I have a bachelor degree in Computer Science. </li>
-            <li>👩🏻‍💻 I've been working as a full-stack developer since 2017. </li>
-            <li>🍦 I consider ice cream a proper dinner. </li>
-            <li>🎾 I've been playing tennis for a couple of years. </li>
+            <li>
+              👩🏻‍💻 I've been working as a backend developer and full-stack
+              developer.
+            </li>
+            <li>👩🏻‍💻 Currently working as a frontend tech lead at Hasura.</li>
+            <li>🎾 I've been playing tennis for many years. </li>
             <li>🎨 I like art. Especially Edward Hopper's.</li>
           </ul>
           <h2>Skills</h2>
-          {skills.map(skillArea => (
+          {skills.map((skillArea) => (
             <Skills key={skillArea.color}>
-              {skillArea.items.map(skill => (
+              {skillArea.items.map((skill) => (
                 <StyledTag key={skill} color={skillArea.color}>
                   {skill}
                 </StyledTag>

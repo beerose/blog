@@ -2,14 +2,14 @@
 title: "Developers job is not about writing code"
 path: "/jira-to-javascript"
 tags: ["other"]
-excerpt: “One of the great commandments of science is, "Mistrust arguments from authority." Too many such arguments have proved too painfully wrong. Authorities must prove their contentions like everybody else.” ~ Carl Sagan
+excerpt: No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on solving problems, not on writing code. We're not there to blindly rewrite tickets to code. We're here to think about how to solve issues, and then solving them by writing code, or not.
 created: 2020-08-26
 updated: 2020-08-26
 ---
 
 No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on solving problems, not on writing code. We're not there to blindly rewrite tickets to code. We're here to think about how to solve issues, and then solving them by writing code, or not.
 
-## The Problem
+### The Problem
 
 You get a task like: "add a button to refresh Y on page X". It's simple, straightforward job. Let's translate this ticket to JavaScript! You don't care that there was already a super similar button that seemed to be doing the same thing. You were told to add a button. So you did it. All done in less than an hour. Then someone during code review will point out that you only needed to update logic in the existing button. So you're back with the same job, after wasting reviewer and your time.
 And all that was needed to be done was to understand the problem — "users are not able to refresh all the content of the table, because the current refresh button only refreshes some part fo the data."
@@ -18,24 +18,24 @@ This is a small, silly example; one hour of time is not that bad. But it applies
 
 ---
 
-# How to be a problem solver
+## How to be a problem solver
 
 Let's be honest. Writing code is not the most challenging part of being a developer. Maybe, in the beginning, it is. But at some point you're used to it, you know the language, you know the tools. You can write code all day long, without actually using your brain that much. Sometimes it's okay. After all, there are tons of boilerplate we need to write. However, you don't always precisely know what code you need to write. And this is where the challenge begins — coming up with a spec, new architecture, comparing different solutions.
 
-## Some tickets are bullshit
+### Some tickets are bullshit
 
 Some tasks may sound like bullshit. And you probably have it in the back of your head when implementing them. Why waste your time, reviewer time, company time on it then? Why not stop and think — so what problem they want me to solve? What am I trying to fix or improve? Does it even make sense? Will the suggested solution work? If you can't answer these questions, then you probably need more context. Once you do answer these questions, you're going to have a better understanding of the task, and more insights on how to approach it. And also, if you answer these questions and conclude out that there's something wrong, bring this up. Do you see a problem that might have been missed? Do you know a solution that seems better?
 
-## Code is less important than you think
+### Code is less important than you think
 
 Maybe the problem is too much focus on the code itself. You think about all the smart ways to implement the feature that you won't stop for a moment to realize that "hey, I'm removing this page in my other PR, should we actually do this?" or "hey, that will make some other feature unusable". That's the simple way to make your work counterproductive. It won't always mean a complete waste of time. But it won't be the best use of your time, either.
 ting yourself in your users' shoes.
 
-## Ask for context, not a step-by-step solution
+### Ask for context, not a step-by-step solution
 
 In most of the time, you won't be provided with all the answers and step-by-step solution. Most of the tasks will lack description. Or even if they don't, it's super easy to misunderstand the content. There's also a limit in hand-holding you can get. Don't demand it. At least try to think about a solution yourself. Make sure to have enough context.
 
-## Think first, then do
+### Think first, then do
 
 I guess the title speaks for itself, and also kind of summarizes the whole problem. Don't write code blindly. Think about it first. And think about what the problem is.
 
