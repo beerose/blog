@@ -90,8 +90,6 @@ const PostContent = styled.div`
   h6::before {
     display: block;
     content: " ";
-    height: 90px;
-    margin-top: -90px;
     visibility: hidden;
   }
 
@@ -100,6 +98,10 @@ const PostContent = styled.div`
     margin-top: 44px;
     padding-top: 40px;
     line-height: 1.2;
+  }
+
+  h2 > .anchor {
+    top: 40px;
   }
 
   code[class*="language-text"] {

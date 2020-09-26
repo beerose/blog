@@ -7,12 +7,14 @@ created: 2020-08-26
 updated: 2020-08-26
 ---
 
-No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on solving problems, not on writing code. We're not there to blindly rewrite tickets to code. We're there to think about how to solve issues, and then solve them with code or not.
+No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on _solving problems_, not on _writing code_. We're not there to blindly rewrite tickets to code. We're there to think about how to solve issues, and then solve them with code or not.
+
+Let's take an example scenario.
 
 ### The Problem
 
-You get a task like: "add a button to refresh Y on page X". It's simple, straightforward job. Let's translate this ticket to JavaScript! You don't care that there was already a super similar button that seemed to be doing the same thing. You were told to add a button. So you did it. All done in less than an hour. Then someone during code review will point out that you only needed to update logic in the existing button. So you're back with the same job, after wasting reviewer and your time.
-And all that was needed to be done was to understand the problem — "users are not able to refresh all the content of the table, because the current refresh button only refreshes some part fo the data."
+You get a task like: _"add a button to refresh Y on page X"_. It's simple, straightforward job. Let's translate this ticket to JavaScript! You don't care that there was already a super similar button that seemed to be doing the same thing. You were told to add a button. So you did it. All done in less than an hour. Then someone during code review will point out that you only needed to update logic in the existing button. So you're back with the same job, after wasting reviewer and your time.
+And all that was needed to be done was to understand the problem — _"users are not able to refresh all the content of the table, because the current refresh button only refreshes some parts of the data."_
 
 This is a small, silly example; one hour of time is not that bad. But it applies for bigger and bigger things as well.
 
@@ -26,15 +28,15 @@ Some tasks may sound like bullshit. And you probably have it in the back of your
 
 ### Code is less important than you think
 
-Maybe the problem is too much focus on the code itself. You think about all the smart ways to implement the feature that you won't stop for a moment to realize that "hey, I'm removing this page in my other PR, should we actually do this?" or "hey, that will make some other feature unusable". That's the simple way to make your work counterproductive. It won't always mean a complete waste of time. But it won't be the best use of your time, either.
+Maybe the problem is too much focus on the code itself. You think about all the smart ways to implement the feature that you won't stop for a moment to realize that _"hey, I'm removing this page in my other PR, should we actually do this?"_ or _"hey, that will make some other feature unusable"_. That's the simple way to make your work counterproductive. It won't always mean a _complete_ waste of time. But it won't be the best use of your time, either.
 
 ### Ask for context, not a step-by-step solution
 
-In most of the time, you won't be provided with all the answers and step-by-step solution. Most of the tasks will lack description. Or even if they don't, it's super easy to misunderstand the content. There's also a limit in hand-holding you can get. Don't demand it. At least try to think about a solution yourself. Make sure to have enough context.
+Most of the time, you won't be provided with all the answers and step-by-step solutions. Majority of the tasks will lack description. Or even if they don't, it's super easy to misunderstand the content. There's also a limit in hand-holding you can get. Don't demand it. Make sure to have enough context and at least try to think about a solution yourself.
 
 ### Think first
 
-I guess the heading speaks for itself, and also kind of summarizes the whole problem. Don't write code blindly. Think about it first. And think about what the problem is.
+I guess the heading speaks for itself, and also kind of summarizes the whole problem. Don't write code blindly. Think about the task first. And think about what the problem is.
 
 ---
 
@@ -50,6 +52,8 @@ However, are all those coding skills that important that you'd hire someone who 
 We are pretty are lazy creatures. And writing code is more straightforward than thinking about solving problems, staring conversations with management, or putting yourself in your users' shoes.
 
 What we can do is try. Change the perspective. Look outside of your editor.
+
+---
 
 ### Further reading
 
