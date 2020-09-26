@@ -49,7 +49,7 @@ However, are all those coding skills that important that you'd hire someone who 
 
 ## Summary
 
-We are pretty are lazy creatures. And writing code is more straightforward than thinking about solving problems, staring conversations with management, or putting yourself in your users' shoes.
+We are pretty lazy creatures. And writing code is more straightforward than thinking about solving problems, staring conversations with management, or putting yourself in your users' shoes.
 
 What we can do is try. Change the perspective. Look outside of your editor.
 
