@@ -16,7 +16,7 @@ Let's take an example scenario.
 You get a task like: _"add a button to refresh Y on page X"_. It's simple, straightforward job. Let's translate this ticket to JavaScript! You don't care that there was already a super similar button that seemed to be doing the same thing. You were told to add a button. So you did it. All done in less than an hour. Then someone during code review will point out that you only needed to update logic in the existing button. So you're back with the same job, after wasting reviewer and your time.
 And all that was needed to be done was to understand the problem — _"users are not able to refresh all the content of the table, because the current refresh button only refreshes some parts of the data."_
 
-This is a small, silly example; one hour of time is not that bad. But it applies for bigger and bigger things as well.
+This is a small, silly example; one hour of time is not that bad. But it applies to bigger things as well, and this one hour could have been a day or a week.
 
 ## How to be a problem solver
 
