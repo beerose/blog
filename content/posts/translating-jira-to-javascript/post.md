@@ -9,7 +9,7 @@ updated: 2020-08-26
 
 No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on _solving problems_, not on _writing code_. We're not there to blindly rewrite tickets to code. We're there to think about how to solve issues, and then solve them with code or not.
 
-Let's take an example scenario.
+---
 
 ### The Problem
 
