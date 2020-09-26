@@ -7,7 +7,7 @@ created: 2020-08-26
 updated: 2020-08-26
 ---
 
-No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on solving problems, not on writing code. We're not there to blindly rewrite tickets to code. We're here to think about how to solve issues, and then solving them by writing code, or not.
+No, it's not. It's about solving problems. And yes, we mostly do this by writing code. But there's an emphasis on solving problems, not on writing code. We're not there to blindly rewrite tickets to code. We're there to think about how to solve issues, and then solve them with code or not.
 
 ### The Problem
 
@@ -29,15 +29,14 @@ Some tasks may sound like bullshit. And you probably have it in the back of your
 ### Code is less important than you think
 
 Maybe the problem is too much focus on the code itself. You think about all the smart ways to implement the feature that you won't stop for a moment to realize that "hey, I'm removing this page in my other PR, should we actually do this?" or "hey, that will make some other feature unusable". That's the simple way to make your work counterproductive. It won't always mean a complete waste of time. But it won't be the best use of your time, either.
-ting yourself in your users' shoes.
 
 ### Ask for context, not a step-by-step solution
 
 In most of the time, you won't be provided with all the answers and step-by-step solution. Most of the tasks will lack description. Or even if they don't, it's super easy to misunderstand the content. There's also a limit in hand-holding you can get. Don't demand it. At least try to think about a solution yourself. Make sure to have enough context.
 
-### Think first, then do
+### Think first
 
-I guess the title speaks for itself, and also kind of summarizes the whole problem. Don't write code blindly. Think about it first. And think about what the problem is.
+I guess the heading speaks for itself, and also kind of summarizes the whole problem. Don't write code blindly. Think about it first. And think about what the problem is.
 
 ---
 
@@ -53,3 +52,7 @@ However, are all those coding skills that important that you'd hire someone who 
 We are pretty are lazy creatures. And writing code is more straightforward than thinking about solving problems, staring conversations with management, or putting yourself in your users' shoes.
 
 What we can do is try. Change the perspective. Look outside of your editor.
+
+### Further reading
+
+- [Become a +10% engineer by Tomasz Łakomy](https://dev.to/tlakomy/become-a-10-engineer-g78)
