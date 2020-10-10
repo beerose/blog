@@ -1,0 +1,14 @@
+---
+title: "Developing VS Code Extensions"
+tags: ["typescript", "tools"]
+excerpt:
+
+date: 2019-01-30
+event: "Wrocław TypeScript Meetup"
+type: "lightning talk"
+duration: 15
+img: "./vs-code.jpeg"
+post: "/vscode-extensions"
+slides: ""
+place: ""
+---

@@ -65,3 +65,21 @@ export interface Page {
   };
   html: string;
 }
+
+export interface Talk {
+  html: string;
+  frontmatter: {
+    title: string;
+    tags: string[];
+    excerpt: string;
+    date: string;
+    place: string;
+    event: string;
+    type: string;
+    duration: number;
+    slides?: string;
+    recording?: string;
+    img?: string;
+    post?: string;
+  };
+}

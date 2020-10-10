@@ -17,7 +17,6 @@ import { SiteMetadata } from "../utils/models";
 import { Facebook, Twitter } from "react-sharingbuttons";
 import "react-sharingbuttons/dist/main.css";
 import { TimeToRead } from "../../../components/TimeToRead";
-import { Comments } from "../../../components/Comments";
 
 interface PostTemplateProps {
   location: Location;
@@ -27,6 +26,7 @@ interface PostTemplateProps {
   };
 }
 
+// @ts-ignore
 const PostContainer = styled(Container)`
   display: flex;
   justify-content: center;

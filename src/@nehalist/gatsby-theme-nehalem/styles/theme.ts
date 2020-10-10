@@ -6,7 +6,10 @@ const colors = {
   secondaryDarker: "#197559",
   smokyBlack: "#090707", // smoky black
   snow: "#F7F7F7", // snow
+  white: "rgb(255, 255, 255, 0.8)",
   black09: "rgba(25, 10, 0, 0.9)",
+  black07: "rgba(0, 10, 0, 0.7)",
+  black02: "rgba(0, 10, 0, 0.2)",
   shadow: "rgba(0, 0, 0, 0.09)",
 };
 

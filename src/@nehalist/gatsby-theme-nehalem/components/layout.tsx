@@ -9,6 +9,7 @@ import Footer from "./footer";
 const pathnameToActivePage = {
   "/": "Home",
   "/about": "About me",
+  "/speaking": "Speaking",
 };
 
 interface LayoutProps {
@@ -17,7 +18,11 @@ interface LayoutProps {
   pathname?: string;
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({ children, bigHeader = true, pathname }) => {
+const Layout: FunctionComponent<LayoutProps> = ({
+  children,
+  bigHeader = true,
+  pathname,
+}) => {
   const activePage = pathnameToActivePage[pathname];
 
   const data = useStaticQuery<SiteMetadata>(graphql`
@@ -63,7 +68,10 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, bigHeader = true, pa
         />
       )}
       <main>{children}</main>
-      <Footer menu={data.site.siteMetadata.footerMenu} owner={data.site.siteMetadata.title} />
+      <Footer
+        menu={data.site.siteMetadata.footerMenu}
+        owner={data.site.siteMetadata.title}
+      />
     </>
   );
 };
