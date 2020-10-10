@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 
 export const NavContainer = styled.div<{ dark?: boolean }>`
   z-index: 1000;
-  ${props =>
+  ${(props) =>
     props.dark &&
     `
     background-color: ${theme.colors.secondary};
@@ -26,10 +26,6 @@ export const NavWrapper = styled.div`
   width: 100%;
   height: 70px;
   white-space: nowrap;
-
-  @media (max-width: ${theme.breakpoints.sm}) {
-    width: 90%;
-  }
 `;
 
 export const NavMenu = styled.ul<{ mobile?: boolean }>`
@@ -38,11 +34,11 @@ export const NavMenu = styled.ul<{ mobile?: boolean }>`
   margin: 0;
   padding: 0;
 
-  ${props =>
+  ${(props) =>
     props.mobile &&
     `
     @media (max-width: ${theme.breakpoints.sm}) {
-      width: 80%;
+      width: 100%;
       overflow-x: auto;
       overflow-y: hidden;
     }
@@ -59,8 +55,8 @@ export const NavMenuItem = styled.li`
 `;
 
 export const NavLink = styled(Link)<{ darkmode?: number; active?: number }>`
-  color: ${props => (props.darkmode ? "#fff" : theme.colors.smokyBlack)};
-  opacity: ${props => (props.active ? "1" : props.darkmode ? "0.8" : "0.6")};
+  color: ${(props) => (props.darkmode ? "#fff" : theme.colors.smokyBlack)};
+  opacity: ${(props) => (props.active ? "1" : props.darkmode ? "0.8" : "0.6")};
   padding: 16px;
   transition: opacity 0.3s;
 
