@@ -16,6 +16,10 @@ module.exports = {
         name: "About me",
         path: "/about",
       },
+      {
+        name: "Speaking",
+        path: "/speaking",
+      },
     ],
     footerMenu: [
       {
@@ -73,7 +77,7 @@ module.exports = {
             resolve: "gatsby-remark-copy-linked-files", // gif, svg
             options: {
               ignoreFileExtensions: ["png", "jpg", "jpeg"],
-              destinationDir: f => `${f.name}-${f.hash}`,
+              destinationDir: (f) => `${f.name}-${f.hash}`,
             },
           },
           {

@@ -27,13 +27,13 @@ Time to change the perspective and instead of thinking how to put CSS in your ap
 **What I will show to the people?**
 
 - Pros of using CSS-in-JS
-- How are some modern solutions built and why that way?
+- How are some modern solutions built and why are they built that way?
 - How to leverage TypeScript?
 - Different CSS-in-JS solutions comparison
 
 **What is the one thing I want people to learn?**
 
-You can use TypeScript to implement hard stuff and enhance you developer experience.
+You can use TypeScript to implement hard stuff and enhance your developer experience.
 
 **Why?**
 
@@ -53,7 +53,6 @@ You can write more TypeScript and less CSS.
 - [https://jxnblk.com/blog/the-three-tenets-of-styled-system/](https://jxnblk.com/blog/the-three-tenets-of-styled-system/)
 - [https://jxnblk.com/blog/themeability/](https://jxnblk.com/blog/themeability/)
 - [https://jxnblk.com/blog/iterations-on-a-theme/](https://jxnblk.com/blog/iterations-on-a-theme/)
-
 - https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660
 - https://objectpartners.com/2017/11/03/css-in-js-benefits-drawbacks-and-tooling/
 - https://mxstbr.blog/2016/11/inline-styles-vs-css-in-js/

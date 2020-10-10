@@ -37,6 +37,28 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
           }
         }
       }
+      talks: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/(/talks/).*.(md)/" } }
+        sort: { fields: frontmatter___date, order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              tags
+              date
+              place
+              event
+              type
+              duration
+              slides
+              recording
+              post
+            }
+            html
+          }
+        }
+      }
       posts: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/(posts)/.*\\\\.md$/" } }
         sort: { fields: frontmatter___created, order: DESC }
@@ -88,23 +110,27 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   }
 
   const tags = [];
-  const posts = result.data.posts.edges.map(node => node.node);
+  const posts = result.data.posts.edges.map((node) => node.node);
 
-  const pages = result.data.pages.edges.map(node => node.node);
+  const pages = result.data.pages.edges.map((node) => node.node);
   const availableTags =
-    result.data.tags.edges.map(node => node.node).map(t => t.name) || [];
+    result.data.tags.edges.map((node) => node.node).map((t) => t.name) || [];
+
+  const talks = result.data.talks.edges.map((node) => node.node);
+  console.log({ talks });
 
   const postTags = result.data.tags.edges
-    .map(node => node.node)
-    .filter(t => typeof t !== "string");
+    .map((node) => node.node)
+    .filter((t) => typeof t !== "string");
+
   // Create a route for every single post (located in `content/posts`)
-  posts.forEach(post => {
+  posts.forEach((post) => {
     if (post.frontmatter.tags) {
       tags.push(...post.frontmatter.tags);
     }
     const primaryTag =
       post.frontmatter.tags.length > 0
-        ? postTags.find(t => t.name === post.frontmatter.tags[0])
+        ? postTags.find((t) => t.name === post.frontmatter.tags[0])
         : null;
     actions.createPage({
       path: post.frontmatter.path,
@@ -120,7 +146,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   // Create a route for every single page (located in `content/pages`)
-  pages.forEach(page => {
+  pages.forEach((page) => {
     actions.createPage({
       path: page.frontmatter.path,
       component: require.resolve(
@@ -133,7 +159,7 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   });
 
   // Create a route for every single route (from `content/tags.yml` and the tags found in posts)
-  [...new Set(tags)].concat(availableTags).forEach(tag => {
+  [...new Set(tags)].concat(availableTags).forEach((tag) => {
     const slugified = slugify(tag, { lower: true });
     actions.createPage({
       path: `/tag/${slugified}`,
@@ -163,9 +189,15 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
     component: require.resolve(
       `./src/@nehalist/gatsby-theme-nehalem/pages/about.tsx`
     ),
+  });
+
+  actions.createPage({
+    path: "/speaking",
+    component: require.resolve(
+      `./src/@nehalist/gatsby-theme-nehalem/pages/speaking.tsx`
+    ),
     context: {
-      posts,
-      postsPerPage,
+      talks,
     },
   });
 };
