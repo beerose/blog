@@ -8,7 +8,7 @@ type: "lecture"
 duration: 70
 post: ""
 img: ""
-recording: "https://www.youtube.com/watch?v=oQFkvEoh1BA"
+recording: ""
 slides: "https://slides.com/aleksandrasikora/static-typing-which-language-to-choose"
 place: "online"
 ---
