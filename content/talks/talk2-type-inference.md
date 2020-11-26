@@ -1,5 +1,5 @@
 ---
-title: "Type Interference Under The Hood"
+title: "Type Inference Under The Hood"
 tags: ["types"]
 excerpt: ""
 date: 2019-08-14
