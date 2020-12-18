@@ -182,6 +182,10 @@ Correct answer: `1`.
 
 #### Explanation
 
+This one is well explained by [John Resig](https://twitter.com/jeresig) on [Hacker News](https://news.ycombinator.com/item?id=1154338).
+
+<img width="8000px" src="./arrwtf.png"/>
+
 ---
 
 ### Question 10: constructor[constructor][constructor]
