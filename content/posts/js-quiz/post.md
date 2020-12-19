@@ -1,9 +1,11 @@
 ---
-title: "WTF JavaScript quiz — correct answers and explanation"
+title: "WTF JavaScript Quiz — explanations"
 path: "/javascript-quiz"
 tags: ["javascript"]
 featuredImage: "./postImage.png"
-excerpt: "TODO"
+excerpt: "
+Brief explanation to some well known JavaScript's quirks that were included in WTF JavaScript Quiz: https://jsquiz.wtf/.
+"
 created: 2020-12-14
 updated: 2020-12-14
 ---
@@ -74,7 +76,7 @@ Correct answer: `"wtf"`.
 
 #### Explanation
 
-JavaScript is _"prototypal object oriender language"_. As *window* is an object, you can find *Object.prototype* in window's prototype chain.
+JavaScript is _prototypal_ object oriented language. As *window* is an object, you can find *Object.prototype* in window's prototype chain.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 800px">
@@ -82,9 +84,9 @@ JavaScript is _"prototypal object oriender language"_. As *window* is an object,
   </div>
 </div>
 
-In the code from the question, we set variable **"wtf"** to _Object.prototype_. In JavaScript, global variables are read from *window* but if window doesn't have its own **wtf** property, JavaScript tarverses _window_'s prototype chain to find **wtf**.
+In the code from the question, we set variable **"wtf"** to _Object.prototype_. In JavaScript, global variables are read from *window* but if window doesn't have its own **wtf** property, JavaScript traverses _window_'s prototype chain to find **wtf**.
 
-What's more — now everything has **"wtf"** property 🙃
+What's more — now almost everything has **"wtf"** property 🙃
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 600px">
@@ -139,7 +141,7 @@ As we have double *+*, the first one is an actual binary addition, but the secon
 
 In other words we can read the above code as: **foo + (+"bar")**.
 
-The unary plus applied to **"bar"** will try to coerce it to number. However **"bar"** is not a number or numeric string, so it's insetad connverted to NaN.
+The unary plus applied to **"bar"** will try to coerce it to number. However **"bar"** is not a number or numeric string, so it's instead converted to NaN.
 
 ---
 
@@ -195,8 +197,7 @@ const WTF = "constructor";
 WTF[WTF][WTF]("alert('wtf')")();
 ```
 
-Correct answer: `Alert "wtf"`.
-<!-- alert with text "wtf" pops up in your browser? -->
+Correct answer: Alert with text "wtf" pops up in your browser.
 
 #### Explanation
 
@@ -209,7 +210,7 @@ Let's break it into smaller pieces and substitute **WTF** with **"constructor"**
   </div>
 </div>
 
-2. **f[constructor]** — function constructor caled with a string creates a function with body being this string. And then, the trailing **()** call the function, evauluating **"alert('wtf')"**.
+2. **f[constructor]** — function constructor caled with a string creates a function with body being this string. And then, the trailing parethnesis **()** call the function, evauluating **"alert('wtf')"**.
 
 ---
 
@@ -279,7 +280,7 @@ Correct answer: `151176378`.
 
 The digits for base 24 are: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f, ..., n**.
 
-Let's look at the corresponding positions in base 24 of **Infinity**'s digits:
+Let's look at **Infinity**'s letters as base 24 numbers:
 
 ```sh
 i: 18
@@ -408,7 +409,7 @@ This is what happens in the example:
 
 ---
 
-### Question 19: Setting arrays properties
+### Question 19: Setting array properties
 
 ```js
 const a = [1, 2, 3];
@@ -422,9 +423,9 @@ Correct answer: `"wtf", "wtf", "wtf"`.
 
 #### Explanation
 
-Arrays have this fancy [alghoritm](http://es5.github.io/#x15.4.5.1) for defining array's properties.
+There's an [alghoritm](http://es5.github.io/#x15.4.5.1) for defining array's properties.
 
-Now, let's consider these three cases to see what this algorithm does:
+Now, let's consider these three cases to see what the algorithm does:
 
 1. **array[0] = 0** — set first element of _array_ to be 0. <br />Result: **[0]**.
 
@@ -450,7 +451,7 @@ Correct answer: `"[object Object]"`.
 
 #### Explanation
 
-JavaScript tries to convert both lefthand side and righthand side values to strings. For an empty array it results in an empty string, whereas a string version of an object is "[object Object]".
+JavaScript converts both lefthand side and righthand side values to strings. For an empty array it results in an empty string, whereas a string version of an object is "[object Object]".
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 200px; margin-right: 20px">
