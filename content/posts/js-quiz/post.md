@@ -55,11 +55,11 @@ Correct answer: `true`.
 
 #### Explanation
 
-Let's take it step by step, starting with the righthand side expression.
+Let's take it step by step, starting with the right-hand side expression.
 
 1. Empty array is _truthy_ in JavaScript. In other words *Boolean([])* is *true*.
 2. The **!** operator is defined for boolean values only, so when applied to nonboolean value, JavaScript will automatically coerce it into a boolean. As **[]** is truthy, **![]** results in **false**.
-3. Based on 1. and 2., we can replace the righthand side expression with **false**, so we now need to consider: **[] == false**.
+3. Based on 1. and 2., we can replace the right-hand side expression with **false**, so we now need to consider: **[] == false**.
 5. In this kind of comparison (object type and boolean type), JavaScript will convert values into numeric ones.([The Abstract Relational Comparison Algorithm](https://www.ecma-international.org/ecma-262/5.1/#sec-11.8.5))
 6. **[]** is coerced to **0**, and **false** is also coerced to **0**, thus **0 == 0** is true.
 
@@ -205,15 +205,15 @@ Correct answer: Alert with text "wtf" pops up in your browser.
 
 Let's break it into smaller pieces and substitute **WTF** with **"constructor"**.
 
-1. **WTF[WTF]** becomes **constructor['constructor']**. As *window* has its own **constructor** and global variables are read from _window_, we can easily access it. Now, the *constructor* of a *constructor*  is the **Function**
+1. **WTF[WTF]** becomes **constructor['constructor']**. As *window* has its own **constructor** and global variables are read from _window_, we can easily access it. Now, the *constructor* of a *constructor*  is a **Function**
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
     <img src="./constr.png"/>
   </div>
 </div>
 
-2. **Function['constructor']** is **Function**. We could have one "WTF" less or five more if we wanted.
-3. Function called with a string creates a function with body being this string. And then, the trailing parethneses **()** call the function, evaluating **"alert('wtf')"**.
+2. **Function['constructor']** is a **Function**. We could have one "WTF" less or five more if we wanted.
+3. Function called with a string creates a function with the body being this string. And then, the trailing parentheses **()** call the function, evaluating **"alert('wtf')"**.
 
 > [MDN Docs on Function's constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function):
 >
@@ -252,7 +252,7 @@ The digits for base 24 are: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f, ..
 
 *parseInt(null, 24)* is equivalent to *parseInt("null", 24)*, as JavaScript will convert the first argument to string.
 
-Starting from the lefthand side of string **"null"**, the first digit **n** is 23rd digit in base-24. The next digit — **u** — is invalid (does not occur in base-24), so the rest of the string is ignored, and 23 is being returned.
+Starting from the left-hand side of string **"null"**, the first digit **n** is 23rd digit in base-24. The next digit — **u** — is invalid (does not occur in base-24), so the rest of the string is ignored, and 23 is being returned.
 
 ---
 
@@ -458,7 +458,7 @@ Correct answer: `"[object Object]"`
 
 #### Explanation
 
-JavaScript converts both lefthand side and righthand side values to strings. For an empty array it results in an empty string, whereas a string version of an object is "[object Object]".
+JavaScript converts both left-hand side and right-hand side values to strings. For an empty array it results in an empty string, whereas a string version of an object is "[object Object]".
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 200px; margin-right: 20px">
