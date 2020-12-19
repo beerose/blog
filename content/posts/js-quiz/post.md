@@ -430,7 +430,7 @@ Correct answer: `"wtf", "wtf", "wtf"`
 
 #### Explanation
 
-There's an [alghoritm](http://es5.github.io/#x15.4.5.1) for defining arrays' properties.
+There's an [algorithm](http://es5.github.io/#x15.4.5.1) for defining arrays' properties.
 
 Now, let's consider these three cases to see what the algorithm does:
 
