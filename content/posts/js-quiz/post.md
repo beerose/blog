@@ -25,7 +25,7 @@ Correct answer: `number`.
 #### Explanation
 
 *NaN* (Not a Number) belongs to numeric data types. It's used for unrepresentable, undefined, or missing values. *NaN* was specified in [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) floating-point standard over 35 years ago.
-In the ECMAScript standard *Numbers* are actually represented as IEEE 754 floats.
+In the [ECMAScript](https://tc39.es/) standard *Numbers* are actually represented as IEEE 754 floats.
 
 This is how NaN looks in floating-point (32-bit) precision: **s 111 1111 1xxx xxxx xxxx xxxx xxxx xxxx**. The exponent of NaN is filled with 1s.
 
@@ -41,7 +41,7 @@ Correct answer: `false`.
 
 #### Explanation
 
-In JavaScript everything is an _object_ except for primitives: _string, number, bigint, boolean, undefined_, and _symbol_. The **instanceof** operator doesn't work with primitives (works only with objects), so it returns **false** for a primitive value **"wtf"**.
+In JavaScript everything is an _object_ except for primitives: _string, number, bigint, boolean, undefined_, and _symbol_. The **instanceof** operator doesn't work with primitives (works only with objects), so it returns **false** for a primitive value **"wtf"**. For primitives we're using _typeof_.
 
 ---
 
@@ -59,9 +59,11 @@ Let's take it step by step, starting with the righthand side expression.
 
 1. Empty array is _truthy_ in JavaScript. In other words *Boolean([])* is *true*.
 2. The **!** operator is defined for boolean values only, so when applied to nonboolean value, JavaScript will automatically coerce it into a boolean. As **[]** is truthy, **![]** results in **false**.
-3. Based on 1. and 2., we can replace righthand side expression with **false**, so we now need to consider: **[] == false**.
-5. In this kind of comparison (object type and boolean type), JavaScript will convert values into numeric ones.
+3. Based on 1. and 2., we can replace the righthand side expression with **false**, so we now need to consider: **[] == false**.
+5. In this kind of comparison (object type and boolean type), JavaScript will convert values into numeric ones.([The Abstract Relational Comparison Algorithm](https://www.ecma-international.org/ecma-262/5.1/#sec-11.8.5))
 6. **[]** is coerced to **0**, and **false** is also coerced to **0**, thus **0 == 0** is true.
+
+🤯
 
 ---
 
@@ -72,11 +74,11 @@ Object.prototype.wtf = "wtf";
 console.log(wtf); // ❓❓❓
 ```
 
-Correct answer: `"wtf"`.
+Correct answer: "wtf" will be printed to the console.
 
 #### Explanation
 
-JavaScript is _prototypal_ object oriented language. As *window* is an object, you can find *Object.prototype* in window's prototype chain.
+JavaScript is [_prototypal_](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain) object oriented language. As *window* is an object, you can find *Object.prototype* in window's prototype chain.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 800px">
@@ -84,7 +86,7 @@ JavaScript is _prototypal_ object oriented language. As *window* is an object, y
   </div>
 </div>
 
-In the code from the question, we set variable **"wtf"** to _Object.prototype_. In JavaScript, global variables are read from *window* but if window doesn't have its own **wtf** property, JavaScript traverses _window_'s prototype chain to find **wtf**.
+In the code from the question, we set variable **"wtf"** to _Object.prototype_. In JavaScript, global variables are read from *window* but if *window* doesn't have its own **wtf** property, JavaScript traverses _window_'s prototype chain to find **wtf**.
 
 What's more — now almost everything has **"wtf"** property 🙃
 
@@ -103,11 +105,11 @@ const num = 02020;
 console.log(num); // ❓❓❓
 ```
 
-Correct answer: `1040`.
+Correct answer: `1040`
 
 #### Explanation
 
-In JavaScript (and in other programming languages) octal numbers start from 0.
+In JavaScript (as well as in other programming languages) [octal (base-8)](https://en.wikipedia.org/wiki/Octal) numbers start from 0.
 
 2020 = (2 × 8³) + (0 × 8²) + (2 × 8¹) + (0 × 8⁰) = 1040
 
@@ -137,7 +139,7 @@ Correct answer: `fooNaN`.
 
 ##### Explanation
 
-As we have double *+*, the first one is an actual binary addition, but the second one is an [unary plus](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus).
+As we have double *+*, the first one is a standard binary addition, but the second one is an [unary plus](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus).
 
 In other words we can read the above code as: **foo + (+"bar")**.
 
@@ -164,7 +166,7 @@ I don't know 🙃
 
 My guess would be that *this* is a boxed **reference** to a number, so what happens here is a comparison by reference.
 
-The code below results in *true*, which possibly can mean that *this* needed to be coerced to number in order to perform numbers comparison.
+The code below results in *true*, which possibly can mean that *this* needed to be coerced to number in order to perform a comparison by value.
 
 ```js
 Number.prototype.isOne = function () { return this - 1 === 0; }
@@ -203,14 +205,19 @@ Correct answer: Alert with text "wtf" pops up in your browser.
 
 Let's break it into smaller pieces and substitute **WTF** with **"constructor"**.
 
-1. **constructor[constructor]** — it's a function (*f*):
+1. **WTF[WTF]** becomes **constructor['constructor']**. As *window* has its own **constructor** and global variables are read from _window_, we can easily access it. Now, the *constructor* of a *constructor*  is the **Function**
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 400px">
     <img src="./constr.png"/>
   </div>
 </div>
 
-2. **f[constructor]** — function constructor caled with a string creates a function with body being this string. And then, the trailing parethnesis **()** call the function, evauluating **"alert('wtf')"**.
+2. **Function['constructor']** is **Function**. We could have one "WTF" less or five more if we wanted.
+3. Function called with a string creates a function with body being this string. And then, the trailing parethneses **()** call the function, evaluating **"alert('wtf')"**.
+
+> [MDN Docs on Function's constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function):
+>
+> Calling the constructor directly can create functions dynamically but suffers from security and similar (but far less significant) performance issues to eval. However, unlike eval, the Function constructor creates functions that execute in the global scope only.
 
 ---
 
@@ -221,7 +228,7 @@ Let's break it into smaller pieces and substitute **WTF** with **"constructor"**
 5..toString(); // ❓❓❓
 ```
 
-Correct answer: `"5"`.
+Correct answer: `"5"`
 
 #### Explanation
 
@@ -231,13 +238,13 @@ Firstly, why is **5.toString()** a syntax error? It's because JavaScript expects
 
 ---
 
-####Question 12: parseInt in base 24
+####Question 12: parseInt in base-24
 
 ```js
 parseInt(null, 24); // ❓❓❓
 ```
 
-Correct answer: `23`.
+Correct answer: `23`
 
 #### Explanation
 
@@ -245,7 +252,7 @@ The digits for base 24 are: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f, ..
 
 *parseInt(null, 24)* is equivalent to *parseInt("null", 24)*, as JavaScript will convert the first argument to string.
 
-Starting from the lefthand side of string **"null"**, the first digit **n** is 23rd digit in base 24. The next digit — **u** — is invalid (does not occur in base 24), so the rest of the string is ignored, and 23 is being returned.
+Starting from the lefthand side of string **"null"**, the first digit **n** is 23rd digit in base-24. The next digit — **u** — is invalid (does not occur in base-24), so the rest of the string is ignored, and 23 is being returned.
 
 ---
 
@@ -255,7 +262,7 @@ Starting from the lefthand side of string **"null"**, the first digit **n** is 2
 Math.min() < Math.max(); // ❓❓❓
 ```
 
-Correct answer: `false`.
+Correct answer: `false`
 
 #### Explanation
 
@@ -268,19 +275,19 @@ Therefore **Infinity < - Infinity** results in false.
 
 ---
 
-### Question 14: Parsing "Infinity" in base 24
+### Question 14: Parsing "Infinity" in base-24
 
 ```js
 parseInt("Infinity", 24); // ❓❓❓
 ```
 
-Correct answer: `151176378`.
+Correct answer: `151176378`
 
 #### Explanation
 
-The digits for base 24 are: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f, ..., n**.
+The digits for base-24 are: **0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f, ..., n**.
 
-Let's look at **Infinity**'s letters as base 24 numbers:
+Let's look at **Infinity**'s letters as base-24 numbers:
 
 ```sh
 i: 18
@@ -289,11 +296,11 @@ f: 15
 i: 18
 n: 23
 i: 18
-t: invalid, does not occur in base 24
+t: invalid, does not occur in base-24
 y: ignored, as a previous digit was invalid
 ```
 
-Now we need to convert it with base 24:
+Now we need to convert it with base-24:
 
 151176378 = 18 * 24^0 + 23 * 24^1 + 15 * 24^2 + 18 * 24^3 + 23 * 24^4 + 18 * 24^5
 
@@ -311,7 +318,7 @@ Now we need to convert it with base 24:
 [, , ,].join(); // ❓❓❓
 ```
 
-Correct answer: `",,"`.
+Correct answer: `",,"`
 
 #### Explanation
 
@@ -337,7 +344,7 @@ if (localStorage[0]) {
 }
 ```
 
-Correct answer: `Console log "wtf"`.
+Correct answer: Will print "wtf" in your console
 
 #### Explanation
 
@@ -352,7 +359,7 @@ typeof document.all[0]; // object
 typeof document.all; // ❓❓❓
 ```
 
-Correct answer: `undefined`.
+Correct answer: `undefined`
 
 #### Explanation
 
@@ -384,7 +391,7 @@ r.test("wtf"); // true
 r.test("wtf"); // ❓❓❓
 ```
 
-Correct answer: `false`.
+Correct answer: `false`
 
 #### Explanation
 
@@ -419,11 +426,11 @@ a[a.indexOf(-1)]; // ❓❓❓
 a[a.indexOf(100)]; // ❓❓❓
 ```
 
-Correct answer: `"wtf", "wtf", "wtf"`.
+Correct answer: `"wtf", "wtf", "wtf"`
 
 #### Explanation
 
-There's an [alghoritm](http://es5.github.io/#x15.4.5.1) for defining array's properties.
+There's an [alghoritm](http://es5.github.io/#x15.4.5.1) for defining arrays' properties.
 
 Now, let's consider these three cases to see what the algorithm does:
 
@@ -447,7 +454,7 @@ With **a[-1] = "wtf"** we have a case number 3, because **-1** is a negative num
 [] + {}; // ❓❓❓
 ```
 
-Correct answer: `"[object Object]"`.
+Correct answer: `"[object Object]"`
 
 #### Explanation
 
