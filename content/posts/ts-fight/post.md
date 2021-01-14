@@ -1,32 +1,38 @@
 ---
-title: "Use TypeScript instead of fighting it"
+title: "Getting more out of TypeScript"
 path: "/fighting-with-ts"
 tags: ["typescript"]
-excerpt: ""
-created: 2021-01-05
-updated: 2021-01-05
+excerpt: "As the State Of JS survey shows, TypeScript is only becoming more popular. More people want to learn it, more teams wish to adopt it, and more projects start in TypeScript. The problem is how we're using it."
+created: 2021-01-15
+updated: 2021-01-15
 ---
 
-[change beginning]
+TypeScript is only becoming more popular. The [State Of JS](https://2020.stateofjs.com/en-US/) survey confirmed that recently. More people want to learn it, and more projects start in TypeScript. It's kind of mainstream now. I guess at this point most of us know that there what are the benefits of using TypeScript, and that in general, it may be a good idea to choose it over JavaScript. In many cases. However, the problem is how we're using it.
 
-So you're using TypeScript. Although there can be many reasons for it — love for static typing, hype, someone tells you to (already in a project), a hell of an autocomplete tool — if you do write your code in TypeScript, it'd be cool to get the most out of it, right?
+<div style="display: flex; justify-content: center">
+<div style="text-align: center; width: 500px">
+  <img src="./ts.png" alt="https://2020.stateofjs.com/en-US/"/>
+  Source: <a style="color: #1A936F; border-bottom: 2px #1A936F solid;" href="https://2020.stateofjs.com/en-US/technologies/javascript-flavors/">State of JS</a>
+</div>
+</div>
 
-Yet, it's not apparent how to do so. And it's relatively easy to find yourself fighting with TypeScript instead of leveraging it, and for TypeScript to feel like a burden and not something that's supposed to make developers' lives easier.
+I see too many people coming from the JavaScript world, adopting this kind of thinking: "so I need to write JAVASCRIPT, and then FIX my code by adding types". Well, that works too. You'll still see some great benefits *AFTER* you're done with writing code. However, I'd like to show you that there's more to TypeScript.
 
-Suppose someone is used to writing JavaScript, has a lot of experience in it, and TypeScript doesn't feel that comfortable yet. Let's call this person Bob. Bob is about to write some code and feels this temptation, to "just" write new code in good 'ol JavaScript, and worry about adding types later. So they do write the code, and after the task is done, they're going to add types (maybe it's by converting .js file to .ts, or by replacing **any** with proper types). It may feel a bit like a fight. Everything is red in the editor, compiler shouts. Bob is killing one bug at the time. *Compiler, please, shut up.* Hate towards TypeScrpt escalates.
+So what's wrong with *AFTER* writing code benefits? Nothing per see. The problem is that we miss out plenty of nice things we could have *DURING* writing the code and get the most out of it.
 
+Yet, it's not apparent how to do so. It's relatively easy to find yourself fighting with TypeScript. Constantly fixing compiler error. Struggling with how to type the code you just wrote. Working around the compiler. Whereas It could be different. We could take the full advantage of it. Writing code in TypeScript is supposed to make our lives easier. Not to feel like a burden.
 
-Another thing is that the code works; the job feels like it's already done. Why spend more time on it? Another temptation appears — maybe more lousy types will do the job? Do we need to be so perfect? 
-
-It may also turn out that the code is difficult to type. A lot of dynamic things going on, narrowing the types or just writing proper types seems too complicated. 
-CODE
-And then the fight with TypeScript exacerbates. *Please, TypeScript, shut up, this code works, what the hell you want from me.* 
+Suppose someone is used to writing JavaScript. They have a lot of experience in it, and TypeScript doesn't feel that comfortable yet. Let's call this person Bob. Bob is about to implement a new feature. So they're going to write a new code in good 'ol JavaScript, and, worry about adding types at the end. Sometime later the task is done. It's time to convert it to TypeScript. The problem is, it may feel a bit like a fight. Everything is red in the editor, compiler shouts. "TypeScript, please, shut up".
+After some time, all compiler errors are fixed, types are added (including a lot of `any`, because things turned out to be hard to type), and it seems like the job is done. And yeah, it is done. Code is typed. But could Bob get more benefits out of TypeScript? Yes!
 
 
-They're saying that TypeScript is so cool, but it doesn't sound like fun, does it? Well, TypeScript is great, if only we're willing to leverage it fully. 
+**They could have taken full advantage of TypeScript. By actually writing TypeScript from the very beginning.**
 
+TypeScript is a statically typed language. And even though TypeScript is a gradually statically typed language and you decide how much of staticness you want, it differs significantly from JavaScript. Static typing makes us think differently. At least a bit. It makes us think more about modelling data, designing APIs, and making things "click together". If you start writing code with types in mind, you're more likely to type things better. Better than when adding types to the existing code. You'll think more about design details. If something is hard to type, maybe it wasn't designed well? Or if it is hard to type, won't it be hard to grasp for your colleagues? It's the same deal as with tests. If something is hard to be tested — it's likely to be challenging to maintain and extend. 
 
-TypeScript is a different language. It is gradually typed language built on JavaScript, and you can write JavaScript in TypeScript, but it does have its constraints. You can't write everything in TS that you would in JS. Consider the following example:
+It may feel faster to write code in JS. Especially when you're not that familiar with TypeScript. But when you know that your code needs to end up being in TypeScript, "Write JS then convert to TS" is not a way to go. Why? Because then you don't *think in TypeScript*. You won't model your code with types to be straightforward and easy to maintain. You won't spot lousy design quickly.
+
+Another thing. TypeScript is a different language. You can't write everything in TypeScript that you would in JavaScript. And if you write code that is not valid TypeScript, you'll need to work hard to go around the compiler. It will most likely result in lousy types. Consider the following example:
 
 ```ts
 const items = [1,2,3,4];
@@ -46,22 +52,10 @@ const bar = () => {
 bar();
 ```
 
-JavaScript will let you write it without any complaints. In TypeScript, on the other hand, you'll see an error **Type 'number[]' cannot be used as an index type.(2538)**. And this may make you think about what this code is doing — why do I get an error? Maybe I did something weird in this code? 
-Oh shit, I'm making an assumption that I'll always have one element array! Thanks TypeScript!
+JavaScript will let you write it without any complaints. TypeScript won't. In TypeScript, you'll see an error: **Type 'number[]' cannot be used as an index type.(2538)**. And when you'll see this error you will start to think what this code is doing. Why am I getting an error? Maybe I did something weird in this code? *Oh shit, I'm making an assumption that I'll always have single-element array!*
 
-(react router example ??)
+There are also plenty of other benefits that you can get designing with types. If you want to know more about it, check out the excellent post series on [F# for Fun and Profit](https://fsharpforfunandprofit.com/posts/designing-with-types-intro/).
 
-TypeScript is statically typed. Even though it's a gradually typed language and you decide on how much of *staticness* you want, it is a significant difference. It's a difference when it comes to thinking about the code you write, modeling the code, designing APIs. It may feel faster to write code in JS (or annotating everything with **any**), especially when you're not that familiar with TypeScript. But when you know that your code needs to end up being in TypeScript, *I'll write it in JavaScript, so it's faster and then will convert to TypeScript* is not a way to go. Why? Because you don't leverage TypeScript. You won't model your code with types to be straightforward and easy to maintain.
+Yet, I'm not trying to evangelize type-driver development here. (Though, it's great, try it out!) My point is that you can make TypeScript work for you DURING writing code. Don't think about TypeScript as "oh no, I have to add those stupid types".
+Don't think of it as a fight with compiler errors. Think about the process. Process of writing code. Embrace it from the start. Because eventually, writing types and writing runtime code simultaneously, rather than leaving it for later, will make you change the perspective and write more robust and less complicated code.
 
-example of typed reducer that shows domain actions????
-
-You won't spot lousy code quickly. How does TypeScript help with it exactly? It makes you reconsider your decisions. If something is hard to type, maybe it wasn't designed well. It's the same deal as with tests. If something is hard to be tested — it's likely to be challenging to maintain and extend. Also, If it is hard to type, won't it be hard to grasp for your colleagues?
-
-some other example ???
-
-Static typing makes us (at least a bit) think more about modeling data, modules, and making things "click together". You're more likely to type things better than when adding types to the existing code. [WRITE SOMETHING HERE] Same as tests, types help us recognise that something is not sufficient and make us think about code design more.
-
-There are also plenty of other benefits that you can get from type-driven development. If you want to know more about designing with types, check out the excellent post series on [F# for Fun and Profit](https://fsharpforfunandprofit.com/posts/designing-with-types-intro/).
-
-
-Yet, I'm not trying to evangelize type-driver development here (though, it's great, do try it out!). My main point is that you can make TypeScript work for you, instead of fighting it by fixing compiler errors. Writing types along with writing code, rather than leaving it for later, will make you change the perspective and write more robust and less complicated code.
