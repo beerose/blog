@@ -1,5 +1,5 @@
 ---
-title: "Getting more out of TypeScript"
+title: "Oh no, I have to add those stupid TypeScript types"
 path: "/fighting-with-ts"
 tags: ["typescript"]
 excerpt: "As the State Of JS survey shows, TypeScript is only becoming more popular. More people want to learn it, more teams wish to adopt it, and more projects start in TypeScript. The problem is how we're using it."
@@ -18,7 +18,7 @@ TypeScript is only becoming more popular. The [State Of JS](https://2020.stateof
 
 I see too many people coming from the JavaScript world, adopting this kind of thinking: "so I need to write JAVASCRIPT, and then FIX my code by adding types". Well, that works too. You'll still see some great benefits *AFTER* you're done with writing code. However, I'd like to show you that there's more to TypeScript.
 
-So what's wrong with *AFTER* writing code benefits? Nothing per see. The problem is that we miss out plenty of nice things we could have *DURING* writing the code and get the most out of it.
+So what's wrong with *AFTER* writing code benefits? Nothing per se. The problem is that we miss out plenty of nice things we could have *DURING* writing the code and get the most out of it.
 
 Yet, it's not apparent how to do so. It's relatively easy to find yourself fighting with TypeScript. Constantly fixing compiler error. Struggling with how to type the code you just wrote. Working around the compiler. Whereas It could be different. We could take the full advantage of it. Writing code in TypeScript is supposed to make our lives easier. Not to feel like a burden.
 
