@@ -8,7 +8,7 @@ type: "lecture and code examples"
 duration: 35
 post: ""
 img: ""
-recording: "https://www.youtube.com/watch?v=6l70NQ60oDQ"
+recording: ""
 slides: "https://slides.com/aleksandrasikora/ink"
 place: "online"
 ---
