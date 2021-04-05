@@ -9,10 +9,10 @@ updated: 2021-01-15
 
 TypeScript is only becoming more popular. More people want to learn it, and more projects start in TypeScript. Many people decide to use it over JavaScript. However, the problem is *how* we're using it.
 
-Most of us come to TypeScript from JavaScript. For some, static typing is something new. Thus TypeScript seems like a completely new language to learn. That's fair. There are a few things to pick up. It takes some time before one is confident with writing TypeScript types, and plain JavaScript may seem far more comfortable. But... they said we can write JavaScript in TypeScript, isn't that right? Yes, it is! However, it may lead to a kind of a trap. The trap being this thinking:
+Most of us come to TypeScript from JavaScript. For some, static typing is something new. Thus TypeScript seems like a completely new language to learn. That's fair. There are a few things to pick up. It takes some time before one is confident with writing TypeScript, and plain JavaScript may seem far more comfortable. But... they said we can write JavaScript in TypeScript, isn't that right? Yes, it is! However, it may lead to a kind of a trap. The trap being this thinking:
 "so I need to write JavaScript, and then FIX my code by adding types".
 
-There is a broad spectrum of what TypeScript can give you. On the one side of this spectrum, we have the above thing: writing good old JavaScript, without TypeScript types, or filling the gaps with any, and after the implementation is done — *fixing* the types. On the other side of the spectrum, we have type-driven development.
+There is a broad spectrum of what TypeScript can give you. On the one side of this spectrum, we have the above thing: writing good old JavaScript, without types or filling the gaps with any, and after the implementation is done — *fixing* the types. On the other side of the spectrum, we have type-driven development.
 
 <div style="display: flex; justify-content: center; width: 100%">
   <div style="text-align: center; width: 800px">
@@ -20,7 +20,7 @@ There is a broad spectrum of what TypeScript can give you. On the one side of th
   </div>
 </div>
 
-With this article, I do not want to say that type-driven development is superior and the only way to go about writing code. I want to show you that being on the "fixing typescript" side of the spectrum won't allow you to get the most out of TypeScript and that you may want to go a bit more to the other side.
+With this article, I do not want to preach that type-driven development is superior and the only way to go about writing code. I want to show you that being on the "fixing typescript" side of the spectrum won't allow you to get the most out of TypeScript and that you may want to go a bit more to the other side.
 
 But let's make one thing clear — even if you write your code in JS, without types (or annotating everything as `any`), and then add more types, it's not like TypeScript is useless. It's not like you won't have `any` (hehe) TypeScript benefits. It will still allow you to maintain your code easier, make refactorings faster, prevent you from some embarrassing errors in your client's browser. However, there's more to TypeScript. And do we want to settle for less?
 
@@ -30,9 +30,10 @@ So what's wrong with _fixing your code by adding types to a ready JavaScript cod
 
 ### You don't narrow types
 
-The implementation is done, you did a demo for your team, your project manager thinks you can move on to another task. There's not much time to add types. There's definitely not enough time to analyze every function, every variable, and add proper, narrowed types. Even if something _seems_ obvious or straightforward, it is easy to miss it, especially under a pressure.
+The implementation is done, you did a demo for your team, your project manager thinks you can move on to another task. There's not much time to add types. There's definitely not enough time to analyze every function, every variable, and add proper, narrow types. Even if something _seems_ obvious or straightforward, it is easy to miss it, especially under pressure.
 
 Example:
+
 ```ts
 const download = (format: string, data: DataObject) => {
   if (format === "JSON") {
@@ -42,9 +43,11 @@ const download = (format: string, data: DataObject) => {
   }
 }
 ```
+
 This could be `format: "JSON" | "CSV"`, right? However `string` does work, and maybe the function was huge and there was no time to go through the implementation to get the proper type? I bet it'd be less likely to happen if types were added before or during or even right after implementing the `download` function when the idea of what this function does is still in your head.
 
 Another example:
+
 ```ts
 const handleResponse = (res: ?) => {
   if (res.error) {
@@ -56,16 +59,20 @@ const handleResponse = (res: ?) => {
   }
 }
 ```
+
 `res` can have `error` or `data`, and both fields can be falsy. Quick solution:
+
 ```
 {data?: number, error:? string}
 ```
+
 Does it work? It does. Can we do better? Yes! We had more information about the `res` shape (that we forgot when adding types days later). We know that it can be either an object with `data` property or an object with an `error` string. So we could include this knowledge in the type:
+
 ```
 {data: number, error?: undefined} | {error: string, data?: undefined}
 ```
 
-**Note:** `{data: number} | {error: string}` would also work, but in this case, we'd need to narrow the type by using `in` operator: `if (error in res) {...}`.
+**Note:** `{data: number} | {error: string}` would also work, but in this case, we'd need to narrow the type by using `in` operator: `if ('error' in res) {...}`.
 
 ### You settle for any
 
@@ -100,7 +107,7 @@ In practice, when you write TypeScript, you’re writing JavaScript, but restric
   </div>
 </div>
 
-TypeScript is a superset of JavaScript, but many things that pass in JS will cause a TypeScript compiler error.
+Despite that TypeScript is a superset of JavaScript, many things that pass in JS will cause a TypeScript compiler error.
 
 An example:
 
@@ -129,6 +136,7 @@ JavaScript will let you write it without any complaints. TypeScript won't: you'l
 For example — union exhaustiveness checking. Usually adding types after writing code is what it is — just adding types. The feature is working, tests are passing, we're not touching the implementation.
 
 Let's take this switch statement:
+
 ```ts
 const getStatus = (status) {
   switch (status) {
@@ -145,7 +153,9 @@ const getStatus = (status) {
   }
 }
 ```
+
 You know that `status` can be of those four values: `loading, request, success, error`, and there shouldn't be any other value. It would be enough to add those types:
+
 ```ts
 type Status = "loading" | "request" | "success" | "error";
 const getStatus = (status: Status): string {
@@ -163,13 +173,14 @@ const getStatus = (status: Status): string {
   }
 }
 ```
-It's working! But hey, every time we the extend `Status` union, we need to remember about handling it in the `getStatus` function. Wouldn't it be better to have TypeScript remembering it for us by using [union exhaustiveness checking](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#union-exhaustiveness-checking)?
+
+It's working! But hey, every time we add something to `Status` union, we need to remember about handling it in the `getStatus` function. Wouldn't it be better to have TypeScript remembering it for us by using [union exhaustiveness checking](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#union-exhaustiveness-checking)?
 
 ---
 
 ### Cool, but how do I actually do this?
 
-It's all better said than done, I know. The idea of static typing may be somewhat strange and I get that it takes time to be fairly confident with it. Take small steps and you'll get more comfortable with TypeScript in no time.
+It's all easier said than done, I know. The idea of static typing may be somewhat strange and I get that it takes time to be fairly confident with it. Take small steps and you'll get more comfortable with TypeScript in no time.
 
 ## Summary
 
@@ -184,6 +195,8 @@ My point with this article is that you can make TypeScript work for you as early
 1. There are many benefits of designing with types. If you want to know more about it, check out the excellent post series on [F# for Fun and Profit](https://fsharpforfunandprofit.com/posts/designing-with-types-intro/).
 
 2. [Tests or Types: Why Not Both?](https://www.swyx.io/tests-or-types/).
+
+3. If you're new to TypeScript and want to learn it, check out this amazing tutorial: [TypeScript Tutorial for JS Programmers Who Know How to Build a Todo App](https://ts.chibicode.com/todo/).
 
 
 
