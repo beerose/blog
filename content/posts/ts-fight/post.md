@@ -22,7 +22,7 @@ There is a wide spectrum of what TypeScript can give you. On the one side of thi
   </div>
 </div>
 
-With this article, I do not want to say that type-driven development is superior and the only way to go about writing code (though it is the best). I want to show you that being on the "fixing typescript" side of the spectrum won't allow you to get the most out of TypeScript, and that you may want to go a bit more to the other side.
+With this article, I do not want to say that type-driven development is superior and the only way to go about writing code. I want to show you that being on the "fixing typescript" side of the spectrum won't allow you to get the most out of TypeScript, and that you may want to go a bit more to the other side.
 
 But let's make one thing clear — even if you write your code in JS, without types (or annotating everything as any), and then add types, it's not like TypeScript is useless. It's not like you won't have `any` (heh) TypeScript benefits. It will still allow you to maintain your code easier, make refactorings faster, prevent you from some embarrassing errors in your client's browser. However, there's more to TypeScript. And do we want to settle for less?
 
@@ -85,10 +85,11 @@ If something is hard to describe in a statically typed language, won't it be har
 
 ### You're missing out help in coding
 
-if you don't yet know how to implement thing, code will naturally emerge between those types.
+TODO
+<!-- if you don't yet know how to implement thing, code will naturally emerge between those types.
 typy pozwolaja zoomowac sie w przestrzzeni wszystkich mozliwych programow 
 2. during testing and coding, easier to fix problems -- as a result types will improve over the course of development
-3. jak dane przeplywaja -- jak dane sie zmieniaja, jak kształ sie zmienia, jak stany sie zmieniaja 
+3. jak dane przeplywaja -- jak dane sie zmieniaja, jak kształ sie zmienia, jak stany sie zmieniaja  -->
 
 ### TypeScript is not exactly _JavaScript + types_
 
