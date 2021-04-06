@@ -3,8 +3,8 @@ title: "Oh no, I have to add those stupid TypeScript types"
 path: "/fighting-with-ts"
 tags: ["typescript"]
 excerpt: "TypeScript is only becoming more popular. More people want to learn it, more teams wish to adopt it, and more projects start in TypeScript. The problem is how we're using it."
-created: 2021-01-15
-updated: 2021-01-15
+created: 2021-04-06
+updated: 2021-04-06
 ---
 
 TypeScript is only becoming more popular. More people want to learn it, and more projects start in TypeScript. Many people decide to use it over JavaScript. However, the problem is *how* we're using it.
@@ -22,9 +22,9 @@ There is a broad spectrum of what TypeScript can give you. On the one side of th
 
 With this article, I do not want to preach that type-driven development is superior and the only way to go about writing code. I want to show you that being on the "fixing typescript" side of the spectrum won't allow you to get the most out of TypeScript and that you may want to go a bit more to the other side.
 
-But let's make one thing clear — even if you write your code in JS, without types (or annotating everything as `any`), and then add more types, it's not like TypeScript is useless. It's not like you won't have `any` (hehe) TypeScript benefits. It will still allow you to maintain your code easier, make refactorings faster, prevent you from some embarrassing errors in your client's browser. However, there's more to TypeScript. And do we want to settle for less?
+But let's make one thing clear — even if you write your code in JS, without types (or annotating everything as `any`), and then add more types, it's not like TypeScript is useless. It's not like you won't have `any` (heh) TypeScript benefits. It will still allow you to maintain your code easier, make refactorings faster, prevent you from some embarrassing errors in your client's browser. However, there's more to TypeScript. And do we want to settle for less?
 
-So what's wrong with _fixing your code by adding types to a ready JavaScript code_?
+So what's wrong with _fixing your code by adding types to a previously written JavaScript code_?
 
 ---
 
@@ -192,11 +192,11 @@ My point with this article is that you can make TypeScript work for you as early
 
 ### Further reading
 
-1. There are many benefits of designing with types. If you want to know more about it, check out the excellent post series on [F# for Fun and Profit](https://fsharpforfunandprofit.com/posts/designing-with-types-intro/).
+* There are many benefits of designing with types. If you want to know more about it, check out the excellent post series on [F# for Fun and Profit](https://fsharpforfunandprofit.com/posts/designing-with-types-intro/).
 
-2. [Tests or Types: Why Not Both?](https://www.swyx.io/tests-or-types/).
+* [Tests or Types: Why Not Both?](https://www.swyx.io/tests-or-types/).
 
-3. If you're new to TypeScript and want to learn it, check out this amazing tutorial: [TypeScript Tutorial for JS Programmers Who Know How to Build a Todo App](https://ts.chibicode.com/todo/).
+* If you're new to TypeScript and want to learn it, check out this amazing tutorial: [TypeScript Tutorial for JS Programmers Who Know How to Build a Todo App](https://ts.chibicode.com/todo/).
 
 
 
