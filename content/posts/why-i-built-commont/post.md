@@ -28,16 +28,18 @@ Anyway, around a year ago, I built a small side project (while on vacation 🙄)
 (You can guess — I didn't mean it.)
 
 However, a few months later, being burnt out and looking for an easy and quick side project, I thought that:
-I never built a SaaS, so that can be a nice learning opportunity,
-It's relatively small, so I can pull it off by working a few hours a week on that,
-Some people actually used the self-hosted version, so I also _almost_ believed that it makes sense to build a SaaS.
+
+- I never built a SaaS, so that can be a nice learning opportunity,
+- It's relatively small, so I can pull it off by working a few hours a week on that,
+- Some people actually used the self-hosted version, so I also _almost_ believed that it makes sense to build a SaaS.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Last week I decided that I can actually do this. <br><br>Tracking my progress here: <a href="https://t.co/OyGPgUmfdq">https://t.co/OyGPgUmfdq</a> for some accountability. <br><br>My stack is:<br>- <a href="https://twitter.com/blitz_js?ref_src=twsrc%5Etfw">@blitz_js</a> <br>- <a href="https://twitter.com/tailwindcss?ref_src=twsrc%5Etfw">@tailwindcss</a> <br>- <a href="https://twitter.com/prisma?ref_src=twsrc%5Etfw">@prisma</a> <br>- <a href="https://twitter.com/heroku?ref_src=twsrc%5Etfw">@heroku</a> <a href="https://t.co/a1bmMMRXBz">https://t.co/a1bmMMRXBz</a></p>&mdash; Aleksandra Sikora (@aleksandrasays) <a href="https://twitter.com/aleksandrasays/status/1382793677110657031?ref_src=twsrc%5Etfw">April 15, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Hence sometime in the middle of 2021, I started working on it. I just moved to Italy for some time and had a new dose of energy. It was going GREAT. I have been writing down my progress for a while here: https://gist.github.com/beerose/f1091d72b61e788122b33743a67ac670.
 A few weeks later, two things happened:
-Life. I had a lot of back and forth driving Poland — Italy, which was exhausting.
-I ran out of "exciting" things to implement and was left with all those "boring" ones as copywriting, improving styles, some minor features, etc. Meh.
+
+- Life. I had a lot of back and forth driving Poland — Italy, which was exhausting.
+- I ran out of "exciting" things to implement and was left with all those "boring" ones as copywriting, improving styles, some minor features, etc. Meh.
 
 Hence I took a break for a few months. I only picked it up again after leaving my full-time job. I wanted to have a few weeks when I can do whatever I want and, surprisingly, I actually felt like finishing it.
 
@@ -46,7 +48,8 @@ Hence I took a break for a few months. I only picked it up again after leaving m
 (This will be anti-marketing, so I hope people interested in paying me for that won't read it 😅).
 
 As I mentioned before, I was joking when I first said the SaaS idea. That's one reason why I was never too serious about releasing it. I wanted to build it, yes, but releasing? Who would even want it?
-That brings me to another problem — impostor syndrome. Confidence was never my strong point, but building a product on my own, was like omg, who would even want it from me. I don't want to hide behind being a woman in tech, but having anti-support from your male friends makes you think that you absolutely can't fail. Not only it's some small, kind of silly (common, it's comments) side project; it's also who builds it matters. Hence I did not only feel pressure from "omg, she's building such a tiny, easy thing because that's all she can do as a woman", but also from what if I fail when building "a tiny, easy thing because that's all I can do as a woman".
+
+That brings me to another problem — impostor syndrome. Confidence was never my strong point, but building a product on my own, was like _omg, who would even want it **from me**_. I don't want to hide behind being a woman in tech, but having anti-support from your male friends makes you think that you absolutely can't fail. Not only it's some small, kind of silly (common, it's comments) side project; it's also who builds it matters. Hence I did not only feel pressure from "omg, she's building such a tiny, easy thing because that's all she can do as a woman", but also from what if I fail when building "a tiny, easy thing because that's all I can do as a woman".
 
 To evaluate this kind of pressure, I tried to focus on learning. After all, I never built a SaaS. I never had to take care of privacy policies (I still didn't, it turns out there are other SaaS products for that), configuring payments, taxes, and many more.
 
