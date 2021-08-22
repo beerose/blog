@@ -98,5 +98,6 @@ module.exports = {
         trackingId: "UA-149605117-1",
       },
     },
+    `gatsby-plugin-twitter`,
   ],
 };
