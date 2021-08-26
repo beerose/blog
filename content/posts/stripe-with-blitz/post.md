@@ -1,13 +1,13 @@
 ---
-title: "Stripe and Blitz"
-path: "/stripe-with-blitzjs"
+title: "Adding Stripe to a Blitz application"
+path: "/stripe-with-blitz"
 tags: ["stripe", "blitz"]
-excerpt: ""
+excerpt: "This post is not a tutorial. It's more of a dev diary of how I integrated Stripe with a Blitz application. I'm going through the data flow, database models, and all things related to adding Stripe to a Blitz project."
 created: 2021-09-01
 updated: 2021-09-01
 ---
 
-_Disclaimer: you won't find a one size fits all solution in this blog post. I'll talk about something that worked for my project and how I dealt with adding Stripe. I'm doing it 1) as a part of "build in public", 2) hoping it can be helpful for somebody. It's also not a tutorial — I will go through the data flow, database models, and all things related to adding Stripe to a Blitzjs project. If you decide to do something similar, make sure it fits your particular use case!_
+_Disclaimer: you won't find a one size fits all solution in this blog post. I'll talk about something that worked for my project and how I dealt with adding Stripe. I'm doing it 1) as a part of "build in public", 2) hoping it can be helpful for somebody. It's also not a tutorial — I will go through the data flow, database models, and all things related to adding Stripe to a Blitz project. If you decide to do something similar, make sure it fits your particular use case!_
 
 ## Introduction
 
@@ -21,7 +21,7 @@ Anyway, so here I was with a Blitz application, integrating Stripe.
 
 ## Pricing model
 
-My pricing model assumes a free plan, where you can have one project and up to 250(?) comments. If you want to create more projects and have unlimited comments, you can upgrade to a paid plan. It assumes a flat fee for 10(?) projects, and if that's not enough, you can pay for additional projects — 2$ per each.
+My pricing model assumes a free plan, where you can have one project and up to ~1000(?) comments. If you want to create more projects and have unlimited comments, you can upgrade to a paid plan. It assumes a flat fee for ~10(?) projects, and if that's not enough, you can pay for additional projects.
 
 <div style="text-align: center; width: 100%;">
   <img src="./pricing.png" width="100%"/>
@@ -29,14 +29,14 @@ My pricing model assumes a free plan, where you can have one project and up to 2
 
 ## What information do I need from Stripe?
 
-I have a `users` table (among other tables) in the database, which I need to store basic info about the users, their projects, and soon also their SaaS subscriptions. When it comes to subscriptions, I need to know the following:
+I have a `Users` table in the database, where I store basic info about the users, their projects, and soon also their SaaS subscriptions. When it comes to subscriptions, I need to know the following:
 
 - Whether a user has a subscription created with Stripe,
 - If yes, what's the current billing period,
 - If yes, what is the status of the subscription — is it active, was it cancelled, etc.?
 - What is the corresponding Stripe's subscription id.
 
-I'll store them in a `Subscription` table looking somehow in the following way:
+I'll store them in a `Subscriptions` table looking somehow in the following way:
 
 <iframe width="100%" height="500px" style="box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); border-radius:15px;" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Embedded DrawSQL IFrame" frameborder="0" src="https://drawsql.app/aleksandra-sikora/diagrams/commont-partial-schema-1/embed"></iframe>
 
@@ -53,12 +53,12 @@ To use Stripe's Checkout, we have to:
 - Create a new checkout session with the Stripe SDK on the backend
 - Get an URL from the newly created session and redirect the user to this URL.
 
-All of it is perfectly described in Stripe's docs, so I won't go into details. Stripe's documentation is one of the best I ever saw, and I think you can find all the information you want there. I recommend checking out those two links to learn more about subscriptions with Checkout and sample integrations:
+Stripe docs already perfectly describe all of it, so I won't go into details. Stripe's documentation is one of the best I ever saw, and I think you can find all the information you want there. I recommend checking out those two links to learn more about subscriptions with Checkout and sample integrations:
 
 - [Subscriptions with Checkout](https://stripe.com/docs/billing/subscriptions/checkout)
 - [Integration builder](https://stripe.com/docs/checkout/integration-builder)
 
-As I mentioned, this post is not a tutorial. It's more of a dev story of how to put it all together with a Blitz application.
+As I mentioned, this post is not a tutorial. It's more of a dev diary of how to put it all together with a Blitz application.
 The following steps cover what to do on the Blitz project side to add Stripe. For how to create a Stripe account and product, check out [Stripe's docs](https://stripe.com/docs/billing/subscriptions/overview).
 
 ### Installing Stripe's dependencies
@@ -81,7 +81,7 @@ In this function, I'm doing the following:
 
 - Initializing Stripe with a secret key. You can read about Stripe's keys here: https://stripe.com/docs/keys.
 - Using Blitz resolver to make sure users using this mutation are authorized.
-- Creating new session with `stripe.checkout.sessions.create`, and passing a config object.
+- Creating a new session with `stripe.checkout.sessions.create` and passing a config object.
 
 ```ts
 // app/dashboard/mutations/createCheckoutSession.ts
@@ -92,26 +92,22 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 export default resolver.pipe(resolver.authorize(), async (_, ctx) => {
-  try {
-    const session = await stripe.checkout.sessions.create({
-      mode: "subscription",
-      payment_method_types: ["card"],
-      line_items: [
-        {
-          price: PRICE_ID,
-          quantity: 1,
-        },
-      ],
-      success_url: `${process.env.HOST_URL}/settings?checkout-success=true`,
-      cancel_url: `${process.env.HOST_URL}/settings`,
-    });
+  const session = await stripe.checkout.sessions.create({
+    mode: "subscription",
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price: "price_1JN...",
+        quantity: 1,
+      },
+    ],
+    success_url: `${process.env.HOST_URL}/settings?checkout-success=true`,
+    cancel_url: `${process.env.HOST_URL}/settings`,
+  });
 
-    return {
-      sessionId: session.id,
-    };
-  } catch (e) {
-    // handle error
-  }
+  return {
+    sessionId: session.id,
+  };
 });
 ```
 
@@ -121,8 +117,8 @@ What all do we have to do on the frontend? We need a button to trigger the mutat
 
 I have a tiny component, `CreateSubscription` in which I'm doing the following:
 
-- Initialize `createCheckoutMutation`,
-- Initialize `createCheckout` function that will be triggered on a button's click. Inside of this function, I'm calling the mutation and waiting for a result. I need the session's id returned by it.
+- Initialize a `createCheckoutMutation`,
+- Initialize a `createCheckout` function that will be called on a button's click. Inside of this function, I'm calling the mutation and waiting for a result. I need the session's id returned by it.
 - Once I have the session id, I'm using `stripe.redirectToCheckout` and pass the id. That moves the user to Stripe's website, where they can complete the checkout.
 
 ```tsx
@@ -131,6 +127,7 @@ import { Stripe, loadStripe } from "@stripe/stripe-js";
 
 import createCheckoutSession from "../mutations/createCheckoutSession";
 
+let stripePromise;
 const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK);
@@ -139,15 +136,16 @@ const getStripe = () => {
 };
 
 export const CreateSubscription = () => {
-  const [createCheckoutMutation] = useMutation(createCheckoutSession);
+  const [createCheckoutMutation, { error }] = useMutation(
+    createCheckoutSession
+  );
+
+  if (error) {
+    throw error;
+  }
 
   const createCheckout = async () => {
     const res = await createCheckoutMutation();
-
-    if (res.error) {
-      // handle error
-      return;
-    }
 
     const stripe = await getStripe();
     await stripe.redirectToCheckout({
@@ -170,7 +168,7 @@ That's where Stripe webhooks come into play.
 
 ### Stripe webhooks
 
-[Webhooks](https://stripe.com/docs/webhooks) allow us to receive event notifications about all kinds of actions happening with our account, e.g. new subscriptions, successful payments, failed payments, subscription cancels, and many more. Our application can perform some actions on all of those events—for example, updating the database after a new subscription is created or updating customer info.
+[Webhooks](https://stripe.com/docs/webhooks) allow us to receive event notifications about all kinds of actions happening with our account, e.g., new subscriptions, successful payments, failed payments, subscription cancels, and many more. Our application can perform some actions on all of those events—for example, updating the database after a new subscription is created or updating customer info.
 
 To handle those events, we need a new API endpoint.
 
@@ -255,7 +253,7 @@ There can be plenty of events coming from Stripe, but we don't necessarily have 
 </div>
 
 I marked the ones that are crucial for my application.
-It doesn't mean that our webhook only need to handle three events. There are a few more that I need to take care of: payment failures, subscription cancels, subscription updates (e.g. after changing quantity). However, let's focus on those three for now.
+It doesn't mean that the webhook only needs to handle three events. There are a few more that I need to take care of: payment failures, subscription cancels, subscription updates (e.g., after changing quantity). However, let's focus on those three for now.
 
 **Note: this is an arbitrary order that I got after one of many executions of creating a new subscription. Stripe does not guarantee an order of events.**
 
@@ -277,7 +275,7 @@ What should happen when I receive one of those events? I want to upsert data in 
 
 Even if `invoice.paid` event comes first, I still want to create a new entry and then update missing data on `customer.subscription.updated` and `customer.subscription.created`.
 
-Even though the data I get from `invoice.paid` is of type Stipe.Invoice, and from the remaining two, I get `Stripe.Subscription`, the code will look fairly similar, somehow like this:
+Even though the data I get from `invoice.paid` is of type `Stipe.Invoice`, and from the remaining two, I get `Stripe.Subscription`, the code will look fairly similar, somehow like this:
 
 ```ts
 case "customer.subscription.created":
@@ -314,7 +312,7 @@ const session = await stripe.checkout.sessions.create({
 });
 ```
 
-Now, I can extract the user's id from Stripe.Subscription objects I get in the webhook.
+Now, I can extract the user's id from `Stripe.Subscription` objects I get in the webhook.
 
 ![](./final.png)
 
