@@ -3,8 +3,8 @@ title: "Adding Stripe to a Blitz application"
 path: "/stripe-with-blitz"
 tags: ["stripe", "blitz"]
 excerpt: "This post is not a tutorial. It's more of a dev diary of how I integrated Stripe with a Blitz application. I'm going through the data flow, database models, and all things related to adding Stripe to a Blitz project."
-created: 2021-09-01
-updated: 2021-09-01
+created: 2021-08-27
+updated: 2021-08-27
 ---
 
 _Disclaimer: you won't find a complete solution in this blog post. I'll talk about something that worked for my project and how I dealt with adding Stripe. I'm doing it 1) as a part of_ build in public*, 2) hoping it can be helpful for somebody. It's also not a tutorial — I will go through the data flow, database model, and other things related to adding Stripe to a Blitz project. If you decide to do something similar, make sure it fits your particular use case!*
