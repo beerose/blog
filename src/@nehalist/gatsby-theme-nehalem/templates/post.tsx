@@ -200,7 +200,7 @@ const PostFooter = styled.footer`
   background-color: #fafafa;
   font-size: 0.8em;
   color: #666;
-  padding: 40px;
+  padding: 20px;
   line-height: 1em;
 
   p {
