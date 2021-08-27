@@ -7,17 +7,15 @@ created: 2021-09-01
 updated: 2021-09-01
 ---
 
-_Disclaimer: you won't find a one size fits all solution in this blog post. I'll talk about something that worked for my project and how I dealt with adding Stripe. I'm doing it 1) as a part of "build in public", 2) hoping it can be helpful for somebody. It's also not a tutorial — I will go through the data flow, database models, and all things related to adding Stripe to a Blitz project. If you decide to do something similar, make sure it fits your particular use case!_
+_Disclaimer: you won't find a complete solution in this blog post. I'll talk about something that worked for my project and how I dealt with adding Stripe. I'm doing it 1) as a part of_ build in public*, 2) hoping it can be helpful for somebody. It's also not a tutorial — I will go through the data flow, database model, and other things related to adding Stripe to a Blitz project. If you decide to do something similar, make sure it fits your particular use case!*
 
 ## Introduction
 
 I'm currently building [Commont](https://www.commont.app/) — a hosted platform for comments. You can think of it as a headless Disqus alternative. Commont gives you an SDK, API, or a React hook to connect to from your frontend application, as well as an admin panel where you can manage your comments — hide them, delete, create new projects, etc.
 
-The application is built with [Blitz](https://blitzjs.com/) — The Fullstack React Framework. I'm assuming that if you're reading this blog post, you're already heard about Blitz — if not, go check out the docs!
+The application is built with [Blitz](https://blitzjs.com/) — The Fullstack React Framework. I'm assuming that if you're reading this blog post, you've already heard about Blitz — if not, go check out the [docs](https://blitzjs.com/docs/get-started)!
 
-I wanted to make money out of that, which meant I needed to integrate a payment system. After a little bit of research, I decided to go with Stripe. Paddle was a strong alternative as an all-in-one platform, and in my next side project, I'm definitely going to use https://www.lemonsqueezy.com/.
-
-Anyway, so here I was with a Blitz application, integrating Stripe.
+I wanted to make money out of that, which meant I needed to integrate a payment system. After a little bit of research, I decided to go with Stripe. (Paddle was a strong alternative, and in my next side project, I'm definitely going to try [Lemon Squeezy](https://www.lemonsqueezy.com/).)
 
 ## Pricing model
 
@@ -33,10 +31,10 @@ I have a `Users` table in the database, where I store basic info about the users
 
 - Whether a user has a subscription created with Stripe,
 - If yes, what's the current billing period,
-- If yes, what is the status of the subscription — is it active, was it cancelled, etc.?
-- What is the corresponding Stripe's subscription id.
+- If yes, what is the status of the subscription — is it active, was it canceled, etc.?
+- What is the corresponding Stripe subscription's id.
 
-I'll store them in a `Subscriptions` table looking somehow in the following way:
+I plan to store this information in a `Subscriptions` table looking somehow like this:
 
 <iframe width="100%" height="500px" style="box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); border-radius:15px;" allowtransparency="true" allowfullscreen="true" scrolling="no" title="Embedded DrawSQL IFrame" frameborder="0" src="https://drawsql.app/aleksandra-sikora/diagrams/commont-partial-schema-1/embed"></iframe>
 
@@ -49,8 +47,8 @@ I wanted to offload as much as possible to Stripe, so I decided to use [Stripe C
 
 To use Stripe's Checkout, we have to:
 
-- Have a Stripe account
-- Create a new checkout session with the Stripe SDK on the backend
+- Have a Stripe account,
+- Create a new checkout session with the Stripe SDK on the backend,
 - Get an URL from the newly created session and redirect the user to this URL.
 
 Stripe docs already perfectly describe all of it, so I won't go into details. Stripe's documentation is one of the best I ever saw, and I think you can find all the information you want there. I recommend checking out those two links to learn more about subscriptions with Checkout and sample integrations:
@@ -79,7 +77,7 @@ I'm using a Blitz mutation to create a server function that handles new Stripe's
 
 In this function, I'm doing the following:
 
-- Initializing Stripe with a secret key. You can read about Stripe's keys here: https://stripe.com/docs/keys.
+- Initializing Stripe with a secret key. You can read about Stripe's keys [here](https://stripe.com/docs/keys).
 - Using Blitz resolver to make sure users using this mutation are authorized.
 - Creating a new session with `stripe.checkout.sessions.create` and passing a config object.
 
@@ -113,13 +111,13 @@ export default resolver.pipe(resolver.authorize(), async (_, ctx) => {
 
 ### Stripe Checkout on the frontend
 
-What all do we have to do on the frontend? We need a button to trigger the mutation we just talked about. We also need to redirect to Stripe so that users can fill in all the data and actually buy our product.
+What all do we have to do on the frontend? We need a button to trigger the mutation we just talked about. We also need to redirect to Stripe so that users can fill in all the data and actually buy the product.
 
-I have a tiny component, `CreateSubscription` in which I'm doing the following:
+I have a tiny component, `CreateSubscription`, where I'm doing the following:
 
 - Initialize a `createCheckoutMutation`,
-- Initialize a `createCheckout` function that will be called on a button's click. Inside of this function, I'm calling the mutation and waiting for a result. I need the session's id returned by it.
-- Once I have the session id, I'm using `stripe.redirectToCheckout` and pass the id. That moves the user to Stripe's website, where they can complete the checkout.
+- Initialize a `createCheckout` function that will be called on a button's click. Inside of this function, I'm calling the mutation and waiting for a result.
+- Once I have the session id from a successfull mutation call, I'm using `stripe.redirectToCheckout` and pass the id. That moves the user to Stripe's website, where they can complete the checkout.
 
 ```tsx
 import { useMutation } from "blitz";
@@ -159,7 +157,7 @@ export const CreateSubscription = () => {
 
 #### Is it all?
 
-Looks like it. Users can successfully create a subscription. If we go to Stripe's dashboard, we'll be able to see our user's data. But we don't have a way to tell whether a particular user is on a paid plan in the application. We have no link between our users and Stripe's customers. As said before, we need to fill the Subscription table in our backend to be able to
+Looks like it. Users can successfully create a subscription. If I go to Stripe's dashboard, I'll be able to see users' data. But we don't have a way to tell whether a particular user is on a paid plan in the application. We have no link between our users and Stripe's customers. As said before, we need to fill the Subscription table in our backend to be able to:
 
 - Identify paid customers,
 - Display information about the user's plan.
@@ -168,13 +166,13 @@ That's where Stripe webhooks come into play.
 
 ### Stripe webhooks
 
-[Webhooks](https://stripe.com/docs/webhooks) allow us to receive event notifications about all kinds of actions happening with our account, e.g., new subscriptions, successful payments, failed payments, subscription cancels, and many more. Our application can perform some actions on all of those events—for example, updating the database after a new subscription is created or updating customer info.
+[Webhooks](https://stripe.com/docs/webhooks) allow us to receive event notifications about all kinds of actions happening with our account, e.g., new subscriptions, successful payments, failed payments, subscription cancels, and many more. Our application can perform some actions on all of those events—for example, update the database after a new subscription is created.
 
 To handle those events, we need a new API endpoint.
 
 I'm creating one in `app/api` directory:
 
-(This code is quite simplified for the sake of this article. Don't use it in production.)
+(This code is quite simplified for the sake of this article.)
 
 ```ts
 // app/api/webhook.ts
@@ -237,14 +235,14 @@ export const config = {
 
 So, what's going on here? Let's take a look at the `webhook` function.
 
-1. First, I'm extracting the request body. Since Stripe needs the raw body, I have a little `getRawData` helper. I'm also exporting a config object at the end of the file with `bodyParser` set to false. There are a few other workarounds that you can find here: https://github.com/stripe/stripe-node/issues/341.
-2. Then, I'm using `stripe.webhooks.constructEvent` and passing a signature from a request and my webhook secret. I'm doing it to verify the events that Stripe sends. Read more about it here: https://stripe.com/docs/webhooks/signatures.
-3. I have a switch statement in which I'll handle the important events for my application.
+1. First, I'm extracting the request body. Since Stripe needs the raw body, I have a little `getRawData` helper. I'm also exporting a config object at the end of the file with `bodyParser` set to false. (There are a few other workarounds for this: https://github.com/stripe/stripe-node/issues/341.)
+2. Then, I'm using `stripe.webhooks.constructEvent` and passing a signature from a request and my webhook secret. I'm doing it to verify the events that Stripe sends. You can read more about why it's important [here](https://stripe.com/docs/webhooks/signatures).
+3. I have a switch statement in which I'll handle particular events.
 4. In the end, I'm returning a 200 response to acknowledge receipt of the event.
 
 ### What are all the events we need to handle?
 
-There can be plenty of events coming from Stripe, but we don't necessarily have to care about all of them. In some cases, you may want to know about all updates to a customer profile, payments methods, etc. In my application, I don't. I only want to see a bit about the subscription and its status. Let's see what happens when a user successfully creates a subscription. These are all the events that the webhook receives:
+There can be plenty of events coming from Stripe, but we don't necessarily have to care about all of them. In some cases, you may want to know about all updates to a customer profile, payments methods, etc. In my application, I don't. I only want to know a bit about the subscription and its status. Let's see what happens when a user successfully creates a subscription. These are all the events that the webhook receives:
 
 <div style="text-align: center; align-items:center; justify-content:center; display:flex; width: 100%;">
 <div style="width: 400px;">
@@ -268,14 +266,20 @@ It doesn't mean that the webhook only needs to handle three events. There are a 
 >
 > Your endpoint should not expect delivery of these events in this order and should handle this accordingly.
 
-What should happen when I receive one of those events? I want to upsert data in the Subscription table. Why upsert? Because I can't rely on the order and assume that any of those events can be first. Hence each one of them should trigger:
+#### Updating the database
 
-- Create a subscription if there's no subscription with a given id
+What should happen when I receive one of those events? I want to upsert data in the `Subscriptions` table.
+
+> Upsert: An operation that inserts rows into a database table if they do not already exist, or updates them if they do.
+
+Why upsert? Because I can't rely on the order and assume that any of those events can be first. Hence each one of them should trigger:
+
+- Create a subscription if there's no subscription with a given id,
 - Update data in a subscription entry otherwise.
 
 Even if `invoice.paid` event comes first, I still want to create a new entry and then update missing data on `customer.subscription.updated` and `customer.subscription.created`.
 
-Even though the data I get from `invoice.paid` is of type `Stipe.Invoice`, and from the remaining two, I get `Stripe.Subscription`, the code will look fairly similar, somehow like this:
+The data I get from `invoice.paid` is of type `Stripe.Invoice`, and from the remaining two, I get `Stripe.Subscription`. Nevertheless, the code will look fairly similar, somehow like this:
 
 ```ts
 case "customer.subscription.created":
@@ -297,9 +301,9 @@ case "customer.subscription.created":
   break
 ```
 
-Okay. But what about a user? We still don't have a way to link those subscriptions to the user from our system. There are multiple ways to do it, but I'm going to show you what worked best for me.
+Okay. But what about the user? We still don't have a way to link those subscriptions to the users from our system. While there are multiple ways to do it, I'm going to show you what worked best for me.
 
-In the createCheckoutSession.ts file, I'm passing one more piece of information to the stripe.checkout.sessions.create function. I'm passing a metadata object with a `user_id` property.
+In the `createCheckoutSession.ts` file, I'm passing one more piece of information to the `stripe.checkout.sessions.create` function — a `metadata` object with a `user_id` property.
 
 ```ts
 const session = await stripe.checkout.sessions.create({
@@ -312,10 +316,19 @@ const session = await stripe.checkout.sessions.create({
 });
 ```
 
-Now, I can extract the user's id from `Stripe.Subscription` objects I get in the webhook.
+It allows me to extract the user's id from `Stripe.Subscription` objects:
+
+```ts
+case "customer.subscription.created":
+  const subscriptionData = event.data.object as Stripe.Subscription
+
+  userId = subscriptionData.metadata.user_id
+```
+
+The final webhook's flow looks in the following way:
 
 ![](./final.png)
 
 ## Summary
 
-Okay, that's it! As promised, this wasn't a tutorial, and this article is not sufficient to add a Stripe integration. However, I hope it will solve a few doubts I might have had about Stripe and Blitz integration and answers some questions!
+Okay, that's it! As promised, this wasn't a tutorial, and this article is not sufficient to add a Stripe integration. However, I hope it will answer a few doubts you might have had about Stripe and Blitz integration! If you recently did the same and want to share your thoughts and feedback, you can reach out to me on [Twitter](https://twitter.com/aleksandrasays).
