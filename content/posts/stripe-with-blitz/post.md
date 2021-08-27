@@ -15,7 +15,7 @@ I'm currently building [Commont](https://www.commont.app/) — a hosted platform
 
 The application is built with [Blitz](https://blitzjs.com/) — The Fullstack React Framework. I'm assuming that if you're reading this blog post, you've already heard about Blitz — if not, go check out the [docs](https://blitzjs.com/docs/get-started)!
 
-I wanted to make money out of that, which meant I needed to integrate a payment system. After a little bit of research, I decided to go with Stripe. (Paddle was a strong alternative, and in my next side project, I'm definitely going to try [Lemon Squeezy](https://www.lemonsqueezy.com/).)
+I wanted to make money out of that, which meant I needed to integrate a payment system. After a little bit of research, I decided to go with Stripe. ([Paddle](https://paddle.com/) was a strong alternative, and in my next side project, I'm definitely going to try [Lemon Squeezy](https://www.lemonsqueezy.com/).)
 
 ## Pricing model
 
