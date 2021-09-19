@@ -1,8 +1,10 @@
 ---
-title: "Multi-level comments database model"
+title: "Choosing a database model for a hierarchical content"
 path: "/comments-db-model"
 tags: ["databases"]
-excerpt: ""
+excerpt: "
+You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it, and found a few ways of modelling the database, with different complexities and tradeoffs. In this article, I will cover a few of them.
+"
 created: 2021-09-27
 updated: 2021-09-27
 ---
@@ -31,49 +33,49 @@ What happens when a user replies to comment with id `1`? We add a new row, with 
 
 - If you want to fetch only the "base" comments (not the replies), you can select everything from the `Comments` table where `parent_id` is NULL. You can then refetch the responses by selecting those entries that match a particular value in the `parent_id` column.
 
-  ```sql
-  -- select base comments
-  SELECT * FROM "Comments" WHERE parent_id is NULL;
+```sql
+-- select base comments
+SELECT * FROM "Comments" WHERE parent_id is NULL;
 
-  -- fetch replies to a comment
-  SELECT * FROM "Comments" WHERE parent_id = 'a comment id';
-  ```
+-- fetch replies to a comment
+SELECT * FROM "Comments" WHERE parent_id = 'comment_id';
+```
 
 - However, if you want to fetch all the comments with the replies at once, you can do it with a little bit more complex SQL query. There are many ways to fetch this data, and it mostly depends on what shape you want on the front end. For example, to have replies as an object, you can do something like this in Postgres:
 
-  ```sql
-  SELECT
-  	c.*,
-  	replies
-  FROM
-  	"Comments" c
-  	LEFT JOIN (
-  		SELECT
-  			parent_id,
-  			COALESCE(json_agg(row_to_json(replies)), '[]'::JSON) AS replies
-  		FROM
-  			"Comments" AS replies
-  		GROUP BY
-  			parent_id) AS replies ON c.id = replies.parent_id
-  WHERE
-  	c.parent_id IS NULL;
-  ```
+```sql
+SELECT
+	c.*,
+	replies
+FROM
+	"Comments" c
+	LEFT JOIN (
+		SELECT
+			parent_id,
+			COALESCE(json_agg(row_to_json(replies)), '[]'::JSON) AS replies
+		FROM
+			"Comments" AS replies
+		GROUP BY
+			parent_id) AS replies ON c.id = replies.parent_id
+WHERE
+	c.parent_id IS NULL;
+```
 
-  If you use GraphQL it could look like this:
+If you use GraphQL it could look like this:
 
-  ```gql
-  query MyQuery {
-    comments(where: { parent_id: { _is_null: true } }) {
+```graphql
+{
+  comments(where: { parent_id: { _is_null: true } }) {
+    content
+    created_at
+    id
+    replies: comments {
       content
-      created_at
-      id
-      replies: comments {
-        content
-        author
-      }
+      author
     }
   }
-  ```
+}
+```
 
 This was one of the ways to have 1-level deep replies, and I'll stop here to move the main topic of this article — multi-level replies.
 
@@ -202,6 +204,28 @@ WITH base_comments AS (
 ```
 
 I used a CTE again in this query mostly because I like using it 😅, but you can manage perfectly well without it!
+
+### Using ltree
+
+If you're using Postgres, you might be interested in checking out a [ltree](https://www.postgresql.org/docs/9.1/ltree.html) data type. It represents labels of data stored in a hierarchical tree-like structure. Postgres provides many ltree operators to search through the hierarchical data, for example, searching for ancestors or descendants.
+
+A ltree's label is a sequence of alphanumeric characters and underscores less than 256 bytes long. A label path is a sequence of labels separated by dots, e.g. `1.2.3`.
+
+To use this data type, we need to add an extension to Postgres and create a new column:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS ltree;
+
+ALTER TABLE "Comments" ADD COLUMN path ltree;
+```
+
+We can then use a `<@` operator to get all nested replies of a particular comment:
+
+```sql
+SELECT * FROM "Comments" WHERE path <@ 'comment_id';
+```
+
+[Here](https://www.cybertec-postgresql.com/en/postgresql-ltree-vs-with-recursive/) you can read more about a comparison between a recursive CTE and ltree.
 
 ## Summary
 
