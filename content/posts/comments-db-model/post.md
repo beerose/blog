@@ -9,7 +9,7 @@ created: 2021-09-27
 updated: 2021-09-27
 ---
 
-You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it myself for a side project, and I found a few ways of modelling the database, with different complexities and tradeoffs. In this article, I'm going to cover a few of them. All the SQL examples will be in Postgres, but you can find substitute solutions in many other relational databases.
+You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it myself for a side project, and I found a few ways of modeling the database, with different complexities and tradeoffs. In this article, I'm going to cover a few of them. All the SQL examples will be in Postgres, but you can find substitute solutions in many other relational databases.
 
 ![](./comments.png)
 
@@ -25,7 +25,7 @@ Before diving into multi-level comments, I want to cover a more straightforward 
 
 ![](./1-level.png)
 
-We can extend the `Comments` table by adding a `parent_id` column to implement this scenario. The new column will have a foreign key relation to the Comment's id column. It'll be a many-to-one relation, which means a comment can have multiple comments (replies) that point to it as their parent.
+We can extend the `Comments` table by adding a `parent_id` column to implement this scenario. The new column will have a foreign key relation to the id column. It'll be a many-to-one relation, which means a comment can have multiple comments (replies) that point to it as their parent.
 
 ![](./schema2.png)
 
