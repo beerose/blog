@@ -33,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
   .gatsby-highlight {
     max-width: 100% !important;
 
+    padding: 15px 0;
+
     * {
       box-shadow: none !important;
     }
@@ -63,6 +65,19 @@ const GlobalStyle = createGlobalStyle`
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
+  }
+
+  table, td, th {
+    border: 1px solid rgba(0,0,0,0.4);
+  }
+
+  td {
+    padding: 0 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
   }
 `;
 

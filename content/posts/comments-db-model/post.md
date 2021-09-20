@@ -3,35 +3,45 @@ title: "Choosing a database model for a hierarchical content"
 path: "/comments-db-model"
 tags: ["databases"]
 excerpt: "
-You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it, and found a few ways of modelling the database, with different complexities and tradeoffs. In this article, I will cover a few of them.
+You're probably familiar with multi-level comments sections such as on Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it, and found a few ways of modelling the database, with different complexities and tradeoffs. In this article, I will cover a few of them.
 "
-created: 2021-09-27
-updated: 2021-09-27
+created: 2021-09-20
+updated: 2021-09-20
 ---
 
-You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it myself for a side project, and I found a few ways of modeling the database, with different complexities and tradeoffs. In this article, I'm going to cover a few of them. All the SQL examples will be in Postgres, but you can find substitute solutions in many other relational databases.
+You're probably familiar with multi-level comments sections such as on Facebook, Reddit, or Hackernews — a user can reply to a post, and the system allows multiple levels of nested replies. I recently needed to implement it myself for a side project, and I found a few ways of modeling the database, with different complexities and tradeoffs. In this article, I'm going to cover a few of them.
 
 ![](./comments.png)
 
+_Note: all the SQL examples will be in Postgres, but you can find equivalent solutions in many other relational databases. Also, the queries here are not optimized and production-ready — the goal is to show the idea, but you'll need to modify them to fit your system._
+
 ### Current schema
 
-Let's say that this is the initial schema. There's a `Comments` table that stores whatever information we need. For the sake of example, I reduced it to just five columns.
+In the picture below, you can see the initial schema that I will use in examples. There's a `Comments` table that stores whatever information we need. For the sake of example, I reduced it to five columns.
 
-![](./schema1.png)
+<div style="width: 100%; display: flex; justify-content: center">
+	<div style="width: 400px">
+		<img src="./schema1.png"/>
+	</div>
+</div>
 
 ## Comments with 1-level deep replies
 
-Before diving into multi-level comments, I want to cover a more straightforward version — 1-level deep replies. In this case, each "base" comment can have multiple replies, but you can't respond to a reply.
+Before diving into multi-level comments, I want to cover a less complex but popular version — 1-level deep replies. You can find it, for example, on Linkedin or Instagram. In this case, each "base" comment can have multiple replies, but you can't respond to a reply.
 
 ![](./1-level.png)
 
 We can extend the `Comments` table by adding a `parent_id` column to implement this scenario. The new column will have a foreign key relation to the id column. It'll be a many-to-one relation, which means a comment can have multiple comments (replies) that point to it as their parent.
 
-![](./schema2.png)
+<div style="width: 100%; display: flex; justify-content: center">
+	<div style="width: 400px">
+		<img src="./schema2.png"/>
+	</div>
+</div>
 
 What happens when a user replies to comment with id `1`? We add a new row, with `parent_id` equal to 1. Now, how do we fetch the comments? It's pretty flexible and depends on what you want to achieve in the UI.
 
-- If you want to fetch only the "base" comments (not the replies), you can select everything from the `Comments` table where `parent_id` is NULL. You can then refetch the responses by selecting those entries that match a particular value in the `parent_id` column.
+If you want to fetch only the "base" comments (not the replies), you can select everything from the `Comments` table where `parent_id` is NULL. You can then refetch the responses by selecting those entries that match a particular value in the `parent_id` column.
 
 ```sql
 -- select base comments
@@ -41,7 +51,7 @@ SELECT * FROM "Comments" WHERE parent_id is NULL;
 SELECT * FROM "Comments" WHERE parent_id = 'comment_id';
 ```
 
-- However, if you want to fetch all the comments with the replies at once, you can do it with a little bit more complex SQL query. There are many ways to fetch this data, and it mostly depends on what shape you want on the front end. For example, to have replies as an object, you can do something like this in Postgres:
+However, if you want to fetch all the comments with the replies at once, you can do it with a little bit more complex SQL query. There are many ways to fetch this data, and it mostly depends on what shape you want on the front end. For example, to have replies as an object, you can do something like this in Postgres:
 
 ```sql
 SELECT
@@ -77,7 +87,7 @@ If you use GraphQL it could look like this:
 }
 ```
 
-This was one of the ways to have 1-level deep replies, and I'll stop here to move the main topic of this article — multi-level replies.
+It was one of the ways to have 1-level deep replies, and I'll stop here to move the main topic of this article — multi-level replies.
 
 ## Multi-level replies
 
@@ -87,9 +97,17 @@ Choosing the suitable data model and implementation depends not only on the ease
 
 ![](./show-reply.png)
 
-We already mentioned refetching the replies for a particular comment when discussing the 1-level comments. This scenario is not much different but can have multiple approaches:
+We already mentioned refetching the replies for a particular comment when discussing the 1-level comments. We'll stay with the same schema as before:
 
-1. We fetch only the base comments and have a show replies button below each. After a user clicks the `show replies` button, we fetch the replies and show `show replies` for each. And then it can be as nested as you want. You can use the same queries as we mentioned earlier.
+<div style="width: 100%; display: flex; justify-content: center">
+	<div style="width: 400px">
+		<img src="./schema2.png"/>
+	</div>
+</div>
+
+This scenario is not much different but can have multiple approaches:
+
+1. We fetch only the base comments and have a show replies button below each. After a user clicks the `show replies` button, we fetch the replies and then each reply will have its `show replies` button. And then it can be as nested as you want. You can use the same queries as we mentioned earlier.
 
 2. We can also bring a bit more data at first — the base comments and 1-level replies, and then we have a button below each reply.
 
@@ -129,7 +147,11 @@ Now, a recursive commont table expression can reference itself, which is helpful
 
 ![](./ids.png)
 
-Take a look at the diagram above. _My blogpost about cats_ has four base comments (id: 1, 2, 5, 9), the second one has two replies (id: 3, 4), and the third comment has 3-level deep replies. Let's say we want to fetch the comments and all of their replies. The tricky part here is calculating the hierarchies. It sounds like a lot of mapping through the list to obtain the comments tree as an object. That's when a recursive table expression can help. We can construct a query to get results with the hierarchy collected as a path. The base comment will have an empty path as it doesn't have a parent, and the replies will have it constructed from the previous comments' ids. For example, from data as on the above diagram, comment number 8 would have a path of value `/5/6/7`.
+Take a look at the diagram above. _My blogpost about cats_ has four base comments (id: 1, 2, 5, 9), the second one has two replies (id: 3, 4), and the third comment has 3-level deep replies.
+
+Let's say we want to fetch the comments and all of their replies. The tricky part here is calculating the hierarchies. It sounds like a lot of mapping through the list to obtain the comments tree as an object. That's when a recursive table expression can help. We can construct a query to get results with the hierarchy collected as a path. The base comment will have an empty path as it doesn't have a parent, and the replies will have it constructed from the previous comments' ids.
+
+For example, from data as on the above diagram, comment number 8 would have a path of value `/5/6/7`.
 
 ```sql
 WITH RECURSIVE comments_cte (
@@ -163,13 +185,76 @@ FROM
 	comments_cte;
 ```
 
-Now imagine that you have pagination and need only _**ten** comments and all of their replies_. The tricky part here is to know which comment you should select that are replies (or nested) to the ten comments you need. The approach with a recursive CTE helps a bit with calculating the hierarchies. Still, it's pretty complex in terms of database performance as well as extendability. It can get out of hand when adding pagination on top of that. That's the way I'm going to show another approach that may solve this problem.
+The above query recursively constructs the comment's path by repeated joins with self (a `comments_cte` table). It returns the comments' id, path, content, and author.
+
+If we run this query on the data from the diagram, we'll see the following result:
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>path</th>
+    <th>...</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td></td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>2</td>
+    <td></td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>3</td>
+    <td>/1</td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>4</td>
+    <td>/1</td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>5</td>
+    <td></td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>6</td>
+    <td>/5</td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>7</td>
+    <td>/5/6</td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>8</td>
+    <td>/5/6/7</td>
+    <td>...</td>
+  </tr>
+	<tr>
+    <td>9</td>
+    <td></td>
+    <td>...</td>
+  </tr>
+</table>
+
+---
+
+Now imagine that you have pagination and need only _**ten** comments and all of their replies_. Getting ten "base" comments should be okay, but the tricky part here is to know what other comments are descendants of these ten — which ones are replies (or nested replies). The approach with a recursive CTE helps a bit with calculating the hierarchies. Still, it's pretty complex in terms of extendability — it can get out of hand when adding pagination on top of that. That's the way I'm going to show another approach that may solve this problem.
 
 ### Using an additional `path` column
 
-Since we already spoke about paths as a helper to know about hierarchies, we can think about another solution that doesn't require heavy SQL calculations. We can modify the schema by removing the foreign key relation and adding a new `path` column.
+Since we already spoke about paths, we can think about another solution that doesn't require calculating them while fetching the comments. We can modify the schema by removing the foreign key relation and adding a new `path` column.
 
-![](./schema-with-path.png)
+<div style="width: 100%; display: flex; justify-content: center">
+	<div style="width: 400px">
+		<img src="./schema-with-path.png"/>
+	</div>
+</div>
 
 New schema means we need to change the way of adding new comments to the database. When inserting a new row, we need to pass a calculated path. It should be pretty straightforward if you have the information to which comment a user is replying and the hierarchy on the front end.
 
@@ -205,11 +290,13 @@ WITH base_comments AS (
 
 I used a CTE again in this query mostly because I like using it 😅, but you can manage perfectly well without it!
 
+You need to remember that the `text` column has a limit. Though, it's big enough that it shouldn't be a problem unless you have A LOT of nested levels and/or use long strings to represent comments' ids.
+
 ### Using ltree
 
 If you're using Postgres, you might be interested in checking out a [ltree](https://www.postgresql.org/docs/9.1/ltree.html) data type. It represents labels of data stored in a hierarchical tree-like structure. Postgres provides many ltree operators to search through the hierarchical data, for example, searching for ancestors or descendants.
 
-A ltree's label is a sequence of alphanumeric characters and underscores less than 256 bytes long. A label path is a sequence of labels separated by dots, e.g. `1.2.3`.
+A ltree's _label_ is a sequence of alphanumeric characters and underscores less than 256 bytes long. A _label path_ is a sequence of labels separated by dots, e.g. `1.2.3`.
 
 To use this data type, we need to add an extension to Postgres and create a new column:
 
@@ -227,6 +314,8 @@ SELECT * FROM "Comments" WHERE path <@ 'comment_id';
 
 [Here](https://www.cybertec-postgresql.com/en/postgresql-ltree-vs-with-recursive/) you can read more about a comparison between a recursive CTE and ltree.
 
+**Note:** In the previous examples, we were using comments' ids for paths. However, suppose you're using strings such as UUID for it. In that case, you might need an additional way of representing comments unique identifiers as ltree's label should only have alphanumeric characters and underscores.
+
 ## Summary
 
-As I mentioned before, choosing a suitable model depends on many things — each application has different requirements and cares about different things. In this article, I only showed a few options that I've been looking at myself recently. However, other ways of handling multi-level comments may be a much better option in your particular use cases. Maybe a bridge table storing all the relations is a right fit for your app? Or perhaps you don't use a relational database and have a totally different way of dealing with this problem? Choosing the right solution also depends on your current database and its supported features (good luck with working with jsons in MS SQL server).
+As I mentioned before, choosing a suitable model depends on many things — each application has different requirements and cares about different things. In this article, I only showed a few options that I've been looking at myself recently. However, other ways of handling multi-level comments may be a much better option in your particular use cases. Maybe a bridge table storing all the relations is a right fit for your app? Or perhaps you don't want to use a relational database and have a totally different way of dealing with this problem? Choosing the right solution also depends on your current database and its supported features (good luck with working with jsons in MS SQL server 😅). I'd be happy to hear about your solutions — you can reach out to me via [Twitter](https://twitter.com/aleksandrasays)!
