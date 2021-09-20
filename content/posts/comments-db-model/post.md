@@ -13,7 +13,7 @@ You're probably familiar with multi-level comments sections such as on Facebook,
 
 ![](./comments.png)
 
-_Note: all the SQL examples will be in Postgres, but you can find equivalent solutions in many other relational databases. Also, the queries here are not optimized and production-ready — the goal is to show the idea, but you'll need to modify them to fit your system._
+_Note: all the SQL examples will be in Postgres, but you can find equivalent solutions in many other relational databases. Also, the queries here are not optimized and production-ready — the goal is to show the idea, but you'll need to modify them to fit your use case._
 
 ### Current schema
 
