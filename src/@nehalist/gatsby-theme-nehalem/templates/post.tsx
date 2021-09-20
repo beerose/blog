@@ -63,7 +63,7 @@ const PostContent = styled.div`
   background-color: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  width: 900px;
+  width: 800px;
   max-width: 100%;
 
   li > a,
