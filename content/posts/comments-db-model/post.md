@@ -141,7 +141,7 @@ WHERE
 
 It's the same query we used before for getting comments and replies but written using a common table expression.
 
-Now, a recursive commont table expression can reference itself, which is helpful when querying hierarchical data, e.g. nested comments!
+Now, a recursive common table expression can reference itself, which is helpful when querying hierarchical data, e.g. nested comments!
 
 #### How we're going to use it?
 
@@ -318,4 +318,6 @@ SELECT * FROM "Comments" WHERE path <@ 'comment_id';
 
 ## Summary
 
-As I mentioned before, choosing a suitable model depends on many things — each application has different requirements and cares about different things. In this article, I only showed a few options that I've been looking at myself recently. However, other ways of handling multi-level comments may be a much better option in your particular use cases. Maybe a bridge table storing all the relations is a right fit for your app? Or perhaps you don't want to use a relational database and have a totally different way of dealing with this problem? Choosing the right solution also depends on your current database and its supported features (good luck with working with jsons in MS SQL server 😅). I'd be happy to hear about your solutions — you can reach out to me via [Twitter](https://twitter.com/aleksandrasays)!
+As I mentioned before, choosing a suitable model depends on many things — each application has different requirements and cares about different things. In this article, I only showed a few options that I've been looking at myself recently. However, other ways of handling multi-level comments may be a much better option in your particular use cases. Maybe a bridge table storing all the relations is a right fit for your app? Or perhaps you don't want to use a relational database and have a totally different way of dealing with this problem? Choosing the right solution also depends on your current database and its supported features (good luck with working with jsons in MS SQL server 😅). Though, if you use MS SQL Server, you might be interested in [` hierarchyid` data type](https://docs.microsoft.com/en-us/sql/relational-databases/hierarchical-data-sql-server?view=sql-server-ver15).
+
+I'd be happy to hear about your solutions — you can reach out to me via [Twitter](https://twitter.com/aleksandrasays)!
