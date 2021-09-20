@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   .gatsby-highlight {
     max-width: 100% !important;
 
-    padding: 15px 0;
+    padding: 5px 0;
 
     * {
       box-shadow: none !important;
