@@ -101,7 +101,7 @@ const SpeakingPage: FunctionComponent<AboutPageProps> = ({
         [year]: [...acc[year], val],
       };
     },
-    { "2020": [], "2019": [], "2021": [] }
+    { "2020": [], "2019": [], "2021": [], "2022": [] }
   );
 
   return (
