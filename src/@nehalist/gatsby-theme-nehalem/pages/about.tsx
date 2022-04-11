@@ -92,13 +92,16 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ location }) => {
           <h1>Hi! I'm Aleksandra Sikora 👋</h1>
           <ul style={{ listStyleType: "none", padding: 0, marginBottom: 0 }}>
             <li>🏡 I live in Wrocław, Poland. </li>
+            <li>🛫 I travel a lot, though. </li>
             <li>🎓 I have a bachelor degree in Computer Science. </li>
             <li>
               👩🏻‍💻 I've been working as a backend developer and full-stack
-              developer.
+              developer for over five years now.
             </li>
-            <li>👩🏻‍💻 Currently working as a frontend tech lead at Hasura.</li>
-            <li>🎾 I've been playing tennis for many years. </li>
+            <li>👩🏻‍💻 Previously a frontend tech lead at Hasura.</li>
+            <li>👩🏻‍💻 Currently a lead Blitz.js maintainer.</li>
+            <li>🎾 I've been playing tennis for many years.</li>
+            <li>🏔 I love hiking, and climbing.</li>
             <li>🎨 I like art. Especially Edward Hopper's.</li>
           </ul>
           <h2>Skills</h2>
