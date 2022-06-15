@@ -12,7 +12,6 @@ const TalkTitle = styled.h3`
   ::before {
     content: "";
     border-radius: 50%;
-    background-color: ${theme.colors.secondaryDarker};
     width: 14px;
     height: 14px;
     position: absolute;
@@ -59,7 +58,6 @@ const StyledTalkInfo = styled.div`
 const StyledDate = styled.div`
   position: absolute;
   transform: translate(-85px, 0px);
-  color: ${theme.colors.black07};
   font-size: 14px;
 `;
 
@@ -71,18 +69,21 @@ const StyledShowMore = styled.div`
   visibility: visible;
   font-size: 14px;
   font-weight: 600;
-  color: ${theme.colors.secondaryDarker};
 `;
 
 const StyledMore = styled.section`
   background: white;
-  padding: 15px;
+  padding: 0 20px;
   max-width: 70ch;
   overflow: scroll;
 
   @media (max-width: ${theme.breakpoints.xs}) {
     transform: translate(-80px);
     width: calc(100% + 80px);
+  }
+
+  a {
+    color: revert;
   }
 `;
 
@@ -119,6 +120,7 @@ export const TalkInfo = ({ talk }: { talk: Talk }) => {
         <span style={{ marginRight: "15px" }}>
           {type} •{" "}
           {duration < 80 ? `${duration} min` : `${Math.ceil(duration / 60)} h`}{" "}
+          {place ? "• " + place + " " : ""}
           • {tags.join(", ")}
         </span>
         <div style={{ display: "flex" }}>
