@@ -26,8 +26,11 @@ Did you know that some SQL variants are Turing complete and let you write any pr
 
 * [Brainfuck interpreter with procedures in T-SQL](https://github.com/PopovMP/BrainFuck-SQL/blob/master/BrainFuck.sql)
 
+<<<<<<< HEAD
 * [ltree Docs](https://www.postgresql.org/docs/current/ltree.html)
 
+=======
+>>>>>>> master
 * [Looking inside postgres at a gist index](https://patshaughnessy.net/2017/12/15/looking-inside-postgres-at-a-gist-index) by [Pat Shaughnessy](https://twitter.com/pat_shaughnessy)
 
 * [Saving a tree in postgres using ltree](https://patshaughnessy.net/2017/12/13/saving-a-tree-in-postgres-using-ltree) by [Pat Shaughnessy](https://twitter.com/pat_shaughnessy)
