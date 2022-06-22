@@ -1,6 +1,6 @@
 ---
 title: "SQL Tricks and Concepts You Didn't Know About"
-tags: ["blitz.js"]
+tags: ["SQL"]
 excerpt: ""
 date: 2022-06-17
 event: "Prisma Day"
