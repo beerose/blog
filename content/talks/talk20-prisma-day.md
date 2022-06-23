@@ -8,7 +8,7 @@ type: "conference"
 duration: 20
 post: ""
 img: ""
-recording: ""
+recording: "https://www.youtube.com/watch?v=QoCGmvVCqto"
 slides: "https://docs.google.com/presentation/d/1gpl5gzDhFnBlQEQuAJJBQRAgm_aZZgBa5fI3SqFMplc/edit?usp=sharing"
 place: "Berlin 🇩🇪"
 ---
