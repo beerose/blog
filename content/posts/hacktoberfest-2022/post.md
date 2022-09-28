@@ -1,5 +1,5 @@
 ---
-title: "How not to contribute to open source"
+title: "8-step guide on how to contribute to open-source"
 path: "/hacktoberfest"
 tags: ["others"]
 excerpt: TBD
@@ -7,74 +7,26 @@ created: 2022-09-26
 updated: 2022-09-26
 ---
 
-Hacktoberfest is coming and you’re probably looking into a way to get a nice free t-shirt (though I recommend getting a tree planted in your name! Less harm for the planet). Contributing to open source is great and it can give you much more than a fancy swag. You can learn things that will elevate your career in many ways. You can improve software for tons of people (including yourself), meet new people. You can gain new ways to show off to your colleagues. Who doesn’t like throwing “ah yeah, I know this project, contributed there last month” in a random tech related conversations? 
+1. Find a project you have no idea about and never used before. You can use GitHub explorer for that: https://github.com/explore. No commits in five years? Not a problem. They might have been waiting for you this whole time.
 
-What’s more — you can learn how to communicate with other developers and teams, that may have a completely different communication styles than what you’re used to. Sometimes you may struggle with miscommunication or get annoyed if someone doesn’t get what you’re saying. I believe that communication is the key and by avoiding certain things you can eliminate many struggles.
+2. Do you see open issues? They’re for the weak. You’re creative and gonna fix issues they didn’t even know they had. Better yet, if you create a problem and then fix the problem, that’s two PRs. Gotta be smart if you want this free t-shirt.
 
-There are plenty of articles covering how to contribute to open source, how to find projects to contribute and how to communicate. (I’ll link some of them below.) I want to cover the opposite — how not to contribute to open source.
+3.	Time to start working on a PR. You have two options:
+  1. Fork the project and run it locally. There’s probably a README or CONTRIBUTING guide with instructions, but you can also ping maintainers in every communication channel possible. They use Discord? Great! Open it and write “I DON’T KNOW HOW TO RUN YOUR PROJECT”. Make sure to copy paste your message to every channel possible. If no one replied in three minutes, mention the maintainers on Twitter. Now, you probably think “what if they don’t have Twitter”. Use email, post in other issues on GitHub. Or create a new issue! If nothing help proceed to the option below:
+	2. Don’t fork the project and make changes directly from GitHub. Why should you care if your changes work or not? You’re not the maintainer, they’ll fix after you.
 
-1. No one cares about typo fixes. Unless it’s harmful or misleading in any way.  The harm of one typo is probably much less than the time potentially spent on creating and merging a PR. Respect your and maintainers’ time. After all, most typos go unnoitced.
+4. Make your changes. You don’t have ideas what to do? What about changing `I’m` to `I am` or replacing words with synonyms? Or removing `todo` comments from the code. If you remove a to do item, it’s done, right? You can also add some typos, because our brains work this way that we don’t raelly relasie taht a wrod has a typo. 
 
-<div style="display: flex; justify-content: center; width: 100%">
-  <div style="text-align: center; width: 300px">
-    <img src="./Orignal.jpeg" />
-  </div>
-</div>
+5. Create a PR. Here’s an official guide on how to do it: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request. That’s a lot of reading so you can ping maintainers again and ask for help.
 
-2. Don’t post “X not working” kind of issues. Don’t assume maintainers will guess things. If you post something like “X doesn’t work” how do we know what that means? Doesn’t it work at all? Or partially? Is there an error or a warning? Is this a bug or a feature change request? You can help maintainers a lot by providing clear context on what problems you’re facing and what is the ideal behaviour. When you’re facing a certain issue, the context may be obvious to you (e.g. how to reproduce, what is expected, etc.) but in 99% cases it’s not obvious at all to others. Explain your issue as if you were talking to a five years old. It’s much better to write too many “obvious” stuff than accidentally leaving something out and having multiple back and forth with maintainers or other contributors.
+6. Now that your PR is there, time to make some noise. Go to Discord, Slack, or whatever they use, and post a link to your PR in every channel. You don’t have to add any context, your time is precious, they will guess what you need. If you don’t get a review in two hours, ping everyone again. Make sure to use `@everyone` or `@here` for better chances of success. Then wait.
 
-Copy paste if needed:
+7. I’m kidding, there’s no time to wait. Use the power of social network. Twitter, email, GitHub, Discord, Slack, LinkedIN, Facebook, Instagram. Can you already smell this fresh new t-shirt?
 
-```
-## Current behaviour
+8. Now, we have a few options:
 
-Describe what's happening. Include screenshots or logs.
+  1. If more than five hours passed and your PR still hasn’t been reviewed and merged, you have every right to feel offended. Go to GitHub, open your PR, write a comment that THIS IS UNACCEPTABLE and close it. Go to step number one and start again.
+	2. In case your PR was reviewed but wasn’t accepted, you can write the same message, close the project and never think about it again. Then you go to step number one to give my guide one more chance. (Actually you need to do it more than once to get a T-Shirt).
+	3. If someone was smart enough to appreciate your work, you can go to point number one and start the process again. Three more times to go! Or just one if you used create problem/solve problem idea suggested in the second step.
 
-## Expected behaviur
-
-Describe what should be happening. If it's a regression, mention the previous behaviour.
-
-## Steps to reproduce
-
-All of them!!
-
-## Version used
-
-Tool's version and everything else that could be related, e.g. OS, Node, package managers.
-```
-
-3. Don’t contribute code for the sake of contributing code. It’s okay not to contribute to open source in October and it’s definitely better not to contribute than contribute shitty PRs. You see a project you’d like to be a part of but you’re not ready to contribute code? Don’t do it. Don’t fix typos or do redundant work. Find a different way to contribute. Reach out to maintainers and ask if they need anything. Maybe they need a help organising a meet-up? Or looking for someone who would test their product? Maybe they need feedback on a new design? 
-
-4. Don’t start work before confirming implementation details.
-
-5. Don’t be a seasoned OSS contributor. October is over and you’re gone? Not cool. If maintainers review your PR after the month is gone, it would be very nice to deliver it from start to finish.
-
-6. Don’t change wording. Changing `I’m` to `I am` or replacing words with synonyms may get you an easy way to submit a PR but won’t bring much value to anyone (apart from expanding one’s dictionary with synonyms). Only change things that don’t make sense and could actually use a rewording. (Hint below).
-￼
-￼<div style="display: flex; justify-content: center; width: 100%">
-  <div style="text-align: center; width: 600px">
-    <img src="./imagine.jpeg" />
-  </div>
-</div>
-
-7. Don’t be harsh. We all do our best even if our best is not what you think it could be. (Almost) no one intentionally wants to do wrong things and write bad code. And if they did write bad code, assume lack of knowledge or context. Consider this an opportunity to show a better way of doing something rather than to take it out on someone.
-
-8. Don’t assume that your changes will always be accepted and merged. If there are minor differences between what maintainers want and your proposed changes, you should get a proper review when someone requests changes and explains why they do so. Yet, sometimes your PRs will be closed almost right away. There are some reasons when that can happen:
-
-  1. Maintainers changed their mind. That sucks, but that happens. 
-	2. Someone else accidentally fixed an issue along with another PR. That also sucks, I know.
-	3. Your changes are too far from a desired solution. Ideally it shouldn’t happen and issues should be written in a way to avoid this kind of miscommunication. And if that happens, maintainers should follow up and descrive what is a desired solution. 
-	4. Someone forgot about your PR, and the changes became irrelevant over time. Ok, that really sucks. But maintainers are only humans and if they get a lot of PRs in October, it’s not that uncommon to accidentally miss some of them. You can always try pinging them if you see no response after a week or two.
-
-9. Don’t leave unfinished work. It’s totally fine if you start working on a PR, and then realise you don’t know how to proceed or stumble upon some problems. Yet, you can always try to ask for help and some guidance before abandoning a PR with assumption that someone else will finish it. “But you’re the maintainer, finish it” is never a way to go about it.
-
-10. Don’t disregard project’s guidelines. You prefer a different prettier config or TypeScript settings? Cool, but if you want to contribute you need to respect project’s style guide. After all, print with or whether or not use semicolons in JavaScript, is not a determinant of a project’s success. 
-
-11. Don’t duplicate work. Always make sure that no one else is working on an issue. If you notice that someone else expressed an interest in working on an issue, but they never started, ask how it’s going. Maybe someone wanted to work on it, but didn’t have time. If there’s no reply after a while, you can ask maintainers to reassign the issue to you.
-
-12. Don’t spam maintainers asking for a review. It’s annoying and a lot of maintainers already feel like they are falling behind. Don’t add more pressure. Although, it’s totally fine to ask for an update if you see no action on your PR. 
-
-  Ok: Hey, I wanted to ask if you had a chance to take a look at my PR? Is there 			something I can do to improve it? It’s okay if you’re currently busy — take 			your time and have a good day! (Copy paste if needed)
-
-  Not ok: when are you going to review this? This is unacceptable. 
-
+/s 
