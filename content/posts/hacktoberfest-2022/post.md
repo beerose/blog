@@ -13,7 +13,7 @@ updated: 2022-09-28
 
 3. Time to start working on a PR. You have two options:
 
-  * Fork the project and run it locally. There’s probably a README or CONTRIBUTING guide with instructions, but you can also ping maintainers in every communication channel possible. They use Discord? Great! Open it and write “I DON’T KNOW HOW TO RUN YOUR PROJECT”. Make sure to copy paste your message to every channel possible. If no one replied in three minutes, mention the maintainers on Twitter. Now, you probably think “what if they don’t have Twitter”. Use email, post in other issues on GitHub. Or create a new issue! If nothing help proceed to the option below:
+	* Fork the project and run it locally. There’s probably a README or CONTRIBUTING guide with instructions, but you can also ping maintainers in every communication channel possible. They use Discord? Great! Open it and write “I DON’T KNOW HOW TO RUN YOUR PROJECT”. Make sure to copy paste your message to every channel possible. If no one replied in three minutes, mention the maintainers on Twitter. Now, you probably think “what if they don’t have Twitter”. Use email, post in other issues on GitHub. Or create a new issue! If nothing help proceed to the option below:
 
 	* Don’t fork the project and make changes directly from GitHub. Why should you care if your changes work or not? You’re not the maintainer, they’ll fix after you.
 
