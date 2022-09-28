@@ -2,9 +2,9 @@
 title: "8-step guide on how to contribute to open-source"
 path: "/hacktoberfest"
 tags: ["others"]
-excerpt: TBD
-created: 2022-09-26
-updated: 2022-09-26
+excerpt: Very concise eight-step guide 🙃
+created: 2022-09-28
+updated: 2022-09-28
 ---
 
 1. Find a project you have no idea about and never used before. You can use GitHub explorer for that: https://github.com/explore. No commits in five years? Not a problem. They might have been waiting for you this whole time.
