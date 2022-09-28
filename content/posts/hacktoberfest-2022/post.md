@@ -13,9 +13,9 @@ updated: 2022-09-28
 
 3.	Time to start working on a PR. You have two options:
 
-  1. Fork the project and run it locally. There’s probably a README or CONTRIBUTING guide with instructions, but you can also ping maintainers in every communication channel possible. They use Discord? Great! Open it and write “I DON’T KNOW HOW TO RUN YOUR PROJECT”. Make sure to copy paste your message to every channel possible. If no one replied in three minutes, mention the maintainers on Twitter. Now, you probably think “what if they don’t have Twitter”. Use email, post in other issues on GitHub. Or create a new issue! If nothing help proceed to the option below:
+  * Fork the project and run it locally. There’s probably a README or CONTRIBUTING guide with instructions, but you can also ping maintainers in every communication channel possible. They use Discord? Great! Open it and write “I DON’T KNOW HOW TO RUN YOUR PROJECT”. Make sure to copy paste your message to every channel possible. If no one replied in three minutes, mention the maintainers on Twitter. Now, you probably think “what if they don’t have Twitter”. Use email, post in other issues on GitHub. Or create a new issue! If nothing help proceed to the option below:
 
-	2. Don’t fork the project and make changes directly from GitHub. Why should you care if your changes work or not? You’re not the maintainer, they’ll fix after you.
+	* Don’t fork the project and make changes directly from GitHub. Why should you care if your changes work or not? You’re not the maintainer, they’ll fix after you.
 
 4. Make your changes. You don’t have ideas what to do? What about changing `I’m` to `I am` or replacing words with synonyms? Or removing `todo` comments from the code. If you remove a to do item, it’s done, right? You can also add some typos, because our brains work this way that we don’t raelly relasie taht a wrod has a typo. 
 
@@ -27,10 +27,10 @@ updated: 2022-09-28
 
 8. Now, we have a few options:
 
-  1. If more than five hours passed and your PR still hasn’t been reviewed and merged, you have every right to feel offended. Go to GitHub, open your PR, write a comment that THIS IS UNACCEPTABLE and close it. Go to step number one and start again.
+	* If more than five hours passed and your PR still hasn’t been reviewed and merged, you have every right to feel offended. Go to GitHub, open your PR, write a comment that THIS IS UNACCEPTABLE and close it. Go to step number one and start again.
 
-	2. In case your PR was reviewed but wasn’t accepted, you can write the same message, close the project and never think about it again. Then you go to step number one to give my guide one more chance. (Actually you need to do it more than once to get a T-Shirt).
-	
-	3. If someone was smart enough to appreciate your work, you can go to point number one and start the process again. Three more times to go! Or just one if you used create problem/solve problem idea suggested in the second step.
+	* In case your PR was reviewed but wasn’t accepted, you can write the same message, close the project and never think about it again. Then you go to step number one to give my guide one more chance. (Actually you need to do it more than once to get a T-Shirt).
+
+	* If someone was smart enough to appreciate your work, you can go to point number one and start the process again. Three more times to go! Or just one if you used create problem/solve problem idea suggested in the second step.
 
 /s 
